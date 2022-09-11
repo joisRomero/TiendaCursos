@@ -1,0 +1,146 @@
+Profesores{
+    - Stephanie Oliva   (F-S)
+    - Victoria López    (F-V)
+    - Ana Sandoval      (F-A)
+    - Marcela Olivos    (F-M)
+
+    - Rodrigo Rojas     (M-R)
+    - Daniel Alarcón    (M-D)
+    - Oscar Pérez       (M-O)
+    - Carlos Flores     (M-C)
+}
+Profesores img {
+    https://i.postimg.cc/6yVq5mwP/female01.jpg
+    https://i.postimg.cc/68YQC48L/female02.jpg
+    https://i.postimg.cc/XZqYLNFM/female03.jpg
+    https://i.postimg.cc/hz7PFCpp/female04.jpg
+    https://i.postimg.cc/1gd5jxc8/male01.jpg
+    https://i.postimg.cc/cty1dQzZ/male02.jpg
+    https://i.postimg.cc/GTFLt40D/male03.jpg
+    https://i.postimg.cc/qgyMj5t7/male04.jpg
+    https://i.postimg.cc/KRbcVDLD/male05.jpg
+    https://i.postimg.cc/SJGQpYfF/male06.jpg
+
+}
+
+
+CURSOS (3 meses) {
+    CATEGORIA::INGENIERÍA Y DESARROLLO::Precio($49.00 c/curso)
+        1. Backend (M-D)
+            - Fundamentos de Programación Orientada a Objetos
+            - Arquitectura de Android con Kotlin
+            - Desarrollo Web con Blazor y .Net
+            - Fundamentos de Node JS
+            - C# con .Net Core 2.1
+        2. Frontend (F-V)
+            - Desarrollo web HTML, CSS y JS
+            - Elaboración de Blogs con WordPress
+            - Angular
+            - React
+            - Boostrap
+        3. Arquitectura y Bases de Datos (M-R)
+            - Fundamentos de Arquitectura de Software
+            - Fundamentos de Bases de Datos
+            - Microsoft SQL Server
+            - MySQL
+            - Optimización de Bases de Datos en SQL Server
+        4. Inteligencia Artificial (M-C)
+            - Análisis de Aprendizaje
+            - Automatización UI Con Python usando Selenium
+            - Redes Neuronales
+            - Introducción a Cypress & Puppeteer
+
+    CATEGORIA::MARKETING::Precio($39.00 c/curso) (F-A)
+        1. Redes Sociales
+            - Fundamentos de Social Media Listening
+            - Informes de Redes Sociales con Google Data Studio
+            - Optimización de Perfil en Instagram
+            - Comunidades en Discord
+            - Manejo de Crisis en Redes Sociales
+        2. E-Commerce
+            - Marketing para Emprendedores de PyMes
+            - Marketing para E-Commerce
+            - Fundamentos de E-Commerce
+            - Google Analytics para E-Commerce
+            - E-Commerce avanzado en Facebook Ads
+        3. Data Marketer
+            - Métricas para Redes Sociales
+            - Métricas para Startups
+            - Investigación de mercados Digitales
+            - Análisis de Datos con Power Bi
+            - Análisis de Negocio para Ciencia de Datos
+        4. Publicidad Digital
+            - Fundamentos de la Publicidad Digital
+            - Políticas de Anuncios en Facebook e Instagram
+            - Branding Research
+            - Creación de Campañas de Interacción en Facebook Ads
+            - Google Ads Display & Search
+
+        5. Creación de Contenido
+            - Posicionamiento en Buscadores
+            - Estrategia y Planeamiento de Contenidos
+            - Copywriting para Plataformas Digitales
+            - Introducción Ads Youtube, Instagram & Facebook
+            - Marketing con Influencers
+
+    CATEGORIA::DISEÑO UX/UI::Precio($59.00 c/curso) (F-M)
+        1. Experiancia de Usuario (UX)
+            - Gestión de Procesos de UX
+            - Design Sprint
+            - Lean UX
+            - Experiencia de Cliente
+            - CX Research y UX Testing
+        2. Diseño de Interfaces (UI)
+            - Introducción a UI
+            - Sistemas de Diseño
+            - Ilustración Digital Vectorial
+            - Design Thinking
+            - Colaboración entre Diseño y Desarrollo
+        3. Product Designer
+            - Introducción al Diseño de Producto
+            - Diseño de Prototipos para móviles y tablets
+            - Accesibilidad Web
+            - Metodologías para Diseñar un Producto
+            - Cómo ser un Product Designer
+        4. Escuela de Diseño
+            - Introducción al Diseño
+            - Técnicas para Potenciar tu Creatividad
+            - Uso y Manejo del Color
+            - Tipografía
+            - Composición Visual
+        5. Diseño Gráfico
+            - Adobe Photoshop desde Cero
+            - Adobe Ilustrator desde Cero
+            - Diseño y Creación de Logos
+            - Técnicas para el Desarrollo de tu Creatividad
+            - Dibujo de Retrato
+}
+
+TALLER (1 mes) {
+    CATEGORIA::COMPUTO::
+        1. OFIMÁTICA::Precio($19.90 c/curso) (M-O)
+            - Fundamentos de Office 2019
+            - Gestión de Proyectos con Microsoft Proyect 2019
+            - Microsoft Office 2019 Básico
+            - Microsoft Office 2019 Intermedio
+            - Microsoft Office 2019 Avanzado
+        2. HERRAMIENTAS DIGITALES::Precio($9.99 c/curso) (M-O)
+            1. Introducción a las Herramientas Digitales
+            2. Usabilidad de las Herramientas Digitales para el Trabajo
+            3. Microsoft Teams para Trabajo Colaborativo
+            4. Aplicaciones Colaborativas con Office 365
+            5. Herramientas Colaborativas con Google y Plataformas Virtuales
+        3. EXCEL::Precio($19.90 c/curso)
+            1. Desarrollo de Aplicaciones en Microsoft Excel 2019
+            2. Microsoft Excel 2019 Auto-Instructivo Básico
+            3. Microsoft Excel 2019 Auto-Instructivo Intermedio
+            4. Microsoft Excel 2019 Auto-Instructivo Avanzado
+            5. Visual Basic en Microsoft Excel 2019 desde Cero
+    CATEGORIA::IDIOMAS:
+        1. Inglés::Precio($29.90 c/curso) (F-S)
+            1. Inglés Nivel Pre-Básico
+            2. Inglés Nivel Básico
+            3. Inglés Nivel Intermedio
+            4. Inglés Nivel Avanzado
+            5. Certificaciones IELTS y TOEFL
+}
