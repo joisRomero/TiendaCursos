@@ -1,6 +1,12 @@
 html{
     scroll-behavior: smooth;
 }
+
+.activo {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
 /* -------------------------------- */
 /* NAVBAR */
 /* -------------------------------- */
@@ -34,14 +40,17 @@ html{
 /* -------------------------------- */
 .section-nostros {
     padding: 50px 0px;
-    background: url(../images/hero-background2.jpg) center center no-repeat;
+    background-image: radial-gradient(circle at 26.79% 41.55%, #f168ff 0, #9e54ff 25%, #3c3cf2 50%, #0025b8 75%, #001384 100%);
+    /* background: url(../images/hero-background2.jpg) center center no-repeat; */
 }
 
 /* -------------------------------- */
 /* CONTACTANOS */
 /* -------------------------------- */
 .section-contactanos,
-.section-login {
+.section-login,
+.section-todosCursos,
+.section-verMasCurso {
     padding: 100px 0px;
     background: #262431;
 }
@@ -88,10 +97,14 @@ html{
     .navbar-iniciarSesion{
         background-color: #4633af !important;
     }
+    .nav-cursos {
+        position: fixed;
+    }
 }
 
-
-
+/* -------------------------------- */
+/* INICIAR SESION */
+/* -------------------------------- */
 .divider:after,
 .divider:before {
 content: "";
