@@ -31,7 +31,10 @@ html{
     background: #2f2c3d;
     padding: 50px 0px;
 }
-
+.section-estudiante{
+    background: #262431;
+    padding: 50px 0px;
+}
 .ultimo-curso img{
     height: 200px;
 }
@@ -77,6 +80,10 @@ html{
 .footer {
     background: #2f2c3d;
 }
+
+.icono-usuario {
+    display: none;
+}
 /* -------------------------------- */
 /* MEDIA QUERY */
 /* -------------------------------- */
@@ -99,6 +106,10 @@ html{
     }
     .nav-cursos {
         position: fixed;
+    }
+    .icono-usuario {
+        visibility: visible;
+        display: flex;
     }
 }
 

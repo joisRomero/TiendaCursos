@@ -13,7 +13,7 @@
     />
 
 
-    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
     <title>TODO-CURSO</title>
   </head>
   <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
@@ -32,7 +32,7 @@
   <body data-spy="scroll" data-target="#main-navbar">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="main-navbar">
       <div class="container">
-        <a class="navbar-brand text-info font-weight-bold" href="index.html">TODO-CURSO</a>
+        <a class="navbar-brand text-info font-weight-bold" href="index.php">TODO-CURSO</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -48,7 +48,7 @@
         <div class="collapse navbar-collapse" id="navbarPrincipal">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Inicio</a>
+              <a class="nav-link" href="index.php">Inicio</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#cursos">Cursos</a>
@@ -63,7 +63,7 @@
               <a class="nav-link" href="#contactanos">Contactanos</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link font-weight-bold" href="iniciarSesion.html">Iniciar sesión</a>
+              <a class="nav-link font-weight-bold" href="iniciarSesion.php">Iniciar sesión</a>
             </li>
           </ul>
         </div>
@@ -84,8 +84,8 @@
               <hr class="my-4" />
               <p>"Cada logro comienza con la decisión de intentarlo"</p>
               <p>- Gail Devers</p>
-              <a href="iniciarSesion.html" class="btn btn-info" ></i> INICIAR SESIÓN</a>
-              <a href="cursos.html" class="btn btn-info">VER CURSOS</a>
+              <a href="vistas/iniciarSesion.php" class="btn btn-info" ></i> INICIAR SESIÓN</a>
+              <a href="vistas/cursos.html" class="btn btn-info">VER CURSOS</a>
             </div>
           </div>
           <div class="col-lg-6">

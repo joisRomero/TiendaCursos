@@ -1,3 +1,7 @@
+<?php 
+  include '../controladores/iniciarSesion.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,7 +43,7 @@
       id="main-navbar"
     >
       <div class="container">
-        <a class="navbar-brand text-info font-weight-bold" href="index.html"
+        <a class="navbar-brand text-info font-weight-bold" href="index.php"
           >TODO-CURSO</a
         >
         <button
@@ -57,10 +61,10 @@
         <div class="collapse navbar-collapse" id="navbarPrincipal">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Inicio</a>
+              <a class="nav-link" href="index.php">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#cursos">Cursos</a>
+              <a class="nav-link" href="cursos.html">Cursos</a>
             </li>
           </ul>
         </div>
@@ -77,19 +81,20 @@
           >
             <div class="col-md-9 col-lg-6 col-xl-5">
               <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                src="images/login.webp"
                 class="img-fluid"
               />
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-              <form>
+              <form  method="POST">
                 <div class="form-outline mb-4">
                   <label class="form-label" for="nombreUsuarios"
                     >Nombre de usuario</label
                   >
                   <input
-                    type="email"
-                    id="nombreUsuarios"
+                    type="text"
+                    id="nombreUsuario"
+                    name="nombreUsuario"
                     class="form-control form-control-lg"
                     placeholder="Ingrese su nombre de usuario"
                     required
@@ -101,11 +106,18 @@
                   <input
                     type="password"
                     id="clave"
+                    name="clave"
                     class="form-control form-control-lg"
-                    placeholder="Enter password"
+                    placeholder="Ingrese su contraseña"
                     required
                   />
                 </div>
+
+                <?php 
+                  if(isset($errorLogin)){
+                    echo "<p class='badge badge-danger'>".$errorLogin."</p>";
+                  }
+                ?>
 
                 <div class="text-center text-lg-start mt-4 pt-2">
                   <button type="submit" class="btn btn-primary btn-lg px-5">
