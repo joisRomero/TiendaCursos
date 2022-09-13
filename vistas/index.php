@@ -84,8 +84,8 @@
               <hr class="my-4" />
               <p>"Cada logro comienza con la decisión de intentarlo"</p>
               <p>- Gail Devers</p>
-              <a href="vistas/iniciarSesion.php" class="btn btn-info" ></i> INICIAR SESIÓN</a>
-              <a href="vistas/cursos.html" class="btn btn-info">VER CURSOS</a>
+              <a href="../vistas/iniciarSesion.php" class="btn btn-info" ></i> INICIAR SESIÓN</a>
+              <a href="../vistas/cursos.html" class="btn btn-info">VER CURSOS</a>
             </div>
           </div>
           <div class="col-lg-6">
