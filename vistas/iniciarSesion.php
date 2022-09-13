@@ -16,7 +16,7 @@
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="assets/dist/css/styles.css" />
     <title>Iniciar sesión</title>
   </head>
   <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
@@ -81,7 +81,7 @@
           >
             <div class="col-md-9 col-lg-6 col-xl-5">
               <img
-                src="images/login.webp"
+                src="assets/dist/img/login.webp"
                 class="img-fluid"
               />
             </div>
@@ -125,7 +125,7 @@
                   </button>
                   <p class="small fw-bold mt-2 pt-1 mb-0">
                     ¿No tienes una cuenta?
-                    <a href="#!" class="link-danger">Registrarse</a>
+                    <a href="registrar.html" class="link-danger">Registrarse</a>
                   </p>
                 </div>
               </form>

@@ -20,7 +20,7 @@ if(isset($_POST['nombreUsuario']) && isset($_POST['clave'])) {
         $usuario->setearUsuario($usuarioForm);
         $sesionUsuario->setUsuarioACtual($usuarioForm, $usuario->getRol());
         if ($usuario->getRol() === 'Administrador' || $usuario->getRol() === 'Profesor'){
-            header("location:../vistas/admistrador.php");
+            header("location:../vistas/dashboard.php");
         } else if ($usuario->getRol() === 'Estudiante'){
             header("location:../vistas/estudiante.php");
         } 

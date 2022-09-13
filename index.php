@@ -9,7 +9,7 @@ ob_start();
 if (isset($_SESSION['usuario'])) {
     $rol = $_SESSION['rol'];
     if ($rol === 'Administrador' || $rol === 'Profesor'){
-        header("location:vistas/admistrador.php");
+        header("location:vistas/dashboard.php");
     } else if ($rol === 'Estudiante'){
         header("location:vistas/estudiante.php");
     } 

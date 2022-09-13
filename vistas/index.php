@@ -13,7 +13,7 @@
     />
 
 
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="assets/dist/css/styles.css" />
     <title>TODO-CURSO</title>
   </head>
   <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
@@ -91,7 +91,7 @@
           <div class="col-lg-6">
             <div class="box-image">
               <img
-                src="./images/Educacion.svg"
+                src="assets/dist/img/Educacion.svg"
                 alt=""
                 width="70%"
                 height="100%"
@@ -110,7 +110,7 @@
           <div class="col-12 col-md-4 mb-2">
             <div class="card bg-dark ultimo-curso h-100">
               <img
-                src="./images/kotlin-android.jpg"
+                src="assets/dist/img/kotlin-android.jpg"
                 class="card-img-top"
                 alt="..."
               />
@@ -127,7 +127,7 @@
           <div class="col-12 col-md-4 mb-2">
             <div class="card bg-dark ultimo-curso h-100">
               <img
-                src="./images/html-css-js.jpg"
+                src="assets/dist/img/html-css-js.jpg"
                 class="card-img-top"
                 alt="..."
               />
@@ -143,7 +143,7 @@
           <div class="col-12 col-md-4 mb-2">
             <div class="card bg-dark ultimo-curso h-100">
               <img
-                src="./images/sqlserver.jpg"
+                src="assets/dist/img/sqlserver.jpg"
                 class="card-img-top"
                 alt="..."
               />
@@ -176,7 +176,7 @@
           <div class="col-lg-6 mb-5">
             <div class="box-image">
               <img
-                src="./images/Educacion2.svg"
+                src="assets/dist/img/Educacion2.svg"
                 alt=""
                 width="80%"
                 height="100%"

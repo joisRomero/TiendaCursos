@@ -2,7 +2,7 @@
 
 class SesionUsuario {
 
-    public function _contruct()
+    public function __contruct()
     {
         session_start();
         ob_start();

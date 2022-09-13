@@ -11,7 +11,7 @@ include '../controladores/estudiante.php';
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
 
-    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="assets/dist/css/styles.css" />
     <title>Iniciar sesión</title>
 </head>
 <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
@@ -65,7 +65,7 @@ include '../controladores/estudiante.php';
             <div class="row row-cols-1 row-cols-md-3">
                 <div class="col mb-4">
                     <div class="card bg-dark h-100 ultimo-curso">
-                        <img src="./images/kotlin-android.jpg" class="card-img-top" alt="..." />
+                        <img src="assets/dist/img/kotlin-android.jpg" class="card-img-top" alt="..." />
                         <div class="card-body">
                             <h5 class="card-title">
                                 Arquitectura de Android con Kotlin
@@ -82,7 +82,7 @@ include '../controladores/estudiante.php';
 
                 <div class="col mb-4">
                     <div class="card bg-dark h-100 ultimo-curso">
-                        <img src="./images/html-css-js.jpg" class="card-img-top" alt="..." />
+                        <img src="assets/dist/img/html-css-js.jpg" class="card-img-top" alt="..." />
                         <div class="card-body">
                             <h5 class="card-title">Desarrollo web HTML, CSS y JS</h5>
                             <p class="card-text">
@@ -96,7 +96,7 @@ include '../controladores/estudiante.php';
                 </div>
                 <div class="col mb-4">
                     <div class="card bg-dark h-100 ultimo-curso">
-                        <img src="./images/sqlserver.jpg" class="card-img-top" alt="..." />
+                        <img src="assets/dist/img/sqlserver.jpg" class="card-img-top" alt="..." />
                         <div class="card-body">
                             <h5 class="card-title">Microsoft SQL Server</h5>
                             <p class="card-text">
@@ -111,7 +111,7 @@ include '../controladores/estudiante.php';
 
                 <div class="col mb-4">
                     <div class="card bg-dark h-100 ultimo-curso">
-                        <img src="./images/sqlserver.jpg" class="card-img-top" alt="..." />
+                        <img src="assets/dist/img/sqlserver.jpg" class="card-img-top" alt="..." />
                         <div class="card-body">
                             <h5 class="card-title">Microsoft SQL Server</h5>
                             <p class="card-text">

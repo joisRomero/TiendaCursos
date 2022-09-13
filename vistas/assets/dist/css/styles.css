@@ -1,0 +1,134 @@
+html{
+    scroll-behavior: smooth;
+}
+
+.activo {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* -------------------------------- */
+/* NAVBAR */
+/* -------------------------------- */
+.navbar {
+    background-color: #4633af !important;
+    transition: all 0.2s;
+}
+
+/* -------------------------------- */
+/* HERO SECTION */
+/* -------------------------------- */
+.section-hero {
+    padding: 100px 0px;
+    background: url(../img/hero-background.jpg) center center no-repeat;
+}
+
+/* -------------------------------- */
+/* CURSOS */
+/* -------------------------------- */
+.section-cursos,
+.section-acercaDe {
+    background: #2f2c3d;
+    padding: 50px 0px;
+}
+.section-estudiante{
+    background: #262431;
+    padding: 50px 0px;
+}
+.ultimo-curso img{
+    height: 200px;
+}
+/* -------------------------------- */
+/* SOBRE NOSOTROS */
+/* -------------------------------- */
+.section-nostros {
+    padding: 50px 0px;
+    background-image: radial-gradient(circle at 26.79% 41.55%, #f168ff 0, #9e54ff 25%, #3c3cf2 50%, #0025b8 75%, #001384 100%);
+    /* background: url(../images/hero-background2.jpg) center center no-repeat; */
+}
+
+/* -------------------------------- */
+/* CONTACTANOS */
+/* -------------------------------- */
+.section-contactanos,
+.section-login,
+.section-todosCursos,
+.section-verMasCurso,
+.section-registrar {
+    padding: 100px 0px;
+    background: #262431;
+}
+
+.box-contact-info{
+    padding: 40px 0px;
+}
+
+.form-propio {
+    background-color: #413d52;
+    color: white;
+}
+
+.form-propio:focus{
+    border: 1px solid #17a2b8;
+    outline: none;
+    background: #413d52;
+    color: white;
+    box-shadow: none;
+} 
+/* -------------------------------- */
+/* FOOTER */
+/* -------------------------------- */
+.footer {
+    background: #2f2c3d;
+}
+
+.icono-usuario {
+    display: none;
+}
+/* -------------------------------- */
+/* MEDIA QUERY */
+/* -------------------------------- */
+@media (min-width: 992px) {
+    /* NAVBAR*/
+    .navbar {
+        background: transparent !important;
+    }
+    .btn-custon {
+        width: auto;
+    }
+    .section-nostros {
+        padding: 100px 0px;
+    }
+    .background-scroll-down{
+        background: #4633af !important;
+    }
+    .navbar-iniciarSesion{
+        background-color: #4633af !important;
+    }
+    .nav-cursos {
+        position: fixed;
+    }
+    .icono-usuario {
+        visibility: visible;
+        display: flex;
+    }
+}
+
+/* -------------------------------- */
+/* INICIAR SESION */
+/* -------------------------------- */
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
