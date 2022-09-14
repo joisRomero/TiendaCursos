@@ -22,7 +22,7 @@ if(isset($_POST['nombreUsuario']) && isset($_POST['clave'])) {
         if ($usuario->getRol() === 'Administrador' || $usuario->getRol() === 'Profesor'){
             header("location:../vistas/dashboard.php");
         } else if ($usuario->getRol() === 'Estudiante'){
-            header("location:../vistas/estudiante.php");
+            header("location:../vistas/plantillaEstudiante.php");
         } 
     } else {
         $errorLogin = 'Nombre de usuario y/o contraseña incorrecto';

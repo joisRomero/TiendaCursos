@@ -107,6 +107,7 @@
         <h2 class="display-4 text-center mb-5">Nuestros últimos cursos</h2>
 
         <div class="row">
+          <!-- WHILE  -->
           <div class="col-12 col-md-4 mb-2">
             <div class="card bg-dark ultimo-curso h-100">
               <img

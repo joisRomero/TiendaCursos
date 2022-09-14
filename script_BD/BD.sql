@@ -24,7 +24,8 @@ CREATE TABLE IF NOT EXISTS `tienda_cursos_db`.`usuario` (
   `vigencia_usu` TINYINT NOT NULL,
   `rol_usu` CHAR(1) NOT NULL,
   PRIMARY KEY (`id_usu`),
-  UNIQUE INDEX `id_usu_UNIQUE` (`id_usu` ASC))
+  UNIQUE INDEX `id_usu_UNIQUE` (`id_usu` ASC) ,
+  UNIQUE INDEX `nombreUsuario_usu_UNIQUE` (`nombre_usu` ASC) )
 ENGINE = InnoDB;
 
 
@@ -40,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `tienda_cursos_db`.`profesor` (
   `descripcion_pro` LONGTEXT NULL,
   `vigencia_pro` TINYINT NOT NULL,
   PRIMARY KEY (`id_pro`),
-  UNIQUE INDEX `id_pro_UNIQUE` (`id_pro` ASC))
+  UNIQUE INDEX `id_pro_UNIQUE` (`id_pro` ASC) )
 ENGINE = InnoDB;
 
 
@@ -55,8 +56,8 @@ CREATE TABLE IF NOT EXISTS `tienda_cursos_db`.`estudiante` (
   `vigente_estu` TINYINT NOT NULL,
   `id_usu` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id_estu`),
-  UNIQUE INDEX `id_estu_UNIQUE` (`id_estu` ASC),
-  INDEX `fk_estudiante_usuario1_idx` (`id_usu` ASC),
+  UNIQUE INDEX `id_estu_UNIQUE` (`id_estu` ASC) ,
+  INDEX `fk_estudiante_usuario1_idx` (`id_usu` ASC) ,
   CONSTRAINT `fk_estudiante_usuario1`
     FOREIGN KEY (`id_usu`)
     REFERENCES `tienda_cursos_db`.`usuario` (`id_usu`)
@@ -69,10 +70,11 @@ ENGINE = InnoDB;
 -- Table `tienda_cursos_db`.`tipo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tienda_cursos_db`.`tipo` (
-  `id_tipo` INT NOT NULL,
+  `id_tipo` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `nombre_tipo` VARCHAR(45) NOT NULL,
   `vigente_tipo` TINYINT NOT NULL,
-  PRIMARY KEY (`id_tipo`))
+  PRIMARY KEY (`id_tipo`),
+  UNIQUE INDEX `id_tipo_UNIQUE` (`id_tipo` ASC) )
 ENGINE = InnoDB;
 
 
@@ -86,14 +88,14 @@ CREATE TABLE IF NOT EXISTS `tienda_cursos_db`.`formacion_academica` (
   `aprendizaje_forma` LONGTEXT NOT NULL,
   `duracion_forma` TINYINT NOT NULL,
   `fechaCreacion_forma` DATE NOT NULL,
-  `precio_academica` FLOAT NOT NULL,
+  `precio_forma` FLOAT NOT NULL,
   `vigente_forma` TINYINT NOT NULL,
   `id_pro` INT UNSIGNED NOT NULL,
-  `id_tipo` INT NOT NULL,
+  `id_tipo` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id_forma`),
-  UNIQUE INDEX `id_cur_UNIQUE` (`id_forma` ASC),
-  INDEX `fk_formacion_academica_profesor_idx` (`id_pro` ASC),
-  INDEX `fk_formacion_academica_tipo1_idx` (`id_tipo` ASC),
+  UNIQUE INDEX `id_cur_UNIQUE` (`id_forma` ASC) ,
+  INDEX `fk_formacion_academica_profesor_idx` (`id_pro` ASC) ,
+  INDEX `fk_formacion_academica_tipo1_idx` (`id_tipo` ASC) ,
   CONSTRAINT `fk_formacion_academica_profesor`
     FOREIGN KEY (`id_pro`)
     REFERENCES `tienda_cursos_db`.`profesor` (`id_pro`)
@@ -116,10 +118,10 @@ CREATE TABLE IF NOT EXISTS `tienda_cursos_db`.`compra` (
   `vigente_compra` TINYINT NOT NULL,
   `id_estu` INT UNSIGNED NOT NULL,
   `id_forma` INT UNSIGNED NOT NULL,
-  INDEX `fk_compra_estudiante1_idx` (`id_estu` ASC),
-  INDEX `fk_compra_formacion_academica1_idx` (`id_forma` ASC),
+  INDEX `fk_compra_estudiante1_idx` (`id_estu` ASC) ,
+  INDEX `fk_compra_formacion_academica1_idx` (`id_forma` ASC) ,
   PRIMARY KEY (`id_compra`),
-  UNIQUE INDEX `id_compra_UNIQUE` (`id_compra` ASC),
+  UNIQUE INDEX `id_compra_UNIQUE` (`id_compra` ASC) ,
   CONSTRAINT `fk_compra_estudiante1`
     FOREIGN KEY (`id_estu`)
     REFERENCES `tienda_cursos_db`.`estudiante` (`id_estu`)

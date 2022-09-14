@@ -11,7 +11,7 @@ if (isset($_SESSION['usuario'])) {
     if ($rol === 'Administrador' || $rol === 'Profesor'){
         header("location:vistas/dashboard.php");
     } else if ($rol === 'Estudiante'){
-        header("location:vistas/estudiante.php");
+        header("location:vistas/plantillaEstudiante.php");
     } 
 } else {
     header("location:vistas/index.php");

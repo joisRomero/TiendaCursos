@@ -75,6 +75,13 @@
     </div>
     <!-- ./wrapper -->
 
+    <script>
+        
+        function CargarContenido(pagina_php,contenedor){
+            $("." + contenedor).load(pagina_php);
+        }
+
+    </script>
 
 </body>
 

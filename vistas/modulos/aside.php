@@ -15,7 +15,7 @@
                 <!-- Add icons to the links using the .nav-icon class
             with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a class="item nav-link active cursor-pointer" onclick="CargarContenido('vistas/dashboard.php', 'content-wrapper')">
+                    <a class="item nav-link active cursor-pointer" onclick="CargarContenido('inicio.php', 'content-wrapper')">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Tablero principal
@@ -27,20 +27,26 @@
                     <a class="item nav-link cursor-pointer">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Cursos
+                            Formación académica
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item" onclick="CargarContenido('vistas/categorias.php', 'content-wrapper')">
+                        <li class="nav-item" onclick="CargarContenido('formacionAcademica.php', 'content-wrapper')">
                             <a class="item nav-link cursor-pointer">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Categorias</p>
+                                <p>Formación académica</p>
+                            </a>
+                        </li>
+                        <li class="nav-item" onclick="CargarContenido('tipoFormacion.php', 'content-wrapper')">
+                            <a class="item nav-link cursor-pointer">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Tipo</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item" onclick="CargarContenido('vistas/ventas.php', 'content-wrapper')">
+                <li class="nav-item" onclick="CargarContenido('estudiantes.php', 'content-wrapper')">
                     <a class="item nav-link cursor-pointer">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
@@ -48,7 +54,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item" onclick="CargarContenido('vistas/compras.php', 'content-wrapper')">
+                <li class="nav-item" onclick="CargarContenido('profesores.php', 'content-wrapper')">
                     <a class="item nav-link cursor-pointer">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
@@ -56,7 +62,15 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item" onclick="CargarContenido('vistas/reportes.php', 'content-wrapper')">
+                <li class="nav-item" onclick="CargarContenido('usuarios.php', 'content-wrapper')">
+                    <a class="item nav-link cursor-pointer">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Usuarios
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item" onclick="CargarContenido('reportes.php', 'content-wrapper')">
                     <a class="item nav-link cursor-pointer">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
