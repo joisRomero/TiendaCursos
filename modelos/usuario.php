@@ -14,6 +14,20 @@ class Usuario {
     private $vigencia;
     private $rol;
 
+    function __construct($id, $dni, $nombre, $apPaterno, $apMaterno, $correo, $nombreUsuario, $clave, $vigencia, $rol)
+    {
+        $this->id = $id;
+        $this->dni = $dni;
+        $this->nombre = $nombre;
+        $this->apPaterno = $apPaterno;
+        $this->apMaterno = $apMaterno;
+        $this->correo = $correo;
+        $this->nombreUsuario = $nombreUsuario;
+        $this->clave = $clave;
+        $this->vigencia = $vigencia;
+        $this->rol = $rol;
+    }
+
     public function existeUsuario($nombreUsuario, $clave){
         // $md5clave = md5($clave);
 
@@ -31,7 +45,7 @@ class Usuario {
     public function setearUsuario($nombreUsuario)
     {
         $consulta = "SELECT * FROM usuario WHERE nombreUsuario_usu = '$nombreUsuario'";
-        $respuesta = mysqli_query(Conexion::conexion(), $consulta);;
+        $respuesta = mysqli_query(Conexion::conexion(), $consulta);
         while($fila = mysqli_fetch_array($respuesta)){
             $this->id = $fila['id_usu'];
             $this->dni = $fila['dni_usu'];
@@ -44,13 +58,12 @@ class Usuario {
             $this->vigencia = $fila['vigencia_usu'];
 
             if ($fila['rol_usu'] == 'A'){
-                $this->rol = "Administrador";     
+                $this->rol = "Administrador";
             } else if ($fila['rol_usu'] == 'P'){
-                $this->rol = "Profesor";    
+                $this->rol = "Profesor";
             } else if ($fila['rol_usu'] == 'E'){
-                $this->rol = "Estudiante";  
+                $this->rol = "Estudiante";
             }
-            
         }
     }
 
@@ -65,4 +78,35 @@ class Usuario {
     public function getRol(){
         return $this->rol;
     }
+
+    public function registrarUsuario($id, $dni, $nombre, $apPaterno, $apMaterno, $correo, $nombreUsuario, $clave, $vigencia, $rol){
+        $consulta = "INSERT INTO usuario(id_usu, dni_usu, nombre_usu, apPater_usu, apMater_usu, correo_usu, nombreUsuario_usu, clave_usu, rol_usu, vigencia_usu)
+        VALUES('$id', '$dni', '$nombre', '$apPaterno', '$apMaterno', '$correo', '$nombreUsuario', '$clave', '$rol', '$vigencia')";
+        $respuesta = mysqli_query(Conexion::conexion(), $consulta);
+        return $respuesta;
+    }
+
+    public function actualizarUsuario($id, $dni, $nombre, $apPaterno, $apMaterno, $correo, $nombreUsuario, $clave, $vigencia, $rol){
+        $consulta = "UPDATE usuario
+        SET dni_usu = '$dni', nombre_usu = '$nombre', apPater_usu' = $apPaterno', apMater_usu = '$apMaterno', correo_usu = '$correo', nombreUsuario_usu = '$nombreUsuario', clave_usu = '$clave', rol_usu = '$rol', vigencia_usu = '$vigencia'
+        WHERE id_usu = '$id'";
+        $respuesta = mysqli_query(Conexion::conexion(), $consulta);
+        return $respuesta;
+    }
+
+    public function leerUsuario($nombreUsuario){
+        $consulta = "SELECT dni_usu, nombre_usu, apPater_usu', apMater_usu, correo_usu, nombreUsuario_usu, clave_usu, rol_usu, vigencia_usu
+        FROM usuario WHERE nombreUsuario_usu = '$nombreUsuario'";
+        $respuesta = mysqli_query(Conexion::conexion(), $consulta);
+        return $respuesta;
+    }
+
+    public function darDeBajaUsuario($id){
+        $consulta = "UPDATE usuario
+        SET vigencia_usu = 0;
+        WHERE id_usu = '$id'";
+        $respuesta = mysqli_query(Conexion::conexion(), $consulta);
+        return $respuesta;
+    }
+
 }
