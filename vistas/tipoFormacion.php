@@ -82,7 +82,7 @@ $(document).ready(function() {
         },
         columnDefs: [
             {
-                targets: 7,
+                targets: 2,
                 orderable: false,
                 render: function(datqa, type, full, meta) {
                     return "<center>" +
