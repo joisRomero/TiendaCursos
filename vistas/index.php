@@ -107,7 +107,7 @@ function limitarCadena($cadena, $limite){
             echo "  <img src='".$fila['img']."' class='card-img-top' alt='...' />";
             echo "    <div class='card-body'>";
             echo "      <h5 class='card-title'>". $fila['nombre_forma'] ."</h5>";
-            echo "        <p class='card-text' style='margin:0;'>". $limit ."</p>";
+            echo "        <p class='card-text' style='margin:0;'>". $limit ."</p><br>";
             echo "          <a href='#' class='btn btn-primary'>Ver más</a>";
             echo "    </div>";
             echo "  </div>";
@@ -116,7 +116,7 @@ function limitarCadena($cadena, $limite){
           }
         }
         ?>
-
+      </div>
       <div class="row">
         <div class="d-flex col-md-12">
           <a href="cursos.html" class="btn-custon btn btn-primary btn-block btn-lg mt-3 ml-auto">Ver todos</a>
