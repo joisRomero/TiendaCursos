@@ -1,4 +1,4 @@
-  <?php
+<?php
     include_once '../modelos/usuario.php';
     include_once '../controladores/sesionUsuario.php';
     $sesionUsuario = new SesionUsuario();
@@ -23,7 +23,7 @@
       <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown no-arrow active">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small font-weight-bold"><?php echo $usuario->getNombreUsuario(); ?></span>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 font-weight-bold"><?php echo $usuario->getNombre(); ?></span>
                   <img class="rounded-circle" width="25px" height="25px" src="assets/dist/img/profile/profile.svg">
               </a>
               <!-- Dropdown - User Information -->

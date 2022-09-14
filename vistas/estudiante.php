@@ -37,7 +37,7 @@ include '../controladores/estudiante.php';
                     </li>
                     <li class="nav-item dropdown no-arrow active">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small font-weight-bold"><?php echo $usuario->getNombreUsuario(); ?></span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small font-weight-bold"><?php echo $usuario->getNombre(); ?></span>
                             <img class="rounded-circle" width="25px" height="25px" src="images/profile/profile.svg">
                         </a>
                         <!-- Dropdown - User Information -->
