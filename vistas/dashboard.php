@@ -42,6 +42,8 @@
     ===============================================================-->
     <script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>        
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <!-- para uso de modal script -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
     <!-- ============================================================
@@ -76,7 +78,6 @@
     <!-- ./wrapper -->
 
     <script>
-        
         function CargarContenido(pagina_php,contenedor){
             $("." + contenedor).load(pagina_php);
         }
