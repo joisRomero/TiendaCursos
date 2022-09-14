@@ -3,16 +3,15 @@
      <div class="container-fluid">
          <div class="row mb-2">
              <div class="col-sm-6">
-                 <h1 class="m-0">Formación académica/ Formación académica</h1>
+                 <h1 class="m-0">Académica/ Formación académica</h1>
              </div><!-- /.col -->
-
          </div><!-- /.row -->
      </div><!-- /.container-fluid -->
  </div>
- <!-- /.content-header -->
+<!-- /.content-header -->
 
- <!-- Main content -->
- <div class="content">
+<!-- Main content -->
+<div class="content">
      <div class="container-fluid">
          <!-- row para listado de productos/inventario -->
          <div class="row">
