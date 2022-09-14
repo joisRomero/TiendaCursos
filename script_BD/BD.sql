@@ -24,8 +24,7 @@ CREATE TABLE IF NOT EXISTS `tienda_cursos_db`.`usuario` (
   `vigencia_usu` TINYINT NOT NULL,
   `rol_usu` CHAR(1) NOT NULL,
   PRIMARY KEY (`id_usu`),
-  UNIQUE INDEX `id_usu_UNIQUE` (`id_usu` ASC),
-  UNIQUE INDEX `nombreUsuario_usu_UNIQUE` (`nombre_usu` ASC))
+  UNIQUE INDEX `id_usu_UNIQUE` (`id_usu` ASC))
 ENGINE = InnoDB;
 
 
