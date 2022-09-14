@@ -10,16 +10,16 @@ Profesores{
     - Carlos Flores     (M-C)
 }
 Profesores img {
-    https://i.postimg.cc/6yVq5mwP/female01.jpg
-    https://i.postimg.cc/68YQC48L/female02.jpg
-    https://i.postimg.cc/XZqYLNFM/female03.jpg
-    https://i.postimg.cc/hz7PFCpp/female04.jpg
-    https://i.postimg.cc/1gd5jxc8/male01.jpg
-    https://i.postimg.cc/cty1dQzZ/male02.jpg
-    https://i.postimg.cc/GTFLt40D/male03.jpg
-    https://i.postimg.cc/qgyMj5t7/male04.jpg
-    https://i.postimg.cc/KRbcVDLD/male05.jpg
-    https://i.postimg.cc/SJGQpYfF/male06.jpg
+    https://i.postimg.cc/6yVq5mwP/female01.jpg -> Stephanie Oliva
+    https://i.postimg.cc/68YQC48L/female02.jpg -> Ana Sandoval
+    https://i.postimg.cc/XZqYLNFM/female03.jpg -> Victoria López
+    https://i.postimg.cc/hz7PFCpp/female04.jpg -> Marcela Olivos
+    https://i.postimg.cc/1gd5jxc8/male01.jpg -> Rodrigo Rojas
+    https://i.postimg.cc/cty1dQzZ/male02.jpg -> X
+    https://i.postimg.cc/GTFLt40D/male03.jpg -> Oscar Pérez
+    https://i.postimg.cc/qgyMj5t7/male04.jpg -> Carlos Flores
+    https://i.postimg.cc/KRbcVDLD/male05.jpg -> Daniel Alarcón
+    https://i.postimg.cc/SJGQpYfF/male06.jpg -> X
 
 }
 

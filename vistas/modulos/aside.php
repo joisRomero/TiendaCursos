@@ -27,7 +27,7 @@
                     <a class="item nav-link cursor-pointer">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Formación académica
+                            Académica
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
