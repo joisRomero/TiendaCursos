@@ -7,4 +7,10 @@ class TipoFormacionControlador {
         $respuesta = TipoFormacionModelo::mdlListarTipoFormacion();
         return $respuesta;
     }
+
+    static function ctrRegistrarTipoFormacion($nombre_tipo)
+    {
+        $respuesta = TipoFormacionModelo::mdlRegistrarTipoFormacion($nombre_tipo);
+        return $respuesta;
+    }
 }
