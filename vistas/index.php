@@ -3,6 +3,8 @@ include("../modelos/conexion.php");
 $con = new Conexion();
 $s_ultimosCursos = "SELECT * FROM formacion_academica WHERE id_tipo = 1 limit 3";
 $r_ultimosCursos = mysqli_query($con->conexion(), $s_ultimosCursos);
+$s_ultimosProfes = "SELECT * FROM profesor limit 4 ";
+$r_ultimosProfes = mysqli_query($con->conexion(), $s_ultimosProfes);
 
 function limitarCadena($cadena, $limite){
 	if(strlen($cadena) > $limite){
@@ -101,7 +103,7 @@ function limitarCadena($cadena, $limite){
         <?php
         if (isset($r_ultimosCursos)) {
           while ($fila = mysqli_fetch_array($r_ultimosCursos)) {
-            $limit = limitarCadena($fila['descripcion_forma'],250,"[...]");
+            $limit = limitarCadena($fila['descripcion_forma'],150,"[...]");
             echo "<div class='col-12 col-md-4 mb-2'>";
             echo "  <div class='card bg-dark ultimo-curso h-100'>";
             echo "  <img src='".$fila['img']."' class='card-img-top' alt='...' />";
@@ -161,95 +163,25 @@ function limitarCadena($cadena, $limite){
         <h2 class="display-4">Nuestros docentes</h2>
         <p class="lead">Tenemos los mejores docentes.</p>
       </div>
+
       <div class="row row-cols-1 row-cols-md-4">
-        <div class="col mb-4">
-          <div class="card bg-dark">
-            <img src="https://i.postimg.cc/1gd5jxc8/male01.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Rodrigo Rojas</h5>
-              <p class="card-text">
-                Senior Analyst Corporate en Interbank. Ingeniero de Sistemas de la Universidad Nacional Mayor de San Marcos con Colegiatura en el Colegio de Ingenieros del Perú. Docente en la Universidad Tecnológica del Perú.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card bg-dark">
-            <img src="https://i.postimg.cc/6yVq5mwP/female01.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Stephanie Oliva</h5>
-              <p class="card-text">
-                Docente de Inglés de la Universidad del Pacífico, doblemente certificado por la Universidad Católica del Perú y Miami Dade College. CI vigentes: TOEFL , TOEIC , FCE & CAE. Con experiencia de 12 años dictando cursos de idiomas en Insititutos y Universidades de renombre.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card bg-dark">
-            <img src="https://i.postimg.cc/KRbcVDLD/male05.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Daniel Alarcón</h5>
-              <p class="card-text">
-                Senior Backend Engineer con especialidad en NodeJs. Senior Software Developer. Catedrático desde 2010 de la Universidad Nacional de Ingeniería.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card bg-dark">
-            <img src="https://i.postimg.cc/XZqYLNFM/female03.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Victoria López</h5>
-              <p class="card-text">
-                Magister Frontend Developer en Blum, especialista en ReactJs y sus respectivas librerías y frameworks, Más de 8 años en trabajos de desarrollo web, con experiencia en proyectos personales y grupales.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card bg-dark">
-            <img src="https://i.postimg.cc/GTFLt40D/male03.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Oscar Pérez</h5>
-              <p class="card-text">
-                Docente en computación, diseño gráfico y programación en la Universidad San Martín de Porres de Lima. Magister en Educación de la Universidad Privada del Norte. Con más de 10 años de experiencia Laboral.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card bg-dark">
-            <img src="https://i.postimg.cc/68YQC48L/female02.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Ana Sandoval</h5>
-              <p class="card-text">
-                Consultora SEO/SEM y especialista en marketing digital y gestión de marcas experiencia en áreas de publicidad digital, analítica web y comunicación. Entusiasta de la tecnología y activo del movimiento de las noticias en social media.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card bg-dark">
-            <img src="https://i.postimg.cc/qgyMj5t7/male04.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Carlos Flores</h5>
-              <p class="card-text">
-                Senior Deep Learning Engineer en NVIDIA. Doctor en la Universidad de California, Santa Cruz. Profundamente arraigado y fascinado por el aprendizaje automático y sus aplicaciones. Actualmente, Catedrático en University North Caroline.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card bg-dark">
-            <img src="https://i.postimg.cc/hz7PFCpp/female04.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Marcela Olivos</h5>
-              <p class="card-text">
-                Especialista en Diseño de Experiencia de Usuario (UX) en Diseño de logotipos, Diseño de marcas, Diseño gráfico, Diseño publicitario y Diseño web.
-              </p>
-            </div>
-          </div>
-        </div>
+        <!-- WHILE -->
+        <?php
+        if (isset($r_ultimosProfes)) {
+          while ($fila = mysqli_fetch_array($r_ultimosProfes)) {
+            echo "<div class='col mb-4'>";
+            echo "  <div class='card bg-dark'>";
+            echo "  <img src='". $fila['img'] ."' class='card-img-top' alt='...' />";
+            echo "    <div class='card-body'>";
+            echo "      <h5 class='card-title'>". $fila['nombre_pro'] . " " . $fila['apPater_pro'] . " " . $fila['apMater_pro'] ."</h5>";
+            echo "      <p class='card-text'>". $fila['descripcion_pro'] ."</p>";
+            echo "    </div>";
+            echo "  </div>";
+            echo "</div>";
+            $limit = "";
+          }
+        }
+        ?>
       </div>
     </div>
   </section>
