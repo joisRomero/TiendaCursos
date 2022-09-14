@@ -7,3 +7,39 @@
     background: #007bff;
     border-radius: 5px;
 }
+
+.addNewRecord{
+    background-color: #28a745 !important;
+    color: white !important;
+    border-radius: 3px !important;
+    border: none !important;
+}
+
+.buttons-excel {
+    background-color: #0d6efd !important;
+    color: white !important;
+    border-radius: 3px !important;
+    border: none !important;
+}
+
+.buttons-print{
+    background-color: #ffc107 !important;
+    color: white !important;
+    border-radius: 3px !important;
+    border: none !important;
+}
+
+.buttons-collection{
+    border-radius: 3px !important;
+    border: none !important;
+}
+
+.button-page-length {
+    border-radius: 3px !important;
+    border: none !important;
+}
+
+.dt-button {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
