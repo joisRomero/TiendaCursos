@@ -1,3 +1,11 @@
+<?php 
+session_start();
+ob_start();
+if (!isset($_SESSION['usuario'])) {
+    header("location:../vistas/index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

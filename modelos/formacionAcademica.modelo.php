@@ -9,7 +9,7 @@ class FormacionAcademicaModelo
     {
         $consulta = Conexion::conectar()->prepare("SELECT fa.id_forma, fa.nombre_forma, 
                                                 fa.descripcion_forma, fa.aprendizaje_forma, 
-		                                        concat(fa.duracion_forma, ' Semanas'), 
+		                                        concat(fa.duracion_forma, ' Horas'), 
                                                 fa.fechaCreacion_forma, fa.precio_forma,
                                                 concat(p.nombre_pro,' ',p.apPater_pro,' ' ,p.apMater_pro) as nombreProfesor, 
 		                                        t.nombre_tipo, fa.img, fa.vigente_forma,'' as opciones
@@ -37,11 +37,11 @@ class FormacionAcademicaModelo
         try {
             $fecha = date('Y-m-d');
             $vigencia = 1;
-            $consulta = Conexion::conectar()->prepare("INSERT INTO formacion_academica (id_forma, 
+            $consulta = Conexion::conectar()->prepare("INSERT INTO formacion_academica ( 
                                                 nombre_forma, descripcion_forma, aprendizaje_forma, 
                                                 duracion_forma, fechaCreacion_forma, precio_forma, 
                                                 vigente_forma, img, id_pro, id_tipo) 
-                                                VALUES (NULL, :nombre, :descripcion, :aprendizaje,
+                                                VALUES (:nombre, :descripcion, :aprendizaje,
                                                 :duracion, :fechaCreacion, :precio, :vigencia, :img, :profesor, :tipo)");
 
             $consulta->bindParam(":nombre", $nombre, PDO::PARAM_STR);
@@ -55,16 +55,18 @@ class FormacionAcademicaModelo
             $consulta->bindParam(":profesor", $profesor, PDO::PARAM_STR);
             $consulta->bindParam(":tipo", $tipo, PDO::PARAM_STR);
 
-            if ($consulta->execute()) {
-                $resultado = "OK";
+            $consulta->execute();
+
+            if ($consulta) {
+                $resultado = "ok";
             } else {
-                $resultado = "ERROR";
+                $resultado = "error";
             }
         } catch (Exception $e) {
             $resultado = 'Excepción capturada: '.$e->getMessage()."\n";
         }
+        $consulta =  null;
         return $resultado;
 
-        $consulta =  null;
     }
 }
