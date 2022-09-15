@@ -52,25 +52,30 @@
 
              <!-- Cuerpo de la ventana -->
              <div class="modal-body">
-                 <div class="row">
 
-                     <div class="col-lg-12">
-                         <div class="form-group mb-2">
-                             <label class="" for="nombreTipo">
-                                 <span class="small">Nombre del Tipo</span><span class="text-danger">*</span>
-                             </label>
-                             <input type="text" class="form-control form-control-sm" id="nombreTipo" name="nombreTipo" placeholder="Ingrese el nombre del tipo" required>
-                             <span id="validar_nombreTipo" class="text-danger small fst-italic" style="display: none;">Debe ingresar un nombre del tipo de formación académica</span>
+                 <form class="needs-validation" novalidate>
+                     <div class="row">
+
+                         <div class="col-lg-12">
+                             <div class="form-group mb-2">
+                                 <label class="" for="nombreTipo">
+                                     <span class="small">Nombre del Tipo</span><span class="text-danger">*</span>
+                                 </label>
+                                 <input type="text" class="form-control form-control-sm" id="nombreTipo" name="nombreTipo" placeholder="Ingrese el nombre del tipo" required>
+                                 <div class="invalid-feedback">
+                                     Ingrese un nombre de tipo
+                                 </div>
+                             </div>
+                         </div>
+
+                         <!-- Botones de Cancelar y Guardar -->
+                         <div class="d-flex w-100 justify-content-end">
+                             <button type="button" class="btn btn-danger mt-3 mx-2" style="width: 170px;" data-dismiss="modal" id="btnCancelarRegistro">Cancelar</button>
+
+                             <button type="button" class="btn btn-primary mt-3 mx-2" style="width: 170px;" id="btnGuardarTipo">Guardar</button>
                          </div>
                      </div>
-
-                     <!-- Botones de Cancelar y Guardar -->
-                     <div class="d-flex w-100 justify-content-end">
-                        <button type="button" class="btn btn-danger mt-3 mx-2" style="width: 170px;" data-dismiss="modal" id="btnCancelarRegistro">Cancelar</button>
-
-                        <button type="button" class="btn btn-primary mt-3 mx-2" style="width: 170px;" id="btnGuardarTipo" onclick="formSubmitClick()">Guardar</button>
-                     </div>
-                 </div>
+                 </form>
              </div>
 
          </div>
@@ -82,10 +87,10 @@
      var table;
 
      var Toast = Swal.mixin({
-        toast: true,
-        position: top,
-        showConfirmButton: false,
-        timer: 3000
+         toast: true,
+         position: top,
+         showConfirmButton: false,
+         timer: 3000
      });
 
      $(document).ready(function() {
@@ -176,60 +181,74 @@
          $("#btnCerrarModal, #btnCancelarRegistro").on('click', function() {
 
              $("#validate_nombreTipo").css("display", "none");
-             
+
              $("#nombreTipo").val("");
          })
      })
 
-     function formSubmitClick() {
+     document.getElementById("btnGuardarTipo").addEventListener("click", function() {
 
-         //validar ingreso de campos
+         var forms = document.getElementsByClassName('needs-validation');
+         var validacion = Array.prototype.filter.call(forms, function(form) {
+             if (form.checkValidity() === true) {
+                 //validar ingreso de campos
 
-         //levanto una ventana modal para preguntar si deseo continuar con el registro
+                 //levanto una ventana modal para preguntar si deseo continuar con el registro
 
-         Swal.fire({
-            title: "¿Está seguro de registrar el tipo de Formación académica?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, deseo registrar',
-            cancelButtonText: 'Cancelar',
-         }).then((result) => { //si la respuesta ha sido afirmativa...
+                 Swal.fire({
+                     title: "¿Está seguro de registrar el tipo de Formación académica?",
+                     icon: 'warning',
+                     showCancelButton: true,
+                     confirmButtonColor: '#3085d6',
+                     cancelButtonColor: '#d33',
+                     confirmButtonText: 'Sí, deseo registrar',
+                     cancelButtonText: 'Cancelar',
+                 }).then((result) => { //si la respuesta ha sido afirmativa...
 
-             var datos = new FormData();
-             datos.append("accion", accion);
-             datos.append("nombre_tipo", $("#nombreTipo").val());
+                     var datos = new FormData();
+                     datos.append("accion", accion);
+                     datos.append("nombre_tipo", $("#nombreTipo").val());
 
-             $.ajax({
-                 url: "../ajax/tipoFormacion.ajax.php",
-                 method: "POST",
-                 data: datos,
-                 cache: false,
-                 contentType: false,
-                 processData: false,
-                 dataType: 'json',
-                success: function(respuesta) {
-                    if (respuesta == "ok") {
-                        Toast.fire({
-                            icon: 'success',
-                            title: 'El tipo se agregó correctamente'
-                        });
+                     $.ajax({
+                         url: "../ajax/tipoFormacion.ajax.php",
+                         method: "POST",
+                         data: datos,
+                         cache: false,
+                         contentType: false,
+                         processData: false,
+                         dataType: 'json',
+                         success: function(respuesta) {
+                             if (respuesta == "ok") {
+                                 Toast.fire({
+                                     icon: 'success',
+                                     title: 'El tipo se agregó correctamente',
+                                     position: 'top',
+                                 });
 
-                        table.ajax.reload(); //recarga el table
+                                 table.ajax.reload(); //recarga el table
 
-                        $("#mdlGestionarTipoFormacion").modal('hide');
-                        $("#nombreTipo").val("");
+                                 $("#mdlGestionarTipoFormacion").modal('hide');
+                                 $("#nombreTipo").val("");
 
-                    } else {
-                        Toast.fire({
-                            icon: 'error',
-                            title: 'El tipo no se pudo agregar'
-                        });
+                             } else {
+                                 Toast.fire({
+                                     icon: 'error',
+                                     title: 'El tipo no se pudo agregar'
+                                 });
 
-                    }
-                }
-            })
-        })
-    }
+                             }
+                         }
+                     })
+                 })
+             } else {
+                 console.log("No pasó la validación");
+             }
+
+             form.classList.add('was-validate');
+         });
+     });
+
+     document.getElementById("btnCancelarRegistro").addEventListener("click", function() {
+         $(".needs-validation").removeClass("was-validate");
+     })
  </script>
