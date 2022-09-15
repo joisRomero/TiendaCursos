@@ -65,10 +65,11 @@
                      </div>
 
                      <!-- Botones de Cancelar y Guardar -->
-                     <button type="button" class="btn btn-danger mt-3 mx-2" style="width: 170px;" data-dismiss="modal" id="btnCancelarRegistro">Cancelar</button>
+                     <div class="d-flex w-100 justify-content-end">
+                        <button type="button" class="btn btn-danger mt-3 mx-2" style="width: 170px;" data-dismiss="modal" id="btnCancelarRegistro">Cancelar</button>
 
-                     <button type="button" class="btn btn-primary mt-3 mx-2" style="width: 170px;" id="btnGuardarTipo" onclick="formSubmitClick()">Guardar</button>
-
+                        <button type="button" class="btn btn-primary mt-3 mx-2" style="width: 170px;" id="btnGuardarTipo" onclick="formSubmitClick()">Guardar</button>
+                     </div>
                  </div>
              </div>
 
