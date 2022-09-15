@@ -19,4 +19,10 @@ class TipoFormacionControlador {
         $respuesta = TipoFormacionModelo::mdlListaTipoFormacion();
         return $respuesta;
     }
+
+    static function ctrActualizarTipoFormacion($id_tipo, $nombre_tipo, $vigente_tipo)
+    {
+        $respuesta = TipoFormacionModelo::mdlActualizarTipoFormacion($id_tipo, $nombre_tipo, $vigente_tipo);
+        return $respuesta;
+    }
 }

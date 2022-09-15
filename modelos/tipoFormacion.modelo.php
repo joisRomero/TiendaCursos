@@ -48,4 +48,30 @@ class TipoFormacionModelo
 
         $consulta =  null;
     }
+
+    static function mdlActualizarTipoFormacion($id_tipo, $nombre_tipo, $vigente_tipo)
+    {
+        try{
+            $consulta = Conexion::conectar()->prepare("UPDATE tipo
+                        SET nombre_tipo = :nombre_tipo,
+                            vigente_tipo = :vigente_tipo
+                        WHERE id_tipo = :id_tipo");
+            $consulta->bindParam(":id_tipo", $id_tipo, PDO::PARAM_STR);
+            $consulta->bindParam("nombre_tipo", $nombre_tipo, PDO::PARAM_STR);
+            $consulta->bindParam("vigente_tipo", $vigente_tipo, PDO::PARAM_STR);
+
+            $consulta->execute();
+
+            if($consulta){
+                $resultado = "ok";
+            }else{
+                $resultado = "error";
+            }
+        }catch (Exception $e){
+            $resultado = 'Excepción capturada: ' . $e->getMessage() . "\n";
+        }
+        return $resultado;
+
+        $consulta =  null;
+    }
 }

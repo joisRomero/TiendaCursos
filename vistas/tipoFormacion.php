@@ -90,7 +90,6 @@
 
      $(document).ready(function() {
 
-    
 
          $.ajax({
              url: "../ajax/tipoFormacion.ajax.php",
