@@ -56,7 +56,7 @@
 
                      <div class="col-lg-12">
                          <div class="form-group mb-2">
-                             <label class="" for="nombreTipo"><i class="fas fa-book fs-6"></i>
+                             <label class="" for="nombreTipo">
                                  <span class="small">Nombre del Tipo</span><span class="text-danger">*</span>
                              </label>
                              <input type="text" class="form-control form-control-sm" id="nombreTipo" name="nombreTipo" placeholder="Ingrese el nombre del tipo" required>
@@ -67,7 +67,7 @@
                      <!-- Botones de Cancelar y Guardar -->
                      <button type="button" class="btn btn-danger mt-3 mx-2" style="width: 170px;" data-dismiss="modal" id="btnCancelarRegistro">Cancelar</button>
 
-                     <button type="button" class="btn btn-primary mt-3 mx-2" style="width: 170px;" id="btnGuardarTipo" onclick="formSubmitClick()">Guardar Tipo</button>
+                     <button type="button" class="btn btn-primary mt-3 mx-2" style="width: 170px;" id="btnGuardarTipo" onclick="formSubmitClick()">Guardar</button>
 
                  </div>
              </div>
@@ -77,10 +77,19 @@
  </div>
 
  <script>
+     var accion;
+     var table;
+
+     var Toast = Swal.mixin({
+        toast: true,
+        position: top,
+        showConfirmButton: false,
+        timer: 3000
+     });
+
      $(document).ready(function() {
 
-         var table;
-         var accion;
+    
 
          $.ajax({
              url: "../ajax/tipoFormacion.ajax.php",
@@ -167,11 +176,8 @@
          $("#btnCerrarModal, #btnCancelarRegistro").on('click', function() {
 
              $("#validate_nombreTipo").css("display", "none");
-             $("#validate_selVigenciaTipo").css("display", "none");
-
+             
              $("#nombreTipo").val("");
-             $("#selVigenciaTipo").val(0);
-
          })
      })
 
@@ -181,29 +187,17 @@
 
          //levanto una ventana modal para preguntar si deseo continuar con el registro
 
-         swal({
-             title: 'Se registrará el tipo ¿Desea Continuar?',
-             icon: 'warning',
-             buttons: {
-                 cancel: {
-                     text: "Cancel",
-                     value: null,
-                     visible: false,
-                     className: "",
-                     closeModal: true,
-                 },
-                 confirm: {
-                     text: "OK",
-                     value: true,
-                     visible: true,
-                     className: "",
-                     closeModal: true
-                 }
-             },
+         Swal.fire({
+            title: "¿Está seguro de registrar el tipo de Formación académica?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, deseo registrar',
+            cancelButtonText: 'Cancelar',
          }).then((result) => { //si la respuesta ha sido afirmativa...
 
              var datos = new FormData();
-
              datos.append("accion", accion);
              datos.append("nombre_tipo", $("#nombreTipo").val());
 
@@ -215,33 +209,27 @@
                  contentType: false,
                  processData: false,
                  dataType: 'json',
-                 success: function(respuesta) {
-                     if (respuesta == "ok") {
+                success: function(respuesta) {
+                    if (respuesta == "ok") {
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'El tipo se agregó correctamente'
+                        });
 
-                         Toast.fire({
-                             icon: 'success',
-                             title: 'El tipo se agregó correctamente'
-                         });
+                        table.ajax.reload(); //recarga el table
 
-                         table.ajax.reload(); //recarga el table
+                        $("#mdlGestionarTipoFormacion").modal('hide');
+                        $("#nombreTipo").val("");
 
-                         $("#mdlGestionarTipoFormacion").modal('hide');
-                         $("#nombreTipo").val("");
-                         $("#selVigenciaTipo").val(0);
+                    } else {
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'El tipo no se pudo agregar'
+                        });
 
-                     } else {
-                         Toast.fire({
-                             icon: 'error',
-                             title: 'El tipo no se pudo agregar'
-                         });
-
-                     }
-                 }
-             })
-
-
-
-
-         })
-     }
+                    }
+                }
+            })
+        })
+    }
  </script>
