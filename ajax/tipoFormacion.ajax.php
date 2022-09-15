@@ -25,7 +25,6 @@ class ajaxTipoFormacion{
     public function ajaxRegistrarTipoFormacion()
     {
         $tipoFormacion = TipoFormacionControlador::ctrRegistrarTipoFormacion($this->nombre_tipo);
-
         echo json_encode($tipoFormacion);
     }
 }

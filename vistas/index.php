@@ -1,9 +1,9 @@
 <?php
 include("../modelos/conexion.php");
 $con = new Conexion();
-$s_ultimosCursos = "SELECT * FROM formacion_academica WHERE id_tipo = 1 limit 3";
+$s_ultimosCursos = "SELECT * FROM formacion_academica WHERE id_tipo = 1 limit 3"; //ORDER BY id_forma DESC
 $r_ultimosCursos = mysqli_query($con->conexion(), $s_ultimosCursos);
-$s_ultimosProfes = "SELECT * FROM profesor limit 4 ";
+$s_ultimosProfes = "SELECT * FROM profesor limit 4 "; //ORDER BY id_pro DESC
 $r_ultimosProfes = mysqli_query($con->conexion(), $s_ultimosProfes);
 
 function limitarCadena($cadena, $limite){

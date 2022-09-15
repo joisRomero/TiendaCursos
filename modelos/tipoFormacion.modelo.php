@@ -35,7 +35,8 @@ class TipoFormacionModelo
 
             $consulta->execute();
 
-            if ($consulta->execute()) {
+
+            if ($consulta) {
                 $resultado = "ok";
             } else {
                 $resultado = "error";
