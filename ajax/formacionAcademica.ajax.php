@@ -42,16 +42,22 @@ class ajaxFormacionAcademica{
 if(isset($_POST['accion']) && $_POST['accion'] == 1){ //LISTAR
     $formacionAcademica = new ajaxFormacionAcademica();
     $formacionAcademica->ajaxListarFormacionAcademica();
+
 } else if (isset($_POST['accion']) && $_POST['accion'] == 2){ //REGISTRAR
+
+    $ruta = round(microtime(true)) . '.' . end($ext);
+	move_uploaded_file($_FILES["imagen"]["tmp_name"], "asset/dist/img" . $imagen);
+    move_uploaded_file($temporal, $carpeta.'/'.$nombreImagen);
+
     $registrarFormacacion = new ajaxFormacionAcademica();
     $registrarFormacacion->$nombre = $_POST["nombre"];
     $registrarFormacacion->$descripcion = $_POST["descripcion"];
     $registrarFormacacion->$aprendizaje = $_POST["aprendizaje"];
     $registrarFormacacion->$duracion = $_POST["duracion"];
     $registrarFormacacion->$precio = $_POST["precio"];
-    $registrarFormacacion->$img = $_POST["img"];
+    $registrarFormacacion->img = $ruta;
     $registrarFormacacion->$profesor = $_POST["profesor"];
     $registrarFormacacion->$tipo = $_POST["tipo"];
 
-    $registrarFormacacion->ajaxListarFormacionAcademica();
+    $registrarFormacacion->ajaxRegistrarFormacionAcademica();
 }

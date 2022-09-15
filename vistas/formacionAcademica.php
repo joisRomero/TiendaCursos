@@ -43,141 +43,134 @@
  <!-- /.content -->
 
  <!-- MODAL REGISTRAR -->
-<div class="modal fade" id="mdlGestionarFormacionAcademica" role="dialog">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-gray py-1 align-items-center">
-                <h5 class="modal-title">Agregar Formación académica</h5>
-                <button type="button" class="btn btn-outline-primary text-white border-0 fs-5" id="btnCerrarModal" data-dismiss="modal">
-                    <i class="far fa-times-circle"></i>
-                </button>
-            </div>
+ <div class="modal fade" id="mdlGestionarFormacionAcademica" role="dialog">
+     <div class="modal-dialog modal-lg">
+         <div class="modal-content">
+             <div class="modal-header bg-gray py-1 align-items-center">
+                 <h5 class="modal-title">Agregar Formación académica</h5>
+                 <button type="button" class="btn btn-outline-primary text-white border-0 fs-5" id="btnCerrarModal" data-dismiss="modal">
+                     <i class="far fa-times-circle"></i>
+                 </button>
+             </div>
 
-            <div class="modal-body">
-                <div class="row">
-                    <!-- NOMBRE -->
-                    <div class="col-lg-6">
-                        <div class="form-group mb-2">
-                            <label for="nombre">
-                                <span class="small">Nombre </span><span class="text-danger">*</span>
-                            </label>
-                            <input type="text" class="form-control form-control-sm" id="nombre" 
-                            name="nombre" placeholder="Nombre" required>
-                            <span id="validar_nombre" class="text-danger small fst-italic" style="display: none;">Debe ingrese un nombre</span>
-                        </div>
-                    </div>
+             <div class="modal-body">
+                 <div class="row">
+                     <!-- NOMBRE -->
+                     <div class="col-lg-6">
+                         <div class="form-group mb-2">
+                             <label for="nombre">
+                                 <span class="small">Nombre </span><span class="text-danger">*</span>
+                             </label>
+                             <input type="text" class="form-control form-control-sm" id="nombre" name="nombre" placeholder="Nombre" required>
+                             <span id="validar_nombre" class="text-danger small fst-italic" style="display: none;">Debe ingrese un nombre</span>
+                         </div>
+                     </div>
 
-                    <!-- DURACION -->
-                    <div class="col-lg-6">
-                        <div class="form-group mb-2">
-                            <label for="duracion">
-                                <span class="small">Duración (en meses)</span></span><span class="text-danger">*</span>
-                            </label>
-                            <input type="number" class="form-control form-control-sm" id="duracion" 
-                            name="duracion" placeholder="Duración" required>
-                            <span id="validar_duracion" class="text-danger small fst-italic" style="display: none;">Debe ingrese un nombre</span>
-                        </div>
-                    </div>
+                     <!-- DURACION -->
+                     <div class="col-lg-6">
+                         <div class="form-group mb-2">
+                             <label for="duracion">
+                                 <span class="small">Duración (en horas) </span></span><span class="text-danger">*</span>
+                             </label>
+                             <input type="number" class="form-control form-control-sm" id="duracion" name="duracion" placeholder="Duración" required>
+                             <span id="validar_duracion" class="text-danger small fst-italic" style="display: none;">Debe ingrese un nombre</span>
+                         </div>
+                     </div>
 
-                    <!-- PRECIO -->
-                    <div class="col-lg-6">
-                        <div class="form-group mb-2">
-                            <label for="precio">
-                                <span class="small">Precio</span></span><span class="text-danger">*</span>
-                            </label>
-                            <input type="number" class="form-control form-control-sm" id="precio" 
-                            name="precio" placeholder="Precio" required>
-                            <span id="validar_precio" class="text-danger small fst-italic" style="display: none;">Debe ingrese un nombre</span>
-                        </div>
-                    </div>
+                     <!-- PRECIO -->
+                     <div class="col-lg-6">
+                         <div class="form-group mb-2">
+                             <label for="precio">
+                                 <span class="small">Precio </span></span><span class="text-danger">*</span>
+                             </label>
+                             <input type="number" class="form-control form-control-sm" id="precio" name="precio" placeholder="Precio" step="0.01" min="0" required>
+                             <span id="validar_precio" class="text-danger small fst-italic" style="display: none;">Debe ingrese un nombre</span>
+                         </div>
+                     </div>
 
-                    <!-- PROFESOR -->
-                    <div class="col-lg-6">
-                        <div class="form-group mb-2">
-                            <label for="profesor">
-                                <span class="small">Profesor</span></span><span class="text-danger">*</span>
-                            </label>
-                            <select name="profesor" id="profesor" class="form-control form-control-sm">
-                                <option value="seleccione">--Seleccione--</option>
-                            </select>
-                            <span id="validar_profesor" class="text-danger small fst-italic" style="display: none;">Debe seleccionar un profesor</span>
-                        </div>
-                    </div>
+                     <!-- PROFESOR -->
+                     <div class="col-lg-6">
+                         <div class="form-group mb-2">
+                             <label for="profesor">
+                                 <span class="small">Profesor </span></span><span class="text-danger">*</span>
+                             </label>
+                             <select name="profesor" id="profesor" class="form-control form-control-sm">
+                             </select>
+                             <span id="validar_profesor" class="text-danger small fst-italic" style="display: none;">Debe seleccionar un profesor</span>
+                         </div>
+                     </div>
 
-                    <!-- TIPO -->
-                    <div class="col-lg-6">
-                        <div class="form-group mb-2">
-                            <label for="tipo">
-                                <span class="small">Tipo</span></span><span class="text-danger">*</span>
-                            </label>
-                            <select name="tipo" id="tipo" class="form-control form-control-sm">
-                                
-                            </select>
-                            <span id="validar_tipo" class="text-danger small fst-italic" style="display: none;">Debe seleccionar un profesor</span>
-                        </div>
-                    </div>
+                     <!-- TIPO -->
+                     <div class="col-lg-6">
+                         <div class="form-group mb-2">
+                             <label for="tipo">
+                                 <span class="small">Tipo </span></span><span class="text-danger">*</span>
+                             </label>
+                             <select name="tipo" id="tipo" class="form-control form-control-sm">
 
-                    <!-- IMAGEN-->
-                    <div class="col-lg-6">
-                        <div class="form-group mb-2">
-                            <label for="Imagen">
-                                <span class="small">Imagen</span></span><span class="text-danger">*</span>
-                            </label>
-                            <input type="file" class="form-control-file form-control-sm" name="imagen" id="imagen">
-                            <span id="validar_imagen" class="text-danger small fst-italic" style="display: none;">Debe seleccionar una imagen</span>
-                        </div>
-                    </div>
+                             </select>
+                             <span id="validar_tipo" class="text-danger small fst-italic" style="display: none;">Debe seleccionar un profesor</span>
+                         </div>
+                     </div>
 
-                    <!-- DESCRIPCION -->
-                    <div class="col-lg-6">
-                        <div class="form-group mb-2">
-                            <label for="descripcion">
-                                <span class="small">Descripción</span></span><span class="text-danger">*</span>
-                            </label>
-                            <textarea class="form-control form-control-sm" id="descripcion" 
-                            name="descripcion" required cols="30" rows="10"></textarea>
-                            <span id="validar_descripcion" class="text-danger small fst-italic" style="display: none;">Debe ingrese un nombre</span>
-                        </div>
-                    </div>
+                     <!-- IMAGEN-->
+                     <div class="col-lg-6">
+                         <div class="form-group mb-2">
+                             <label for="Imagen">
+                                 <span class="small">Imagen </span></span><span class="text-danger">*</span>
+                             </label>
+                             <input type="file" class="form-control-file form-control-sm" name="imagen" id="imagen">
+                             <span id="validar_imagen" class="text-danger small fst-italic" style="display: none;">Debe seleccionar una imagen</span>
+                         </div>
+                     </div>
 
-                    <!-- APRENDIZAJE -->
-                    <div class="col-lg-6">
-                        <div class="form-group mb-2">
-                            <label for="aprendizaje">
-                                <span class="small">Aprendizaje</span></span><span class="text-danger">*</span>
-                            </label>
-                            <textarea class="form-control form-control-sm" id="descripcion" 
-                            name="aprendizaje" required cols="30" rows="10"></textarea>
-                            <span id="validar_aprendizaje" class="text-danger small fst-italic" style="display: none;">Debe ingrese un nombre</span>
-                        </div>
-                    </div>
+                     <!-- DESCRIPCION -->
+                     <div class="col-lg-6">
+                         <div class="form-group mb-2">
+                             <label for="descripcion">
+                                 <span class="small">Descripción </span></span><span class="text-danger">*</span>
+                             </label>
+                             <textarea class="form-control form-control-sm" id="descripcion" name="descripcion" required cols="30" rows="10"></textarea>
+                             <span id="validar_descripcion" class="text-danger small fst-italic" style="display: none;">Debe ingrese un nombre</span>
+                         </div>
+                     </div>
 
-                </div>
+                     <!-- APRENDIZAJE -->
+                     <div class="col-lg-6">
+                         <div class="form-group mb-2">
+                             <label for="aprendizaje">
+                                 <span class="small">Aprendizaje </span></span><span class="text-danger">*</span>
+                             </label>
+                             <textarea class="form-control form-control-sm" id="aprendizaje" name="aprendizaje" required cols="30" rows="10"></textarea>
+                             <span id="validar_aprendizaje" class="text-danger small fst-italic" style="display: none;">Debe ingrese un nombre</span>
+                         </div>
+                     </div>
 
-                <!-- Botones de Cancelar y Guardar -->
-                <button type="button" class="btn btn-danger mt-3 mx-2" style="width: 170px;" data-dismiss="modal" id="btnCancelarRegistro">Cancelar</button>
+                 </div>
 
-                <button type="button" class="btn btn-primary mt-3 mx-2" style="width: 170px;" id="btnGuardarTipo" onclick="formSubmitClick()">Guardar</button>
+                 <!-- Botones de Cancelar y Guardar -->
+                 <button type="button" class="btn btn-danger mt-3 mx-2" style="width: 170px;" data-dismiss="modal" id="btnCancelarRegistro">Cancelar</button>
 
-            </div>
+                 <button type="button" class="btn btn-primary mt-3 mx-2" style="width: 170px;" id="btnGuardarTipo" onclick="formSubmitClick()">Guardar</button>
 
-        </div>
-    </div>
-</div>
+             </div>
+
+         </div>
+     </div>
+ </div>
 
  <script>
+     var table;
+     var accion;
 
-    var table;
-    var accion;
-
-    var Toast = Swal.mixin({
-        toast: true,
-        position: top,
-        showConfirmButton: false,
-        timer: 3000
+     var Toast = Swal.mixin({
+         toast: true,
+         position: top,
+         showConfirmButton: false,
+         timer: 3000
      });
 
-     $(document).ready(function() {     
+     $(document).ready(function() {
          $.ajax({
              url: "../ajax/formacionAcademica.ajax.php",
              type: "POST",
@@ -191,21 +184,41 @@
          // CARGAR TIPOS EN COMBOBOX
          /*===================================================================*/
          $.ajax({
-            url: "../ajax/formacionAcademica.ajax.php",
-            type: "POST",
-            data: {
-                'accion': 3
+             url: "../ajax/tipoFormacion.ajax.php",
+             type: "POST",
+             data: {
+                 'accion': 3
              },
              dataType: 'json',
-            success:function(respuesta){
-                var opciones = '<option value="0">--Seleccione--</option>';
+             success: function(respuesta) {
+                 var opciones = '<option value="0">--Seleccione--</option>';
 
-                for (let index = 0; index < respuesta.length; index++) {
-                    var opciones = '<option value='+ respuesta[index][0] + '>' + respuesta[index][1] + '</option>';
-                }
-                $('#tipo').html(opciones);
-            }
-        
+                 for (let index = 0; index < respuesta.length; index++) {
+                     var opciones = opciones + '<option value=' + respuesta[index][0] + '>' + respuesta[index][1] + '</option>';
+                 }
+                 $('#tipo').html(opciones);
+             }
+         });
+
+         //*===================================================================*/
+         // CARGAR PROFESORES EN COMBOBOX
+         /*===================================================================*/
+         $.ajax({
+             url: "../ajax/profesor.ajax.php",
+             type: "POST",
+             data: {
+                 'accion': 1
+             },
+             dataType: 'json',
+             success: function(respuesta) {
+
+                 var opciones = '<option value="0">--Seleccione--</option>';
+
+                 for (let index = 0; index < respuesta.length; index++) {
+                     var opciones = opciones + '<option value=' + respuesta[index][0] + '>' + respuesta[index][1] + '</option>';
+                 }
+                 $('#profesor').html(opciones);
+             }
          });
 
          /*===================================================================*/
@@ -217,8 +230,8 @@
                      text: 'Agregar Formación académica',
                      className: 'addNewRecord',
                      action: function(e, dt, node, config) {
-                        $("#mdlGestionarFormacionAcademica").modal('show');
-                        accion = 2;
+                         $("#mdlGestionarFormacionAcademica").modal('show');
+                         accion = 2;
                      }
                  },
                  'excel', 'print', 'pageLength'
@@ -276,12 +289,6 @@
                              "<span class='btnEditarProducto text-primary px-1' style='cursor:pointer;'>" +
                              "<i class='fas fa-pencil-alt fs-5'></i>" +
                              "</span>" +
-                             "<span class='btnAumentarStock text-success px-1' style='cursor:pointer;'>" +
-                             "<i class='fas fa-plus-circle fs-5'></i>" +
-                             "</span>" +
-                             "<span class='btnDisminuirStock text-warning px-1' style='cursor:pointer;'>" +
-                             "<i class='fas fa-minus-circle fs-5'></i>" +
-                             "</span>" +
                              "<span class='btnEliminarProducto text-danger px-1' style='cursor:pointer;'>" +
                              "<i class='fas fa-trash fs-5'></i>" +
                              "</span>" +
@@ -298,90 +305,100 @@
          /*===================================================================*/
          // EVENTOS PARA LIMPIAR
          /*===================================================================*/
-        $("#btnCancelarRegistro, #btnCerrarModal").on('click', function(){
-            $("#validar_nombre").css("display","none");
-            $("#validar_duracion").css("display","none");
-            $("#validar_precio").css("display","none");
-            $("#validar_profesor").css("display","none");
-            $("#validar_tipo").css("display","none");
-            $("#validar_imagen").css("display","none");
-            $("#validar_descripcion").css("display","none");
-            $("#validar_aprendizaje").css("display","none");
-            
-            $("#nombre").val("");
-            $("#duracion").val("");
-            $("#precio").val("");
-            $("#profesor").val(0);
-            $("#tipo").val(0);
-            $("#imagen").val("");
-            $("#descripcion").val("");
-            $("#aprendizaje").val("");
-        })       
+         $("#btnCancelarRegistro, #btnCerrarModal").on('click', function() {
+             $("#validar_nombre").css("display", "none");
+             $("#validar_duracion").css("display", "none");
+             $("#validar_precio").css("display", "none");
+             $("#validar_profesor").css("display", "none");
+             $("#validar_tipo").css("display", "none");
+             $("#validar_imagen").css("display", "none");
+             $("#validar_descripcion").css("display", "none");
+             $("#validar_aprendizaje").css("display", "none");
+
+             $("#nombre").val("");
+             $("#duracion").val("");
+             $("#precio").val("");
+             $("#profesor").val(0);
+             $("#tipo").val(0);
+             $("#imagen").val("");
+             $("#descripcion").val("");
+             $("#aprendizaje").val("");
+         })
      })
 
      function formSubmitClick() {
-        //validar ingreso de campos 
+         //validar ingreso de campos 
 
-        Swal.fire({
-            title: "¿Está seguro de registrar la Formación académica?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, deseo registrar',
-            cancelButtonText: 'Cancelar',
-        }).then((result)=> {
-            if(result.isConfirmed){
-                var datos = new FormData();
+         Swal.fire({
+             title: "¿Está seguro de registrar la Formación académica?",
+             icon: 'warning',
+             showCancelButton: true,
+             confirmButtonColor: '#3085d6',
+             cancelButtonColor: '#d33',
+             confirmButtonText: 'Sí, deseo registrar',
+             cancelButtonText: 'Cancelar',
+         }).then((result) => {
+             if (result.isConfirmed) {
+                 var datos = new FormData();
 
-                datos.append('accion', accion);
-                datos.append("nombre",$("#nombre").val()); 
-                datos.append("descripcion",$("#descripcion").val());
-                datos.append("aprendizaje",$("#aprendizaje").val());
-                datos.append("duracion",$("#duracion").val());
-                datos.append("precio",$("#precio").val());
-                datos.append("img",$("#imagen").val());
-                datos.append("profesor",$("#profesor").val());
-                datos.append("tipo",$("#tipo").val());
+                 datos.append('accion', accion);
+                 datos.append("nombre", $("#nombre").val());
+                 datos.append("descripcion", $("#descripcion").val());
+                 datos.append("aprendizaje", $("#aprendizaje").val());
+                 datos.append("duracion", $("#duracion").val());
+                 datos.append("precio", $("#precio").val());
+                 datos.append("img", $("#imagen").val());
+                 datos.append("profesor", $("#profesor").val());
+                 datos.append("tipo", $("#tipo").val());
 
-                $.ajax({
-                    url: "../ajax/formacionAcademica.ajax.php",
-                    type: "POST",
-                    data: datos,
-                    cache: false,
-                    contentType: false,
-                    preocessData: false,
-                    dataType: 'json',
-                    success: function(respuesta){
-                        if(respuesta == 'ok'){
-                            Toast.fire({
-                                icon: 'success',
-                                title: 'La Formación académica se registró correctamente'
-                            });
+                    console.log($("#nombre").val());
+                    console.log($("#descripcion").val());
+                    console.log($("#aprendizaje").val());
+                    console.log($("#duracion").val());
+                    console.log($("#precio").val());
+                    console.log($("#imagen").val());
+                    console.log($("#profesor").val());
+                    console.log($("#tipo").val());
 
-                            table.ajax.reload();
+                 $.ajax({
+                     url: "../ajax/formacionAcademica.ajax.php",
+                     method: "POST",
+                     data: datos,
+                     cache: false,
+                     contentType: false,
+                     processData: false,
+                     dataType: 'json',
+                     success: function(respuesta) {
+                        console.log(respuesta);
+                         if (respuesta == 'ok') {
+                             Toast.fire({
+                                 icon: 'success',
+                                 title: 'La Formación académica se registró correctamente'
+                             });
 
-                            $("#mdlGestionarFormacionAcademica").modal('hide');
+                             table.ajax.reload();
 
-                            $("#nombre").val("");
-                            $("#duracion").val("");
-                            $("#precio").val("");
-                            $("#profesor").val(0);
-                            $("#tipo").val(0);
-                            $("#imagen").val("");
-                            $("#descripcion").val("");
-                            $("#aprendizaje").val("");
-                        } else {
-                            Toast.fire({
-                                icon: 'error',
-                                title: 'La Formación académica no se pudo registrar'
-                            });
-                        }
-                    }
-                    
-                });
-                
-            }
-        })
+                             $("#mdlGestionarFormacionAcademica").modal('hide');
+
+                             $("#nombre").val("");
+                             $("#duracion").val("");
+                             $("#precio").val("");
+                             $("#profesor").val(0);
+                             $("#tipo").val(0);
+                             $("#imagen").val("");
+                             $("#descripcion").val("");
+                             $("#aprendizaje").val("");
+                         } else {
+                             Toast.fire({
+                                 icon: 'error',
+                                 title: 'La Formación académica no se pudo registrar'
+                             });
+                         }
+                     }
+
+                 });
+
+             }
+         })
      }
  </script>

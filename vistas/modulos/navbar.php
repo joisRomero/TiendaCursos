@@ -3,8 +3,6 @@
     include_once '../controladores/sesionUsuario.php';
     $sesionUsuario = new SesionUsuario();
     $usuario = new Usuario();
-    session_start();
-    ob_start();
     $usuario->setearUsuario($sesionUsuario->getUsuarioActual());
 
     ?>

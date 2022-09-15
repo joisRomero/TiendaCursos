@@ -7,7 +7,12 @@ session_start();
 ob_start();
 
 if (isset($_SESSION['usuario'])) {
-    header("location:../vistas/usuario.php");
+    $rol = $_SESSION['rol'];
+    if ($rol === 'Administrador'){
+        header("location:dashboard.php");
+    } else if ($rol === 'Estudiante'){
+        header("location:plantillaEstudiante.php");
+    } 
 } 
 
 if(isset($_POST['nombreUsuario']) && isset($_POST['clave'])) {
