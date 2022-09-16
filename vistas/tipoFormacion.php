@@ -144,21 +144,37 @@
                     visible: false //id
                 },
                 {
-                    targets: 3,
-                    visible: true, //vigencia
-                },
+                     targets: 3,
+                     orderable: false,
+                     render: function(data, type, full, meta) {
+                         if (data == '1') {
+                             return '<span class="badge badge-success">Activado</span>';
+                         } else {
+                             return '<span class="badge badge-danger">Desactivado</span>';
+                         }
+                     }
+                 },
                 {
                     targets: 4,
                     orderable: false,
                     render: function(data, type, full, meta) {
-                        return "<center>" +
-                            "<span class='btnEditarTipo text-primary px-1' style='cursor:pointer;'>" +
-                            "<i class='fas fa-pencil-alt fs-5'></i>" +
-                            "</span>" +
-                            "<span class='btnVigenciaTipo text-danger px-1' style='cursor:pointer;'>" +
-                            "<i class='fas fa-trash fs-5'></i>" +
-                            "</span>" +
-                            "</center>"
+                        var check = "<span class='btnVigenciaTipo text-success h5 px-1' style='cursor:pointer;'>" +
+                                        "<i class='fa fa-check fs-5'></i>" +
+                                    "</span>";
+
+                        var aspa = "<span class='btnVigenciaTipo text-danger h5 px-1' style='cursor:pointer;'>" +
+                                        "<i class='fa fa-times'></i>" +
+                                    "</span>";
+
+                        var editar ="<span class='btnEditarTipo text-primary px-1' style='cursor:pointer;'>" +
+                                        "<i class='fas fa-pencil-alt fs-5'></i>" +
+                                    "</span>" ;
+                        if (full[3] == 1){
+                            return "<center>" + editar + aspa + "</center>";
+                        } else {
+                            return "<center>" + editar + check + "</center>";
+                        }
+                        
                     }
                 }
 

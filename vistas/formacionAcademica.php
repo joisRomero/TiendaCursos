@@ -54,6 +54,7 @@
              </div>
 
              <div class="modal-body">
+                 <form method="POST" enctype="multipart/form-data" id="formulario">
                  <div class="row">
                      <!-- NOMBRE -->
                      <div class="col-lg-6">
@@ -116,11 +117,13 @@
                      <!-- IMAGEN-->
                      <div class="col-lg-6">
                          <div class="form-group mb-2">
+                            
                              <label for="Imagen">
                                  <span class="small">Imagen </span></span><span class="text-danger">*</span>
                              </label>
                              <input type="file" class="form-control-file form-control-sm" name="imagen" id="imagen">
                              <span id="validar_imagen" class="text-danger small fst-italic" style="display: none;">Debe seleccionar una imagen</span>
+                             
                          </div>
                      </div>
 
@@ -145,8 +148,8 @@
                              <span id="validar_aprendizaje" class="text-danger small fst-italic" style="display: none;">Debe ingrese un nombre</span>
                          </div>
                      </div>
-
-                 </div>
+                    </div>
+                </form>
 
                  <!-- Botones de Cancelar y Guardar -->
                  <button type="button" class="btn btn-danger mt-3 mx-2" style="width: 170px;" data-dismiss="modal" id="btnCancelarRegistro">Cancelar</button>
@@ -192,9 +195,10 @@
              dataType: 'json',
              success: function(respuesta) {
                  var opciones = '<option value="0">--Seleccione--</option>';
-
                  for (let index = 0; index < respuesta.length; index++) {
-                     var opciones = opciones + '<option value=' + respuesta[index][0] + '>' + respuesta[index][1] + '</option>';
+                     if (respuesta[index][2] == 1) {
+                         var opciones = opciones + '<option value=' + respuesta[index][0] + '>' + respuesta[index][1] + '</option>';
+                     }
                  }
                  $('#tipo').html(opciones);
              }
@@ -215,7 +219,9 @@
                  var opciones = '<option value="0">--Seleccione--</option>';
 
                  for (let index = 0; index < respuesta.length; index++) {
-                     var opciones = opciones + '<option value=' + respuesta[index][0] + '>' + respuesta[index][1] + '</option>';
+                     if (respuesta[index][2] == 1) {
+                         var opciones = opciones + '<option value=' + respuesta[index][0] + '>' + respuesta[index][1] + '</option>';
+                     }
                  }
                  $('#profesor').html(opciones);
              }
@@ -285,14 +291,22 @@
                      targets: 11,
                      orderable: false,
                      render: function(datqa, type, full, meta) {
-                         return "<center>" +
-                             "<span class='btnEditarProducto text-primary px-1' style='cursor:pointer;'>" +
+                         var check = "<span class='btnVigenciaTipo text-success h5 px-1' style='cursor:pointer;'>" +
+                             "<i class='fa fa-check fs-5'></i>" +
+                             "</span>";
+
+                         var aspa = "<span class='btnVigenciaTipo text-danger h5 px-1' style='cursor:pointer;'>" +
+                             "<i class='fa fa-times'></i>" +
+                             "</span>";
+
+                         var editar = "<span class='btnEditarTipo text-primary px-1' style='cursor:pointer;'>" +
                              "<i class='fas fa-pencil-alt fs-5'></i>" +
-                             "</span>" +
-                             "<span class='btnEliminarProducto text-danger px-1' style='cursor:pointer;'>" +
-                             "<i class='fas fa-trash fs-5'></i>" +
-                             "</span>" +
-                             "</center>"
+                             "</span>";
+                         if (full[10] == 1) {
+                             return "<center>" + editar + aspa + "</center>";
+                         } else {
+                             return "<center>" + editar + check + "</center>";
+                         }
                      }
                  }
 
@@ -340,25 +354,17 @@
          }).then((result) => {
              if (result.isConfirmed) {
                  var datos = new FormData();
-
+                 
                  datos.append('accion', accion);
+
                  datos.append("nombre", $("#nombre").val());
                  datos.append("descripcion", $("#descripcion").val());
                  datos.append("aprendizaje", $("#aprendizaje").val());
                  datos.append("duracion", $("#duracion").val());
                  datos.append("precio", $("#precio").val());
-                 datos.append("img", $("#imagen").val());
+                 datos.append("imagen", $("#imagen").val());
                  datos.append("profesor", $("#profesor").val());
                  datos.append("tipo", $("#tipo").val());
-
-                    console.log($("#nombre").val());
-                    console.log($("#descripcion").val());
-                    console.log($("#aprendizaje").val());
-                    console.log($("#duracion").val());
-                    console.log($("#precio").val());
-                    console.log($("#imagen").val());
-                    console.log($("#profesor").val());
-                    console.log($("#tipo").val());
 
                  $.ajax({
                      url: "../ajax/formacionAcademica.ajax.php",
@@ -369,7 +375,7 @@
                      processData: false,
                      dataType: 'json',
                      success: function(respuesta) {
-                        console.log(respuesta);
+                         console.log(respuesta);
                          if (respuesta == 'ok') {
                              Toast.fire({
                                  icon: 'success',

@@ -65,8 +65,9 @@ class FormacionAcademicaModelo
         } catch (Exception $e) {
             $resultado = 'Excepción capturada: '.$e->getMessage()."\n";
         }
-        $consulta =  null;
         return $resultado;
+        
+        $consulta =  null;
 
     }
 }
