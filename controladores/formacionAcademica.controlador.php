@@ -9,6 +9,12 @@ class FormacionAcademicaControlador
         return $respuesta;
     }
 
+    static function ctrListarFormacionAcademicaResumido()
+    {
+        $respuesta = FormacionAcademicaModelo::mdlListarFormacionAcademicaResumido();
+        return $respuesta;
+    }
+
     static function ctrRegistrarFormacionAcademica(
         $nombre,
         $descripcion,

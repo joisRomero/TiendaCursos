@@ -1,8 +1,23 @@
 <?php
-include("../modelos/conexion.php");
+
+include_once '../modelos/usuario.php';
+include_once '../controladores/sesionUsuario.php';
+
+session_start();
+ob_start();
+
+if (isset($_SESSION['usuario'])) {
+    $rol = $_SESSION['rol'];
+    if ($rol === 'Administrador'){
+        header("location:dashboard.php");
+    } else if ($rol === 'Estudiante'){
+        header("location:plantillaEstudiante.php");
+    } 
+}
+
 $con = new Conexion();
-$s_ultimosCursos = "SELECT * FROM formacion_academica WHERE id_tipo = 1 limit 3"; //ORDER BY id_forma DESC
-$r_ultimosCursos = mysqli_query($con->conexion(), $s_ultimosCursos);
+$s_ultimasFormaAca = "SELECT * FROM formacion_academica WHERE vigente_forma = 1 limit 3"; //ORDER BY id_forma DESC
+$r_ultimasFormaAca = mysqli_query($con->conexion(), $s_ultimasFormaAca);
 $s_ultimosProfes = "SELECT * FROM profesor limit 4 "; //ORDER BY id_pro DESC
 $r_ultimosProfes = mysqli_query($con->conexion(), $s_ultimosProfes);
 
@@ -82,7 +97,7 @@ function limitarCadena($cadena, $limite){
             <p>"Cada logro comienza con la decisión de intentarlo"</p>
             <p>- Gail Devers</p>
             <a href="../vistas/iniciarSesion.php" class="btn btn-info"></i> INICIAR SESIÓN</a>
-            <a href="../vistas/cursos.html" class="btn btn-info">VER CURSOS</a>
+            <a href="../vistas/cursos.php" class="btn btn-info">VER CURSOS</a>
           </div>
         </div>
         <div class="col-lg-6">
@@ -96,13 +111,13 @@ function limitarCadena($cadena, $limite){
   <!--------------------------------  NUESTROS ÚLTIMOS CURSOS  -------------------------------->
   <section class="section-cursos text-white" id="cursos">
     <div class="container">
-      <h2 class="display-4 text-center mb-5">Nuestros últimos cursos</h2>
+      <h2 class="display-4 text-center mb-5">Nuestros últimos lanzamientos</h2>
 
       <div class="row">
         <!-- WHILE  -->
         <?php
-        if (isset($r_ultimosCursos)) {
-          while ($fila = mysqli_fetch_array($r_ultimosCursos)) {
+        if (isset($r_ultimasFormaAca)) {
+          while ($fila = mysqli_fetch_array($r_ultimasFormaAca)) {
             $limit = limitarCadena($fila['descripcion_forma'],150,"[...]");
             echo "<div class='col-12 col-md-4 mb-2'>";
             echo "  <div class='card bg-dark ultimo-curso h-100'>";
@@ -110,7 +125,7 @@ function limitarCadena($cadena, $limite){
             echo "    <div class='card-body'>";
             echo "      <h5 class='card-title'>". $fila['nombre_forma'] ."</h5>";
             echo "        <p class='card-text' style='margin:0;'>". $limit ."</p><br>";
-            echo "          <a href='#' class='btn btn-primary'>Ver más</a>";
+            echo "          <a href='verMasCurso.php?id=". $fila['id_forma'] ."' class='btn btn-primary'>Ver más</a>";
             echo "    </div>";
             echo "  </div>";
             echo "</div>";
@@ -121,7 +136,7 @@ function limitarCadena($cadena, $limite){
       </div>
       <div class="row">
         <div class="d-flex col-md-12">
-          <a href="cursos.html" class="btn-custon btn btn-primary btn-block btn-lg mt-3 ml-auto">Ver todos</a>
+          <a href="cursos.php" class="btn-custon btn btn-primary btn-block btn-lg mt-3 ml-auto">Ver todos</a>
         </div>
       </div>
     </div>

@@ -24,6 +24,20 @@ class FormacionAcademicaModelo
         return $consulta->fetchAll();
     }
 
+    static function mdlListarFormacionAcademicaResumido(){
+        $consulta = Conexion::conectar()->prepare("SELECT fa.id_forma, fa.nombre_forma, 
+                                                fa.descripcion_forma,
+		                                        t.id_tipo, fa.img, fa.vigente_forma
+                                                from formacion_academica as fa
+                                                INNER JOIN tipo as t
+                                                on t.id_tipo = fa.id_tipo
+                                                WHERE fa.vigente_forma = 1
+                                                ORDER BY fa.nombre_forma");
+        $consulta->execute();
+
+        return $consulta->fetchAll();
+    }
+
     static function mdlRegistrarFormacionAcademica(
         $nombre,
         $descripcion,

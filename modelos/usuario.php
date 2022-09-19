@@ -8,6 +8,7 @@ class Usuario
     private $nombre;
     private $clave;
     private $vigencia;
+    private $img;
     private $rol;
 
     public function existeUsuario($nombre, $clave)
@@ -33,7 +34,7 @@ class Usuario
             $this->id = $fila['id_usu'];
             $this->nombre = $fila['nombre_usu'];
             $this->vigencia = $fila['vigencia_usu'];
-
+            $this->img = $fila['img_usu'];
             if ($fila['rol_usu'] == 'A') {
                 $this->rol = "Administrador";
             } else if ($fila['rol_usu'] == 'E') {
@@ -52,6 +53,11 @@ class Usuario
     public function getRol()
     {
         return $this->rol;
+    }
+
+    public function getImg()
+    {
+        return $this->img;
     }
 
     /*

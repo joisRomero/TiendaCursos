@@ -1,13 +1,3 @@
-<?php
-    include_once '../modelos/usuario.php';
-    include_once '../controladores/sesionUsuario.php';
-    $sesionUsuario = new SesionUsuario();
-    $usuario = new Usuario();
-    $usuario->setearUsuario($sesionUsuario->getUsuarioActual());
-
-    ?>
-
-
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
@@ -22,7 +12,7 @@
           <li class="nav-item dropdown no-arrow active">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 font-weight-bold"><?php echo $usuario->getNombre(); ?></span>
-                  <img class="rounded-circle" width="25px" height="25px" src="assets/dist/img/profile/profile.svg">
+                  <img class="rounded-circle" width="25px" height="25px" src="<?php echo $usuario->getImg(); ?>">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
