@@ -8,6 +8,12 @@ class FormacionAcademicaControlador
         $respuesta = FormacionAcademicaModelo::mdlListarFormacionAcademica();
         return $respuesta;
     }
+    
+    static function ctrListarNoComprados($idEstudiante)
+    {
+        $respuesta = FormacionAcademicaModelo::mdlListarNoComprados($idEstudiante);
+        return $respuesta;
+    }
 
     static function ctrListarFormacionAcademicaResumido()
     {

@@ -21,6 +21,13 @@ class ajaxFormacionAcademica{
 
         echo json_encode($formacionAcademica);
     }
+
+    public function ajaxListarNoComprados($idEstudiante){
+        $formacionAcademica = FormacionAcademicaControlador::ctrListarNoComprados($idEstudiante);
+
+        echo json_encode($formacionAcademica);
+    }
+
     public function ajaxListarFormacionAcademicaResumido()
     {
         $formacionAcademica = FormacionAcademicaControlador::ctrListarFormacionAcademicaResumido();
@@ -70,4 +77,8 @@ if(isset($_POST['accion']) && $_POST['accion'] == 1){ //LISTAR
 } else if(isset($_POST['accion']) && $_POST['accion'] == 5){ //LISTAR
     $formacionAcademica = new ajaxFormacionAcademica();
     $formacionAcademica->ajaxListarFormacionAcademicaResumido();
+} else if(isset($_POST['accion']) && $_POST['accion'] == 6){ //LISTAR
+    $idEstudiante = $_POST["idEstudiante"];
+    $formacionAcademica = new ajaxFormacionAcademica();
+    $formacionAcademica->ajaxListarNoComprados($idEstudiante);
 } 

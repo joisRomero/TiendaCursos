@@ -57,69 +57,28 @@ include '../controladores/estudiante.php';
 
     <section class="section-estudiante text-white">
         <div class="container">
-            <p class="display-4 mt-5">Tus cursos</p>
+            <p class="display-4 mt-5">Tus aprendizajes</p>
             <hr class="my-4 bg-white" />
             <div class="row row-cols-1 row-cols-md-3">
-                <div class="col mb-4">
-                    <div class="card bg-dark h-100 ultimo-curso">
-                        <img src="assets/dist/img/kotlin-android.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                Arquitectura de Android con Kotlin
-                            </h5>
-                            <p class="card-text">
-                                Las aplicaciones móviles ya no son fáciles, y eso se debe
-                                a que proyectos más sólidos nacen de una idea Mobile
-                                First. Normalmente las [...]
-                            </p>
-                            <a href="verMasCurso.html" class="btn btn-primary">Ver más</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col mb-4">
-                    <div class="card bg-dark h-100 ultimo-curso">
-                        <img src="assets/dist/img/html-css-js.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Desarrollo web HTML, CSS y JS</h5>
-                            <p class="card-text">
-                                Aprende Desarrollo Web con este curso 100% práctico, paso
-                                a paso y sin conocimientos previos. INCLUYEN 3 Proyectos
-                                que [...]
-                            </p>
-                            <a href="#" class="btn btn-primary">Ver más</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-4">
-                    <div class="card bg-dark h-100 ultimo-curso">
-                        <img src="assets/dist/img/sqlserver.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Microsoft SQL Server</h5>
-                            <p class="card-text">
-                                Mejora tus habilidades analíticas comerciales con SQL y
-                                visualización de datos. Aprenderás a crear consultas
-                                complejas para [...]
-                            </p>
-                            <a href="#" class="btn btn-primary">Ver más</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col mb-4">
-                    <div class="card bg-dark h-100 ultimo-curso">
-                        <img src="assets/dist/img/sqlserver.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title">Microsoft SQL Server</h5>
-                            <p class="card-text">
-                                Mejora tus habilidades analíticas comerciales con SQL y
-                                visualización de datos. Aprenderás a crear consultas
-                                complejas para [...]
-                            </p>
-                            <a href="#" class="btn btn-primary">Ver más</a>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                while ($fila = mysqli_fetch_array($r_formaciones)) {
+                    $limit = limitarCadena($fila['descripcion_forma'], 150, "[...]");
+                    echo '<div class="col mb-4">
+                                <div class="card bg-dark h-100 ultimo-curso">
+                                    <img src="' . $fila['img'] . '" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            ' . $fila['nombre_forma'] . '
+                                        </h5>
+                                        <p class="card-text">
+                                            ' . $limit . '
+                                        </p>
+                                        <a href="verMasCurso.php?id='.$fila['id_forma'].'" class="btn btn-primary">Ver más</a>
+                                    </div>
+                                </div>
+                            </div>';
+                }
+                ?>
             </div>
         </div>
 
