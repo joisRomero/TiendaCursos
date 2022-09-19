@@ -8,7 +8,7 @@ ob_start();
 
 if (isset($_SESSION['usuario'])) {
     $rol = $_SESSION['rol'];
-    if ($rol === 'Administrador' || $rol === 'Profesor'){
+    if ($rol === 'Administrador'){
         header("location:vistas/dashboard.php");
     } else if ($rol === 'Estudiante'){
         header("location:vistas/plantillaEstudiante.php");

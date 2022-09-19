@@ -1,6 +1,10 @@
 <?php 
-session_start();
-ob_start();
+include_once '../modelos/usuario.php';
+include_once '../controladores/sesionUsuario.php';
+$sesionUsuario = new SesionUsuario();
+$usuario = new Usuario();
+$usuario->setearUsuario($sesionUsuario->getUsuarioActual());
+
 if (!isset($_SESSION['usuario'])) {
     header("location:../vistas/index.php");
 }
@@ -25,9 +29,6 @@ if (!isset($_SESSION['usuario'])) {
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     
-    <!-- Bootstrap 5 -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-    
     <!-- Theme style -->
     <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="assets/dist/css/estilos.css">
@@ -44,8 +45,7 @@ if (!isset($_SESSION['usuario'])) {
 
     <!-- jQuery -->
     <script src="assets/plugins/jquery/jquery.min.js"></script>
-    <!-- JS Bootstrap 5 -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script> -->
+
     <!-- Bootstrap 4 -->
     <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- SweetAlert2 -->
