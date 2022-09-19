@@ -55,7 +55,7 @@ if (isset($_POST['accion']) && $_POST['accion'] == 1) { // Listar
     $usuario->rol_usu = $_POST["rol_usu"];
     $usuario->ajaxRegistrarUsuario();
 
-} else if (isset($_POST['accion']) && $_POST['accion'] == 3) { //ventana modal
+} else if (isset($_POST['accion']) && $_POST['accion'] == 3) { //ventana modal::COMBOBOX
     $usuario = new ajaxUsuario();
     $usuario->ajaxListaUsuario();
 

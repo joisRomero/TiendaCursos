@@ -10,9 +10,15 @@ class UsuarioModelo {
         return $consulta->fetchAll();
     }
 
-    //Lista para la ventana modal
+    //Lista para la ventana modal::COMBOBOX
     static function mdlListaUsuario() {
-        $consulta = Conexion::conectar()->prepare("SELECT id_usu, nombre_usu, clave_usu, img_usu, rol_usu, vigencia_usu FROM usuario ORDER BY nombre_usu ASC");
+        $consulta = Conexion::conectar()->prepare("SELECT id_usu, nombre_usu, clave_usu, img_usu, rol_usu, vigencia_usu
+        FROM usuario
+        WHERE rol_usu='E' AND id_usu NOT IN (SELECT u.id_usu
+        FROM usuario as u
+        INNER JOIN estudiante as e
+        ON e.id_usu = u.id_usu
+        WHERE u.rol_usu='E') ORDER BY nombre_usu ASC");
         $consulta->execute();
         return $consulta->fetchAll();
     }

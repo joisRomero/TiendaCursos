@@ -8,7 +8,7 @@ class UsuarioControlador{
         return $respuesta;
     }
 
-    //Lista para la ventana modal
+    //Lista para la ventana modal::COMBOBOX
     static function ctrListaUsuario(){
         $respuesta = UsuarioModelo::mdlListaUsuario();
         return $respuesta;

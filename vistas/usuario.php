@@ -1,43 +1,43 @@
- <!-- Content Header (Page header) -->
- <div class="content-header">
-     <div class="container-fluid">
-         <div class="row mb-2">
-             <div class="col-sm-6">
-                 <h1 class="m-0">Usuarios</h1>
-             </div><!-- /.col -->
-         </div><!-- /.row -->
-     </div><!-- /.container-fluid -->
- </div>
- <!-- /.content-header -->
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Usuarios</h1>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
 
- <!-- Main content -->
- <div class="content">
-     <div class="container-fluid">
-         <!-- row para listado de usuarios -->
-         <div class="row">
-             <div class="col-lg-12">
-                 <table id="tbl_usuario" class="table table-striped w-100 shadow">
-                     <thead class="bg-info">
-                         <tr style="font-size: 15px;">
-                             <th>ID</th>
-                             <th>Nombre</th>
-                             <th>Contraseña</th>
-                             <th>Avatar</th>
-                             <th>Rol</th>
-                             <th>Vigencia</th>
-                             <th class="text-cetner">Opciones</th>
-                         </tr>
-                     </thead>
-                     <tbody class="text-small">
-                     </tbody>
-                 </table>
-             </div>
-         </div>
-     </div><!-- /.container-fluid -->
- </div>
- <!-- /.content -->
+<!-- Main content -->
+<div class="content">
+    <div class="container-fluid">
+        <!-- row para listado de usuarios -->
+        <div class="row">
+            <div class="col-lg-12">
+                <table id="tbl_usuario" class="table table-striped w-100 shadow">
+                    <thead class="bg-info">
+                        <tr style="font-size: 15px;">
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Contraseña</th>
+                            <th>Avatar</th>
+                            <th>Rol</th>
+                            <th>Estado</th>
+                            <th class="text-cetner">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-small">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content -->
 
- <!-- Ventana modal para ingresar o modificar un usuario -->
+<!-- Ventana modal para ingresar o modificar un usuario -->
 <div class="modal fade" id="mdlGestionarUsuario" role="dialog">
     <div class="modal-dialog modal-lg">
 
@@ -179,35 +179,35 @@
             },
             columnDefs: [{
                     targets: 0,
-                    visible: true //id
+                    visible: false //id
                 },
                 {
-                     targets: 5, //vigencia
-                     orderable: false,
-                     render: function(data, type, full, meta) {
-                         if (data == '1') {
-                             return '<span class="badge badge-success">Activado</span>';
-                         } else {
-                             return '<span class="badge badge-danger">Desactivado</span>';
-                         }
-                     }
-                 },
+                    targets: 5, //vigencia
+                    orderable: false,
+                    render: function(data, type, full, meta) {
+                        if (data == '1') {
+                            return '<span class="badge badge-success">Activado</span>';
+                        } else {
+                            return '<span class="badge badge-danger">Desactivado</span>';
+                        }
+                    }
+                },
                 {
                     targets: 6, //opciones
                     orderable: false,
                     render: function(data, type, full, meta) {
                         var check = "<span class='btnVigenciaUsuario text-success h5 px-1' style='cursor:pointer;'>" +
-                                        "<i class='fa fa-check fs-5'></i>" +
-                                    "</span>";
+                            "<i class='fa fa-check fs-5'></i>" +
+                            "</span>";
 
                         var aspa = "<span class='btnVigenciaUsuario text-danger h5 px-1' style='cursor:pointer;'>" +
-                                        "<i class='fa fa-times'></i>" +
-                                    "</span>";
+                            "<i class='fa fa-times'></i>" +
+                            "</span>";
 
-                        var editar ="<span class='btnEditarUsuario text-primary px-1' style='cursor:pointer;'>" +
-                                        "<i class='fas fa-pencil-alt fs-5'></i>" +
-                                    "</span>" ;
-                        if (full[5] == 1){ //posición de la vigencia
+                        var editar = "<span class='btnEditarUsuario text-primary px-1' style='cursor:pointer;'>" +
+                            "<i class='fas fa-pencil-alt fs-5'></i>" +
+                            "</span>";
+                        if (full[5] == 1) { //posición de la vigencia
                             return "<center>" + editar + aspa + "</center>";
                         } else {
                             return "<center>" + editar + check + "</center>";
@@ -255,81 +255,81 @@
         })
     })
 
-        /*===================================================================*/
-        // Evento al dar click en el botón dar de baja
-        /*===================================================================*/
+    /*===================================================================*/
+    // Evento al dar click en el botón dar de baja
+    /*===================================================================*/
 
-        $('#tbl_usuario').on('click', '.btnVigenciaUsuario', function() {
-            accion = 5;
-            var data = table.row($(this).parents('tr')).data();
-            console.log(data);
-            $id_usu = data[0];
-            $vigencia_usu = data[5];
+    $('#tbl_usuario').on('click', '.btnVigenciaUsuario', function() {
+        accion = 5;
+        var data = table.row($(this).parents('tr')).data();
+        console.log(data);
+        $id_usu = data[0];
+        $vigencia_usu = data[5];
 
-            if ($vigencia_usu == 1) {
-                var titulo_preg = "¿Está seguro que desea dar de baja a este usuario?";
-                var confirm_boton = 'Sí, dar de baja';
-                var titulo_toast = 'El usuario se dio de baja';
-                var titulo_toast_error = 'El usuario no se pudo dar de baja';
-            } else {
-                var titulo_preg = "¿Está seguro que desea recuperar a este usuario?";
-                var confirm_boton = 'Sí, recuperar';
-                var titulo_toast = 'El usuario se recuperó';
-                var titulo_toast_error = 'El usuario no se pudo recuperar';
+        if ($vigencia_usu == 1) {
+            var titulo_preg = "¿Está seguro que desea dar de baja a este usuario?";
+            var confirm_boton = 'Sí, dar de baja';
+            var titulo_toast = 'El usuario se dio de baja';
+            var titulo_toast_error = 'El usuario no se pudo dar de baja';
+        } else {
+            var titulo_preg = "¿Está seguro que desea recuperar a este usuario?";
+            var confirm_boton = 'Sí, recuperar';
+            var titulo_toast = 'El usuario se recuperó';
+            var titulo_toast_error = 'El usuario no se pudo recuperar';
+        }
+
+        Swal.fire({
+            title: titulo_preg,
+            icon: 'warning',
+            showDenyButton: true,
+            confirmButtonColor: '#3085d6',
+            denyButtonColor: '#d33',
+            confirmButtonText: confirm_boton,
+            denyButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) { //si la respuesta ha sido confirmada...
+                var datos = new FormData();
+                datos.append("accion", accion);
+                datos.append("id_usu", $id_usu);
+                datos.append("vigencia_usu", $vigencia_usu);
+                $.ajax({
+                    url: "../ajax/usuario.ajax.php",
+                    method: "POST",
+                    data: datos,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    dataType: 'json',
+                    success: function(respuesta) {
+                        if (respuesta == "ok") {
+                            Toast.fire({
+                                icon: 'success',
+                                title: titulo_toast,
+                                position: 'top',
+                            });
+
+                            table.ajax.reload(); //recarga el table
+
+                            $("#mdlGestionarUsuario").modal('hide');
+                            $("#nombreUsuario").val("");
+                            $("#claveUsuario").val("");
+                            $("#avatarUsuario").val("");
+                            $("#rolUsuario").val("");
+
+                        } else {
+                            Toast.fire({
+                                icon: 'error',
+                                title: titulo_toast_error
+                            });
+                        }
+                    }
+                })
+            } else if (result.isDenied) {
+                Swal.fire('Los cambios no se guardaron', '', 'info')
             }
 
-            Swal.fire({
-                title: titulo_preg,
-                icon: 'warning',
-                showDenyButton: true,
-                confirmButtonColor: '#3085d6',
-                denyButtonColor: '#d33',
-                confirmButtonText: confirm_boton,
-                denyButtonText: 'Cancelar',
-            }).then((result) => {
-                if (result.isConfirmed) { //si la respuesta ha sido confirmada...
-                    var datos = new FormData();
-                    datos.append("accion", accion);
-                    datos.append("id_usu", $id_usu);
-                    datos.append("vigencia_usu", $vigencia_usu);
-                    $.ajax({
-                        url: "../ajax/usuario.ajax.php",
-                        method: "POST",
-                        data: datos,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        dataType: 'json',
-                        success: function(respuesta) {
-                            if (respuesta == "ok") {
-                                Toast.fire({
-                                    icon: 'success',
-                                    title: titulo_toast,
-                                    position: 'top',
-                                });
-
-                                table.ajax.reload(); //recarga el table
-
-                                $("#mdlGestionarUsuario").modal('hide');
-                                $("#nombreUsuario").val("");
-                                $("#claveUsuario").val("");
-                                $("#avatarUsuario").val("");
-                                $("#rolUsuario").val("");
-
-                            } else {
-                                Toast.fire({
-                                    icon: 'error',
-                                    title: titulo_toast_error
-                                });
-                            }
-                        }
-                    })
-                } else if (result.isDenied) {
-                    Swal.fire('Los cambios no se guardaron', '', 'info')
-                }
-
-            });
-        })
+        });
+    })
 
 
     document.getElementById("btnGuardarUsuario").addEventListener("click", function() {
