@@ -293,77 +293,77 @@
     // Evento al dar click en el botón dar de baja
     /*===================================================================*/
 
-    // $('#tbl_usuario').on('click', '.btnVigenciaUsuario', function() {
-    //     accion = 5;
-    //     var data = table.row($(this).parents('tr')).data();
-    //     console.log(data);
-    //     $id_usu = data[0];
-    //     $vigencia_usu = data[5];
+    $('#tbl_estudiante').on('click', '.btnVigenciaEstudiante', function() {
+        accion = 5;
+        var data = table.row($(this).parents('tr')).data();
+        console.log(data[4]);
+        $id_estu = data[0];
+        $vigencia_estu = data[4];
 
-    //     if ($vigencia_usu == 1) {
-    //         var titulo_preg = "¿Está seguro que desea dar de baja a este usuario?";
-    //         var confirm_boton = 'Sí, dar de baja';
-    //         var titulo_toast = 'El usuario se dio de baja';
-    //         var titulo_toast_error = 'El usuario no se pudo dar de baja';
-    //     } else {
-    //         var titulo_preg = "¿Está seguro que desea recuperar a este usuario?";
-    //         var confirm_boton = 'Sí, recuperar';
-    //         var titulo_toast = 'El usuario se recuperó';
-    //         var titulo_toast_error = 'El usuario no se pudo recuperar';
-    //     }
+        if ($vigencia_estu == 1) {
+            var titulo_preg = "¿Está seguro que desea dar de baja a este usuario?";
+            var confirm_boton = 'Sí, dar de baja';
+            var titulo_toast = 'El usuario se dio de baja';
+            var titulo_toast_error = 'El usuario no se pudo dar de baja';
+        } else {
+            var titulo_preg = "¿Está seguro que desea recuperar a este usuario?";
+            var confirm_boton = 'Sí, recuperar';
+            var titulo_toast = 'El usuario se recuperó';
+            var titulo_toast_error = 'El usuario no se pudo recuperar';
+        }
 
-    //     Swal.fire({
-    //         title: titulo_preg,
-    //         icon: 'warning',
-    //         showDenyButton: true,
-    //         confirmButtonColor: '#3085d6',
-    //         denyButtonColor: '#d33',
-    //         confirmButtonText: confirm_boton,
-    //         denyButtonText: 'Cancelar',
-    //     }).then((result) => {
-    //         if (result.isConfirmed) { //si la respuesta ha sido confirmada...
-    //             var datos = new FormData();
-    //             datos.append("accion", accion);
-    //             datos.append("id_usu", $id_usu);
-    //             datos.append("vigencia_usu", $vigencia_usu);
-    //             $.ajax({
-    //                 url: "../ajax/usuario.ajax.php",
-    //                 method: "POST",
-    //                 data: datos,
-    //                 cache: false,
-    //                 contentType: false,
-    //                 processData: false,
-    //                 dataType: 'json',
-    //                 success: function(respuesta) {
-    //                     if (respuesta == "ok") {
-    //                         Toast.fire({
-    //                             icon: 'success',
-    //                             title: titulo_toast,
-    //                             position: 'top',
-    //                         });
+        Swal.fire({
+            title: titulo_preg,
+            icon: 'warning',
+            showDenyButton: true,
+            confirmButtonColor: '#3085d6',
+            denyButtonColor: '#d33',
+            confirmButtonText: confirm_boton,
+            denyButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) { //si la respuesta ha sido confirmada...
+                var datos = new FormData();
+                datos.append("accion", accion);
+                datos.append("id_estu", $id_estu);
+                datos.append("vigencia_estu", $vigencia_estu);
+                $.ajax({
+                    url: "../ajax/estudiante.ajax.php",
+                    method: "POST",
+                    data: datos,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    dataType: 'json',
+                    success: function(respuesta) {
+                        if (respuesta == "ok") {
+                            Toast.fire({
+                                icon: 'success',
+                                title: titulo_toast,
+                                position: 'top',
+                            });
 
-    //                         table.ajax.reload(); //recarga el table
+                            table.ajax.reload(); //recarga el table
 
-    //                         $("#mdlGestionarUsuario").modal('hide');
-    //                         $("#nombreUsuario").val("");
-    //                         $("#claveUsuario").val("");
-    //                         $("#avatarUsuario").val("");
-    //                         $("#rolUsuario").val("");
+                            // $("#mdlGestionarEstudiante").modal('hide');
+                            // $("#nombreUsuario").val("");
+                            // $("#claveUsuario").val("");
+                            // $("#avatarUsuario").val("");
+                            // $("#rolUsuario").val("");
 
-    //                     } else {
-    //                         Toast.fire({
-    //                             icon: 'error',
-    //                             title: titulo_toast_error
-    //                         });
-    //                     }
-    //                 }
-    //             })
-    //         } else if (result.isDenied) {
-    //             Swal.fire('Los cambios no se guardaron', '', 'info')
-    //         }
+                        } else {
+                            Toast.fire({
+                                icon: 'error',
+                                title: titulo_toast_error
+                            });
+                        }
+                    }
+                })
+            } else if (result.isDenied) {
+                Swal.fire('Los cambios no se guardaron', '', 'info')
+            }
 
-    //     });
-    // })
+        });
+    })
 
 
     document.getElementById("btnGuardarEstudiante").addEventListener("click", function() {

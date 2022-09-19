@@ -310,11 +310,11 @@
 
                             table.ajax.reload(); //recarga el table
 
-                            $("#mdlGestionarUsuario").modal('hide');
-                            $("#nombreUsuario").val("");
-                            $("#claveUsuario").val("");
-                            $("#avatarUsuario").val("");
-                            $("#rolUsuario").val("");
+                            // $("#mdlGestionarUsuario").modal('hide');
+                            // $("#nombreUsuario").val("");
+                            // $("#claveUsuario").val("");
+                            // $("#avatarUsuario").val("");
+                            // $("#rolUsuario").val("");
 
                         } else {
                             Toast.fire({
