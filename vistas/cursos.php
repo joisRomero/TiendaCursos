@@ -6,10 +6,19 @@ include_once '../controladores/sesionUsuario.php';
 $usuario = new Usuario();
 $sesionUsuario = new SesionUsuario();
 $existeUsuario = 0;
+$idEstudiante = -1;
 if (isset($_SESSION['usuario'])) {
   $user = $_SESSION['usuario'];
   $usuario->setearUsuario($user);
   $existeUsuario = 1;
+
+  $con = new Conexion();
+  $idUsur = $usuario->getId();
+  $s_estudiante = "SELECT * FROM estudiante WHERE id_usu = $idUsur";
+  $r_estudiante = mysqli_query($con->conexion(), $s_estudiante);
+  while ($fila = mysqli_fetch_array($r_estudiante)) {
+    $idEstudiante = $fila['id_estu'];
+  }
 }
 
 ?>
@@ -48,12 +57,12 @@ if (isset($_SESSION['usuario'])) {
             <a class="nav-link" href="index.php">Inicio</a>
           </li>
 
-          <?php 
-            if($existeUsuario == 1){
-              echo '<li class="nav-item dropdown no-arrow active">
+          <?php
+          if ($existeUsuario == 1) {
+            echo '<li class="nav-item dropdown no-arrow active">
                       <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <span class="mr-2 d-none d-lg-inline text-gray-600 small font-weight-bold">'.$usuario->getNombre().'</span>
-                          <img class="rounded-circle" width="25px" height="25px" src="'.$usuario->getImg().'">
+                          <span class="mr-2 d-none d-lg-inline text-gray-600 small font-weight-bold">' . $usuario->getNombre() . '</span>
+                          <img class="rounded-circle" width="25px" height="25px" src="' . $usuario->getImg() . '">
                       </a>
                       <!-- Dropdown - User Information -->
                       <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -68,14 +77,14 @@ if (isset($_SESSION['usuario'])) {
                           </a>
                       </div>
                     </li>';
-            } else {
-              echo '<li class="nav-item active">
+          } else {
+            echo '<li class="nav-item active">
                     <a class="nav-link font-weight-bold" href="iniciarSesion.php">Iniciar sesión</a>
                   </li>';
-            }
+          }
           ?>
 
-          
+
         </ul>
       </div>
     </div>
@@ -127,7 +136,7 @@ if (isset($_SESSION['usuario'])) {
     var formaAca = [];
     $('#contenedor').html(formaAca);
     for (let i = 0; i < formacionesAcademicas.length; i++) {
-      if(formacionesAcademicas[i][3] == id || id == -1){
+      if (formacionesAcademicas[i][3] == id || id == -1) {
         var des = formacionesAcademicas[i][2].substring(0, 150);
         var forma = `<div class="col mb-4">
                         <div class="card bg-dark h-100 ultimo-curso">
@@ -143,23 +152,32 @@ if (isset($_SESSION['usuario'])) {
                         </div>
                         </div>
                       </div>`;
-      formaAca.push(forma);
-      } 
-      
+        formaAca.push(forma);
+      }
+
     }
     $('#contenedor').html(formaAca);
 
   }
 
   $(document).on('click', '.nav-link', function() {
-
-  });
-
-  $(document).on('click', '.nav-link', function() {
     $(this).addClass('activo').siblings().removeClass('activo');
   });
 
   $(document).ready(function() {
+    let idEstudiante = <?php echo $idEstudiante ?>;
+    let accion;
+    var datos = new FormData();
+
+    if (idEstudiante == -1) {
+      accion = 5;
+      datos.append('accion', accion);
+    } else {
+      accion = 6;
+      datos.append('accion', accion);
+      datos.append("idEstudiante", idEstudiante);
+    }
+
     $.ajax({
       url: "../ajax/tipoFormacion.ajax.php",
       type: "POST",
@@ -181,9 +199,10 @@ if (isset($_SESSION['usuario'])) {
     $.ajax({
       url: "../ajax/formacionAcademica.ajax.php",
       type: "POST",
-      data: {
-        'accion': 5
-      },
+      data: datos,
+      cache: false,
+      contentType: false,
+      processData: false,
       dataType: 'json',
       success: function(respuesta) {
         formacionesAcademicas = respuesta;

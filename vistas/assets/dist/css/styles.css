@@ -1,5 +1,15 @@
 html{
     scroll-behavior: smooth;
+    height: 100%;
+}
+
+body {
+    position: relative;
+    padding-bottom: 200px;
+    background: #262431;
+    display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 .activo {
@@ -65,7 +75,8 @@ html{
 .section-login,
 .section-todosCursos,
 .section-verMasCurso,
-.section-registrar {
+.section-registrar,
+.seccion-agradecimiento {
     padding: 100px 0px;
     background: #262431;
 }
@@ -91,6 +102,10 @@ html{
 /* -------------------------------- */
 .footer {
     background: #2f2c3d;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto;
 }
 
 .icono-usuario {

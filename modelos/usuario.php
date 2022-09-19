@@ -43,11 +43,14 @@ class Usuario
         }
     }
 
-
-
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function getRol()
@@ -59,36 +62,4 @@ class Usuario
     {
         return $this->img;
     }
-
-    /*
-    public function registrarUsuario($id, $dni, $nombre, $apPaterno, $apMaterno, $correo, $nombreUsuario, $clave, $vigencia, $rol){
-        $consulta = "INSERT INTO usuario(id_usu, dni_usu, nombre_usu, apPater_usu, apMater_usu, correo_usu, nombreUsuario_usu, clave_usu, rol_usu, vigencia_usu)
-        VALUES('$id', '$dni', '$nombre', '$apPaterno', '$apMaterno', '$correo', '$nombreUsuario', '$clave', '$rol', '$vigencia')";
-        $respuesta = mysqli_query(Conexion::conexion(), $consulta);
-        return $respuesta;
-    }
-
-    public function actualizarUsuario($id, $dni, $nombre, $apPaterno, $apMaterno, $correo, $nombreUsuario, $clave, $vigencia, $rol){
-        $consulta = "UPDATE usuario
-        SET dni_usu = '$dni', nombre_usu = '$nombre', apPater_usu' = $apPaterno', apMater_usu = '$apMaterno', correo_usu = '$correo', nombreUsuario_usu = '$nombreUsuario', clave_usu = '$clave', rol_usu = '$rol', vigencia_usu = '$vigencia'
-        WHERE id_usu = '$id'";
-        $respuesta = mysqli_query(Conexion::conexion(), $consulta);
-        return $respuesta;
-    }
-
-    public function leerUsuario($nombreUsuario){
-        $consulta = "SELECT dni_usu, nombre_usu, apPater_usu', apMater_usu, correo_usu, nombreUsuario_usu, clave_usu, rol_usu, vigencia_usu
-        FROM usuario WHERE nombreUsuario_usu = '$nombreUsuario'";
-        $respuesta = mysqli_query(Conexion::conexion(), $consulta);
-        return $respuesta;
-    }
-
-    public function darDeBajaUsuario($id){
-        $consulta = "UPDATE usuario
-        SET vigencia_usu = 0;
-        WHERE id_usu = '$id'";
-        $respuesta = mysqli_query(Conexion::conexion(), $consulta);
-        return $respuesta;
-    }
-    */
 }

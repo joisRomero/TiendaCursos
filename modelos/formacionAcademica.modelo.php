@@ -24,7 +24,31 @@ class FormacionAcademicaModelo
         return $consulta->fetchAll();
     }
 
-    static function mdlListarFormacionAcademicaResumido(){
+    static function mdlListarNoComprados($idEstudiante)
+    {
+        $vigencia = 1;
+        $consulta = Conexion::conectar()->prepare("SELECT fa.id_forma, fa.nombre_forma, 
+                                                    fa.descripcion_forma,
+                                                    t.id_tipo, fa.img, fa.vigente_forma
+                                                    from formacion_academica as fa
+                                                    INNER JOIN tipo as t
+                                                    on t.id_tipo = fa.id_tipo
+                                                    WHERE id_forma NOT IN (SELECT f.id_forma
+                                                                    FROM compra as c
+                                                                    INNER JOIN formacion_academica as f
+                                                                    on c.id_forma = f.id_forma
+                                                                    WHERE c.id_estu = :idEstudiante and c.vigente_compra = :vigencia)
+                                                    ORDER BY fa.nombre_forma");
+        $consulta->bindParam(":idEstudiante", $idEstudiante, PDO::PARAM_STR);
+        $consulta->bindParam(":vigencia", $vigencia, PDO::PARAM_STR);
+
+        $consulta->execute();
+
+        return $consulta->fetchAll();
+    }
+
+    static function mdlListarFormacionAcademicaResumido()
+    {
         $consulta = Conexion::conectar()->prepare("SELECT fa.id_forma, fa.nombre_forma, 
                                                 fa.descripcion_forma,
 		                                        t.id_tipo, fa.img, fa.vigente_forma
@@ -77,11 +101,10 @@ class FormacionAcademicaModelo
                 $resultado = "error";
             }
         } catch (Exception $e) {
-            $resultado = 'Excepción capturada: '.$e->getMessage()."\n";
+            $resultado = 'Excepción capturada: ' . $e->getMessage() . "\n";
         }
         return $resultado;
-        
-        $consulta =  null;
 
+        $consulta =  null;
     }
 }

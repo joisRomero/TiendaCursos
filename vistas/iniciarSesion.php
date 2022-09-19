@@ -64,7 +64,7 @@
               <a class="nav-link" href="index.php">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="cursos.html">Cursos</a>
+              <a class="nav-link" href="cursos.php">Cursos</a>
             </li>
           </ul>
         </div>

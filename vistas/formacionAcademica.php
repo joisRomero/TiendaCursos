@@ -375,7 +375,6 @@
                      processData: false,
                      dataType: 'json',
                      success: function(respuesta) {
-                         console.log(respuesta);
                          if (respuesta == 'ok') {
                              Toast.fire({
                                  icon: 'success',
