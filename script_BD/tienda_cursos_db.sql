@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-09-2022 a las 12:21:10
+-- Tiempo de generación: 19-09-2022 a las 02:20:51
 -- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.0.19
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -85,8 +85,13 @@ INSERT INTO `formacion_academica` (`id_forma`, `nombre_forma`, `descripcion_form
 (1, 'Desarrollo web HTML, CSS y JS', 'Escribe mejores aplicaciones de Android más rápido con Kotlin. Kotlin es un lenguaje de programación moderno de tipo estático utilizado por más del 60% de los desarrolladores profesionales de Android que ayuda a aumentar la productividad, la satisfacción de los desarrolladores y la seguridad del código.', 'Preparar un entorno de desarrollo para Kotlin\r\nUso de sentencias y tipos de datos básicos\r\nManejo de programación funcional con Kotlin\r\nAgrupación de datos con colecciones', 50, '2022-09-14', 49, 1, './assets/dist/img/formacion/desarrollo_web_completo.jpg', 2, 1),
 (2, 'Elaboración de Blogs con WordPress', 'Adquiere una nueva habilidad. Demuestra tu conocimiento. Lleva tu blog, tu negocio o tu sitio web al siguiente nivel. Todos los cursos los imparten los mejores expertos en WordPress del mundo.', 'Instalación de WordPress\r\nUsar los widgets, temas y plugins.\r\n¡Hacer tu blog SEO friendly!', 64, '2022-09-14', 49, 1, './assets/dist/img/formacion/wordpress_blog.png', 2, 1),
 (3, 'Fundamentos de Social Media Listening', 'Conoce el mundo del Listening en Redes Sociales y aprende todo lo que puede lograr tu empresa si comienza a usar el Listening en sus procesos de venta, marketing, atracción de talento, cuidado de reputación y manejo de crisis. Aprende sencillas técnicas para comunicarte con tus clientes e identificar oportunidades de crecimiento en tu empresa.', 'Entender los fundamentos del Listening en Redes Sociales\r\nHacer un plan de Listening\r\nResolver problemas de tu empresa usando el Listening\r\nIdentificar la plataforma adecuada para tu empresa', 39, '2022-09-04', 39, 1, './assets/dist/img/formacion/social_media_listening.png', 3, 1),
-(4, 'Informes de Redes Sociales con Google Data St', NULL, NULL, 28, '2022-09-01', 39, 1, NULL, 3, 1),
-(5, 'Inglés Nivel Pre-Básico', NULL, NULL, 45, '2022-06-14', 29.9, 1, NULL, 1, 2);
+(4, 'Informes de Redes Sociales con Google Data St', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 28, '2022-09-01', 39, 1, './assets/dist/img/formacion/cursoGeneral.jpg', 3, 1),
+(12, 'NOMBRE NOMBRE NOMBRE', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 127, '2022-09-15', 12312, 1, './assets/dist/img/formacion/cursoGeneral.jpg', 1, 3),
+(13, 'NOMBRE NOMBRE NOMBRE', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 40, '2022-09-18', 233, 1, './assets/dist/img/formacion/cursoGeneral.jpg', 2, 2),
+(14, 'NOMBRE NOMBRE NOMBRE', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 40, '2022-09-18', 233, 1, './assets/dist/img/formacion/cursoGeneral.jpg', 4, 4),
+(15, 'NOMBRE NOMBRE NOMBRE', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 40, '2022-09-18', 233, 1, './assets/dist/img/formacion/cursoGeneral.jpg', 2, 4),
+(16, 'NOMBRE NOMBRE NOMBRE', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 40, '2022-09-18', 233, 1, './assets/dist/img/formacion/cursoGeneral.jpg', 4, 5),
+(17, 'NOMBRE NOMBRE NOMBRE', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 40, '2022-09-18', 233, 1, './assets/dist/img/formacion/cursoGeneral.jpg', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -133,7 +138,7 @@ CREATE TABLE `tipo` (
 
 INSERT INTO `tipo` (`id_tipo`, `nombre_tipo`, `vigente_tipo`) VALUES
 (1, 'Curso', 1),
-(2, 'Taller', 1),
+(2, 'Taller', 0),
 (3, 'Diplomado', 1),
 (4, 'Seminario', 1),
 (5, 'Conferencia', 1);
@@ -148,6 +153,7 @@ CREATE TABLE `usuario` (
   `id_usu` int(10) UNSIGNED NOT NULL,
   `nombre_usu` varchar(45) NOT NULL,
   `clave_usu` varchar(100) NOT NULL,
+  `img_usu` varchar(100) NOT NULL,
   `vigencia_usu` tinyint(4) NOT NULL,
   `rol_usu` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -156,9 +162,9 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usu`, `nombre_usu`, `clave_usu`, `vigencia_usu`, `rol_usu`) VALUES
-(1, 'admin', 'admin', 1, 'A'),
-(3, 'rodo', '1234', 1, 'E');
+INSERT INTO `usuario` (`id_usu`, `nombre_usu`, `clave_usu`, `img_usu`, `vigencia_usu`, `rol_usu`) VALUES
+(1, 'admin', 'admin', 'assets/dist/img/profile/profile.svg', 1, 'A'),
+(3, 'rodo', '1234', 'assets/dist/img/profile/profile.svg', 1, 'E');
 
 --
 -- Índices para tablas volcadas
@@ -232,7 +238,7 @@ ALTER TABLE `estudiante`
 -- AUTO_INCREMENT de la tabla `formacion_academica`
 --
 ALTER TABLE `formacion_academica`
-  MODIFY `id_forma` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_forma` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `profesor`
@@ -244,7 +250,7 @@ ALTER TABLE `profesor`
 -- AUTO_INCREMENT de la tabla `tipo`
 --
 ALTER TABLE `tipo`
-  MODIFY `id_tipo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_tipo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
