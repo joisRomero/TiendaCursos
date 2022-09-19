@@ -98,7 +98,7 @@
                                 <label class="" for="rolUsuario">
                                     <span class="small">Rol del usuario</span><span class="text-danger">*</span>
                                 </label>
-                                <input type="text" class="form-control form-control-sm" id="rolUsuario" name="rolUsuario" placeholder="Ingrese el rol del usuario" required>
+                                <input type="text" class="form-control form-control-sm" id="rolUsuario" name="rolUsuario" placeholder="Ingrese el rol del usuario" disabled>
                                 <div class="invalid-feedback">
                                     Ingrese un rol de usuario
                                 </div>
@@ -242,7 +242,6 @@
             $("#mdlGestionarUsuario").modal('show');
 
             var data = table.row($(this).parents('tr')).data();
-            console.log(data);
             $id_usu = data[0];
             $nombre_usu = data[1];
             $clave_usu = data[2];
@@ -341,9 +340,13 @@
                 if (accion == 2) {
                     var titulo_preg = "¿Está seguro de registrar este Usuario?";
                     var confirm_boton = 'Sí, deseo registrar';
+                    var titulo_toast = 'El usuario se registró correctamente';
+                    var titulo_toast_error = 'El usuario no se pudo registrar';
                 } else if (accion == 4) {
                     var titulo_preg = "¿Está seguro de actualizar este Usuario?";
                     var confirm_boton = 'Sí, deseo actualizar';
+                    var titulo_toast = 'El usuario se actualizó correctamente';
+                    var titulo_toast_error = 'El usuario no se pudo actualizar';
                 }
                 //levanto una ventana modal para preguntar si deseo continuar con el registro
                 Swal.fire({
@@ -361,13 +364,10 @@
                         datos.append("nombre_usu", $("#nombreUsuario").val());
                         datos.append("clave_usu", $("#claveUsuario").val());
                         datos.append("avatar_usu", $("#avatarUsuario").val());
-                        datos.append("rol_usu", $("#rolUsuario").val());
-
                         if (accion == 2) {
-                            var titulo_msg = 'El usuario se registró correctamente';
+                            datos.append("rol_usu", $("#rolUsuario"));
                         } else if (accion == 4) {
                             datos.append("id_usu", $id_usu);
-                            var titulo_msg = 'El usuario se actualizó correctamente';
                         }
                         $.ajax({
                             url: "../ajax/usuario.ajax.php",
@@ -381,7 +381,7 @@
                                 if (respuesta == "ok") {
                                     Toast.fire({
                                         icon: 'success',
-                                        title: titulo_msg,
+                                        title: titulo_toast,
                                         position: 'top',
                                     });
 
@@ -396,7 +396,7 @@
                                 } else {
                                     Toast.fire({
                                         icon: 'error',
-                                        title: 'El usuario no se pudo agregar'
+                                        title: titulo_toast_error
                                     });
 
                                 }

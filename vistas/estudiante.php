@@ -301,15 +301,15 @@
         $vigencia_estu = data[4];
 
         if ($vigencia_estu == 1) {
-            var titulo_preg = "¿Está seguro que desea dar de baja a este usuario?";
+            var titulo_preg = "¿Está seguro que desea dar de baja a este estudiante?";
             var confirm_boton = 'Sí, dar de baja';
-            var titulo_toast = 'El usuario se dio de baja';
-            var titulo_toast_error = 'El usuario no se pudo dar de baja';
+            var titulo_toast = 'El estudiante se dio de baja';
+            var titulo_toast_error = 'El estudiante no se pudo dar de baja';
         } else {
-            var titulo_preg = "¿Está seguro que desea recuperar a este usuario?";
+            var titulo_preg = "¿Está seguro que desea recuperar a este estudiante?";
             var confirm_boton = 'Sí, recuperar';
-            var titulo_toast = 'El usuario se recuperó';
-            var titulo_toast_error = 'El usuario no se pudo recuperar';
+            var titulo_toast = 'El estudiante se recuperó';
+            var titulo_toast_error = 'El estudiante no se pudo recuperar';
         }
 
         Swal.fire({
