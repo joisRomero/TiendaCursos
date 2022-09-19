@@ -46,7 +46,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item" onclick="CargarContenido('estudiantes.php', 'content-wrapper')">
+                <li class="nav-item" onclick="CargarContenido('estudiante.php', 'content-wrapper')">
                     <a class="item nav-link cursor-pointer">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
@@ -62,7 +62,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item" onclick="CargarContenido('usuarios.php', 'content-wrapper')">
+                <li class="nav-item" onclick="CargarContenido('usuario.php', 'content-wrapper')">
                     <a class="item nav-link cursor-pointer">
                         <i class="nav-icon fas fa-th"></i>
                         <p>

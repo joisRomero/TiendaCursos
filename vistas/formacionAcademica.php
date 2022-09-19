@@ -194,6 +194,7 @@
              },
              dataType: 'json',
              success: function(respuesta) {
+                console.log("respuesta", respuesta);
                  var opciones = '<option value="0">--Seleccione--</option>';
                  for (let index = 0; index < respuesta.length; index++) {
                      if (respuesta[index][2] == 1) {
