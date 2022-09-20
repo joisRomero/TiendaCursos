@@ -45,7 +45,7 @@
 
             <!-- Cabecera de la ventana -->
             <div class="modal-header bg-gray py-1 align-items-center">
-                <h5 class="modal-title">Agregar Usuario</h5>
+                <h5 class="modal-title">Usuario</h5>
                 <button type="button" class="btn btn-outline-primary text-white border-0 fs-5" data-dismiss="modal" id="btnCerrarModal">
                     <i class="far fa-times-circle"></i>
                 </button>
@@ -161,8 +161,8 @@
                 }
             },
             columnDefs: [{
-                    targets: 0,
-                    visible: false //id
+                    targets: 0, //id
+                    visible: false
                 },
                 {
                     targets: 4, //vigencia
@@ -218,7 +218,6 @@
         $clave_usu = data[2];
         $img_usu = data[3];
         $rol_usu = data[4];
-        console.log(id_usu);
         $('#nombreUsuario').val(data[1]);
         $('#claveUsuario').val(data[2]);
         $('#avatarUsuario').val(data[3]);
@@ -282,7 +281,7 @@
                             Toast.fire({
                                 icon: 'success',
                                 title: titulo_toast,
-                                position: 'top',
+                                position: 'top'
                             });
 
                             table.ajax.reload();
