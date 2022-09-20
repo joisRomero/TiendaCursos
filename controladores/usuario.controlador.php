@@ -14,8 +14,8 @@ class UsuarioControlador{
         return $respuesta;
     }
 
-    static function ctrRegistrarUsuario($nombre_usu, $clave_usu, $img_usu, $rol_usu){
-        $respuesta = UsuarioModelo::mdlRegistrarUsuario($nombre_usu, $clave_usu, $img_usu, $rol_usu);
+    static function ctrRegistrarUsuario($nombre_usu, $clave_usu, $rol_usu){
+        $respuesta = UsuarioModelo::mdlRegistrarUsuario($nombre_usu, $clave_usu, $rol_usu);
         return $respuesta;
     }
 

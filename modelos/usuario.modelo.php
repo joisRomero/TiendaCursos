@@ -23,9 +23,10 @@ class UsuarioModelo {
         return $consulta->fetchAll();
     }
 
-    static function mdlRegistrarUsuario($nombre_usu, $clave_usu, $img_usu, $rol_usu) {
+    static function mdlRegistrarUsuario($nombre_usu, $clave_usu, $rol_usu) {
         try {
             $vigencia_usu = 1;
+            $img_usu = "assets/dist/img/profile/profile.svg";
             $consulta = Conexion::conectar()->prepare("INSERT INTO usuario(nombre_usu, clave_usu, img_usu, rol_usu, vigencia_usu)
             VALUES(:nombre_usu, :clave_usu, :img_usu, :rol_usu, :vigencia_usu)");
 

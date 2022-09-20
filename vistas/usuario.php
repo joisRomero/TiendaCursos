@@ -82,18 +82,6 @@
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="form-group mb-2">
-                                <label class="" for="avatarUsuario">
-                                    <span class="small">Avatar de usuario</span><span class="text-danger">*</span>
-                                </label>
-                                <input type="text" class="form-control form-control-sm" id="avatarUsuario" name="avatarUsuario" placeholder="Ingrese avatar de usuario" required>
-                                <div class="invalid-feedback">
-                                    Ingrese un avatar de usuario
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
                             <div class="form-group mb-2 rdRolUsuario">
                                 <label>
                                     <span class="small">Rol del usuario</span>
@@ -356,7 +344,6 @@
                         datos.append("accion", accion);
                         datos.append("nombre_usu", $("#nombreUsuario").val());
                         datos.append("clave_usu", $("#claveUsuario").val());
-                        datos.append("avatar_usu", $("#avatarUsuario").val());
                         if (accion == 2) {
                             datos.append("rol_usu", rolUsuario);
                         } else if (accion == 4) {
