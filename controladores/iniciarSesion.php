@@ -3,8 +3,8 @@ include_once '../modelos/usuario.php';
 include_once 'sesionUsuario.php';
 
 
-session_start();
-ob_start();
+$sesionUsuario = new SesionUsuario();
+$usuario = new Usuario();
 
 if (isset($_SESSION['usuario'])) {
     $rol = $_SESSION['rol'];
@@ -16,8 +16,7 @@ if (isset($_SESSION['usuario'])) {
 } 
 
 if(isset($_POST['nombreUsuario']) && isset($_POST['clave'])) {
-    $sesionUsuario = new SesionUsuario();
-    $usuario = new Usuario();
+
     $usuarioForm = $_POST['nombreUsuario'];
     $claveForm = $_POST['clave'];
 

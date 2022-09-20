@@ -61,10 +61,12 @@ if (isset($_POST['accion']) && $_POST['accion'] == 1) { // Listar
 
 } else if (isset($_POST['accion']) && $_POST['accion'] == 4) { // Actualizar
     $usuario = new ajaxUsuario();
+    
     $usuario->id_usu = $_POST["id_usu"];
     $usuario->nombre_usu = $_POST["nombre_usu"];
     $usuario->clave_usu = $_POST["clave_usu"];
     $usuario->img_usu = $_POST["avatar_usu"];
+    
     $usuario->ajaxActualizarUsuario();
 
 } else if (isset($_POST['accion']) && $_POST['accion'] == 5) { // Vigencia

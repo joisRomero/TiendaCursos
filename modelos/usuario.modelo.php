@@ -56,7 +56,7 @@ class UsuarioModelo {
             $consulta = Conexion::conectar()->prepare("UPDATE usuario
                         SET nombre_usu = :nombre_usu,
                             clave_usu = :clave_usu,
-                            img_usu = :img_usu,
+                            img_usu = :img_usu
                         WHERE id_usu = :id_usu");
             $consulta->bindParam(":id_usu", $id_usu, PDO::PARAM_STR);
             $consulta->bindParam(":nombre_usu", $nombre_usu, PDO::PARAM_STR);
@@ -71,6 +71,7 @@ class UsuarioModelo {
                 $resultado = "error";
             }
         }catch (Exception $e){
+
             $resultado = 'Excepción capturada: ' . $e->getMessage() . "\n";
         }
         return $resultado;
