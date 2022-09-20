@@ -5,7 +5,7 @@ require_once 'conexion.php';
 class UsuarioModelo {
     //Lista para la tabla
     static function mdlListarUsuario() {
-        $consulta = Conexion::conectar()->prepare("SELECT id_usu, nombre_usu, clave_usu, img_usu, rol_usu, vigencia_usu, '' as opciones FROM usuario ORDER BY nombre_usu ASC");
+        $consulta = Conexion::conectar()->prepare("SELECT id_usu, nombre_usu, clave_usu, rol_usu, vigencia_usu, '' as opciones FROM usuario ORDER BY nombre_usu ASC");
         $consulta->execute();
         return $consulta->fetchAll();
     }

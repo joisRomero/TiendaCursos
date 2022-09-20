@@ -22,7 +22,6 @@
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Contraseña</th>
-                            <th>Avatar</th>
                             <th>Rol</th>
                             <th>Estado</th>
                             <th class="text-cetner">Opciones</th>
@@ -166,7 +165,7 @@
                     visible: false //id
                 },
                 {
-                    targets: 5, //vigencia
+                    targets: 4, //vigencia
                     orderable: false,
                     render: function(data, type, full, meta) {
                         if (data == '1') {
@@ -177,7 +176,7 @@
                     }
                 },
                 {
-                    targets: 6, //opciones
+                    targets: 5, //opciones
                     orderable: false,
                     render: function(data, type, full, meta) {
                         var check = "<span class='btnVigenciaUsuario text-success h5 px-1' style='cursor:pointer;'>" +
@@ -191,7 +190,7 @@
                         var editar = "<span class='btnEditarUsuario text-primary px-1' style='cursor:pointer;'>" +
                             "<i class='fas fa-pencil-alt fs-5'></i>" +
                             "</span>";
-                        if (full[5] == 1) { //posición de la vigencia
+                        if (full[4] == 1) { //posición de la vigencia
                             return "<center>" + editar + aspa + "</center>";
                         } else {
                             return "<center>" + editar + check + "</center>";
@@ -242,7 +241,7 @@
         accion = 5;
         var data = table.row($(this).parents('tr')).data();
         $id_usu = data[0];
-        $vigencia_usu = data[5];
+        $vigencia_usu = data[4];
 
         if ($vigencia_usu == 1) {
             var titulo_preg = "¿Está seguro que desea dar de baja a este usuario?";
