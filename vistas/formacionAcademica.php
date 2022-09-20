@@ -357,13 +357,12 @@
                  var datos = new FormData();
                  
                  datos.append('accion', accion);
-
                  datos.append("nombre", $("#nombre").val());
                  datos.append("descripcion", $("#descripcion").val());
                  datos.append("aprendizaje", $("#aprendizaje").val());
                  datos.append("duracion", $("#duracion").val());
                  datos.append("precio", $("#precio").val());
-                 datos.append("imagen", $("#imagen").val());
+                 datos.append("imagen", $('#imagen')[0].files[0]);
                  datos.append("profesor", $("#profesor").val());
                  datos.append("tipo", $("#tipo").val());
 
