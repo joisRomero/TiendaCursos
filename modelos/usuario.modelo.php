@@ -52,17 +52,15 @@ class UsuarioModelo {
         $consulta =  null;
     }
 
-    static function mdlActualizarUsuario($id_usu, $nombre_usu, $clave_usu, $img_usu) {
+    static function mdlActualizarUsuario($id_usu, $nombre_usu, $clave_usu) {
         try{
             $consulta = Conexion::conectar()->prepare("UPDATE usuario
                         SET nombre_usu = :nombre_usu,
-                            clave_usu = :clave_usu,
-                            img_usu = :img_usu
+                            clave_usu = :clave_usu
                         WHERE id_usu = :id_usu");
             $consulta->bindParam(":id_usu", $id_usu, PDO::PARAM_STR);
             $consulta->bindParam(":nombre_usu", $nombre_usu, PDO::PARAM_STR);
             $consulta->bindParam(":clave_usu", $clave_usu, PDO::PARAM_STR);
-            $consulta->bindParam(":img_usu", $img_usu, PDO::PARAM_STR);
 
             $consulta->execute();
 
