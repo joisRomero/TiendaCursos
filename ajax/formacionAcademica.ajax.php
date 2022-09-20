@@ -56,12 +56,12 @@ if(isset($_POST['accion']) && $_POST['accion'] == 1){ //LISTAR
     $formacionAcademica = new ajaxFormacionAcademica();
     $formacionAcademica->ajaxListarFormacionAcademica();
 } else if (isset($_POST['accion']) && $_POST['accion'] == 2){ //REGISTRAR
-
-    $nombreImagen = $_FILES['imagen']['name'];
-    $temporal = $_FILES['imagen']['tmp_name'];
-    $carpeta = "./asset/dist/img";
+    $imagen = $_FILES['imagen'];
+    $nombreImagen = $imagen['name'];
+    $temporal = $imagen['tmp_name'];
+    $carpeta = "../vistas/assets/dist/img/formacion";
     $ruta = $carpeta.'/'.$nombreImagen;
-	move_uploaded_file($temporal,$carpeta."/".$nombreImagen);
+	move_uploaded_file($temporal, $carpeta."/".$nombreImagen);
 
     $registrarFormacacion = new ajaxFormacionAcademica();
     $registrarFormacacion->nombre = $_POST["nombre"];

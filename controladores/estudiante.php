@@ -27,8 +27,8 @@ $r_formaciones = mysqli_query($con->conexion(), $s_formaciones);
 
 function limitarCadena($cadena, $limite){
 	if(strlen($cadena) > $limite){
-		// Entonces corta la cadena y ponle el sufijo
 		return substr($cadena, 0, $limite) . "[...]";
 	}
 	return $cadena;
 }
+

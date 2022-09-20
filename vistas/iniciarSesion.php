@@ -125,7 +125,7 @@
                   </button>
                   <p class="small fw-bold mt-2 pt-1 mb-0">
                     ¿No tienes una cuenta?
-                    <a href="registrar.html" class="link-danger">Registrarse</a>
+                    <a href="registrar.php" class="link-danger">Registrarse</a>
                   </p>
                 </div>
               </form>
