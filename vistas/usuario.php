@@ -94,11 +94,21 @@
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="form-group mb-2">
-                                <label class="" for="rolUsuario">
-                                    <span class="small">Rol del usuario</span><span class="text-danger">*</span>
+                            <div class="form-group mb-2 rdRolUsuario">
+                                <label>
+                                    <span class="small">Rol del usuario</span>
+                                    <span class="text-danger text-danger-asterisco">*</span>
                                 </label>
-                                <input type="text" class="form-control form-control-sm" id="rolUsuario" name="rolUsuario" placeholder="Ingrese el rol del usuario" disabled>
+                                <div class="d-flex mb-3">
+                                    <div class="custom-control custom-radio pr-3">
+                                        <input type="radio" class="custom-control-input" id="rdAdmin" name="radio-stacked" value="A" required>
+                                        <label class="custom-control-label small" for="rdAdmin">Administrador</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" id="rdEstu" name="radio-stacked" value="E" required>
+                                        <label class="custom-control-label small" for="rdEstu">Estudiante</label>
+                                    </div>
+                                </div>
                                 <div class="invalid-feedback">
                                     Ingrese un rol de usuario
                                 </div>
@@ -132,21 +142,6 @@
     });
 
     $(document).ready(function() {
-
-
-        $.ajax({
-            url: "../ajax/usuario.ajax.php",
-            type: "POST",
-            data: {
-                'accion': 1
-            },
-            dataType: 'json',
-            success: function(respuesta) {
-                console.log("respuesta", respuesta);
-            }
-        });
-
-
         /*===================================================================*/
         // CARGA DEL LISTADO CON EL PLUGIN DATATABLE JS
         /*===================================================================*/
@@ -156,6 +151,7 @@
                     text: 'Agregar Usuario',
                     className: 'addNewRecord',
                     action: function(e, dt, node, config) {
+                        limpiar();
                         $("#mdlGestionarUsuario").modal('show');
                         accion = 2; //registrar
                     }
@@ -220,48 +216,43 @@
                 url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
             }
         });
-
-        /*===================================================================*/
-        // Limpiar inputs al cerrar la ventana modal
-        /*===================================================================*/
-
-        $("#btnCerrarModal, #btnCancelarUsuario").on('click', function() {
-
-            $("#nombreUsuario").val("");
-            $("#claveUsuario").val("");
-            $("#avatarUsuario").val("");
-            $("#rolUsuario").val("");
-        })
-
-        /*===================================================================*/
-        // Evento al dar click en el botón (lapiz) editar
-        /*===================================================================*/
-        $('#tbl_usuario').on('click', '.btnEditarUsuario', function() {
-            accion = 4;
-
-            $("#mdlGestionarUsuario").modal('show');
-
-            var data = table.row($(this).parents('tr')).data();
-            $id_usu = data[0];
-            $nombre_usu = data[1];
-            $clave_usu = data[2];
-            $img_usu = data[3];
-            $rol_usu = data[4];
-            $('#nombreUsuario').val(data[1]);
-            $('#claveUsuario').val(data[2]);
-            $('#avatarUsuario').val(data[3]);
-            $('#rolUsuario').val(data[4]);
-        })
     })
+
+    /*===================================================================*/
+    // Evento al dar click en el botón (lapiz) editar
+    /*===================================================================*/
+    $('#tbl_usuario').on('click', '.btnEditarUsuario', function() {
+        accion = 4;
+
+        $("#mdlGestionarUsuario").modal('show');
+        var data = table.row($(this).parents('tr')).data();
+        id_usu = data[0];
+        $nombre_usu = data[1];
+        $clave_usu = data[2];
+        $img_usu = data[3];
+        $rol_usu = data[4];
+        console.log(id_usu);
+        $('#nombreUsuario').val(data[1]);
+        $('#claveUsuario').val(data[2]);
+        $('#avatarUsuario').val(data[3]);
+        $("#rdAdmin").prop("disabled", true);
+        $("#rdEstu").prop("disabled", true);
+        if ($rol_usu == 'A') {
+            $("#rdAdmin").prop("checked", true);
+        } else {
+            $("#rdEstu").prop("checked", true);
+        }
+        $('.text-danger-asterisco').each(function() {
+            $(this).hide();
+        });
+    });
 
     /*===================================================================*/
     // Evento al dar click en el botón dar de baja
     /*===================================================================*/
-
     $('#tbl_usuario').on('click', '.btnVigenciaUsuario', function() {
         accion = 5;
         var data = table.row($(this).parents('tr')).data();
-        console.log(data);
         $id_usu = data[0];
         $vigencia_usu = data[5];
 
@@ -307,13 +298,7 @@
                                 position: 'top',
                             });
 
-                            table.ajax.reload(); //recarga el table
-
-                            // $("#mdlGestionarUsuario").modal('hide');
-                            // $("#nombreUsuario").val("");
-                            // $("#claveUsuario").val("");
-                            // $("#avatarUsuario").val("");
-                            // $("#rolUsuario").val("");
+                            table.ajax.reload();
 
                         } else {
                             Toast.fire({
@@ -333,10 +318,18 @@
 
     document.getElementById("btnGuardarUsuario").addEventListener("click", function() {
 
+        //capturo el valor del radio button(ADMINISTRADOR O ESTUDIANTE)
+        var rolUsuario;
+        var rdRecorrido = document.getElementsByName("radio-stacked");
+        for (var i = 0; i < rdRecorrido.length; i++) {
+            if (rdRecorrido[i].checked) {
+                rolUsuario = rdRecorrido[i].value;
+            }
+        }
+
         var forms = document.getElementsByClassName('needs-validation');
         var validacion = Array.prototype.filter.call(forms, function(form) {
-            if (form.checkValidity() === true) {
-                //validar ingreso de campos
+            if (form.checkValidity() === true) { //validar ingreso de campos
                 if (accion == 2) {
                     var titulo_preg = "¿Está seguro de registrar este Usuario?";
                     var confirm_boton = 'Sí, deseo registrar';
@@ -365,9 +358,9 @@
                         datos.append("clave_usu", $("#claveUsuario").val());
                         datos.append("avatar_usu", $("#avatarUsuario").val());
                         if (accion == 2) {
-                            datos.append("rol_usu", $("#rolUsuario"));
+                            datos.append("rol_usu", rolUsuario);
                         } else if (accion == 4) {
-                            datos.append("id_usu", $id_usu);
+                            datos.append("id_usu", id_usu);
                         }
                         $.ajax({
                             url: "../ajax/usuario.ajax.php",
@@ -378,46 +371,77 @@
                             processData: false,
                             dataType: 'json',
                             success: function(respuesta) {
-                                if (respuesta == "ok") {
+                                if (respuesta == "ok") { //si se enviaron los datos
                                     Toast.fire({
                                         icon: 'success',
                                         title: titulo_toast,
-                                        position: 'top',
+                                        position: 'top'
                                     });
 
                                     table.ajax.reload(); //recarga el table
 
                                     $("#mdlGestionarUsuario").modal('hide');
-                                    $("#nombreUsuario").val("");
-                                    $("#claveUsuario").val("");
-                                    $("#avatarUsuario").val("");
-                                    $("#rolUsuario").val("");
+                                    limpiar();
 
                                 } else {
                                     Toast.fire({
                                         icon: 'error',
-                                        title: titulo_toast_error
+                                        title: titulo_toast_error,
+                                        position: 'top'
                                     });
+                                    table.ajax.reload();
+                                    $("#mdlGestionarUsuario").modal('hide');
+                                    limpiar();
 
                                 }
                             }
                         })
                     } else if (result.isDenied) {
+                        //si cancelaste la confirmación(2da ventana modal)
                         Swal.fire('Los cambios no se guardaron', '', 'info');
                         $("#mdlGestionarUsuario").modal('hide');
-                        $("#nombreUsuario").val("");
+                        limpiar();
                     }
                 })
             } else {
+                //si no llenaste todo el formulario
                 $("#nombreUsuario").addClass("is-invalid");
+                $("#claveUsuario").addClass("is-invalid");
+                $("#avatarUsuario").addClass("is-invalid");
+                $("#rdAdmin").addClass("is-invalid");
+                $("#rdEstu").addClass("is-invalid");
             }
 
             form.classList.add('was-validate');
         });
     });
 
+    //botón cancelar
     document.getElementById("btnCancelarUsuario").addEventListener("click", function() {
+        limpiar();
+    })
+
+    //cerrar modal
+    $("#btnCerrarModal").on('click', function() {
+        limpiar();
+    })
+
+    function limpiar() {
         $(".needs-validation").removeClass("was-validate");
         $("#nombreUsuario").removeClass("is-invalid");
-    })
+        $("#claveUsuario").removeClass("is-invalid");
+        $("#avatarUsuario").removeClass("is-invalid");
+        $("#rdAdmin").removeClass("is-invalid");
+        $("#rdEstu").removeClass("is-invalid");
+        $("#rdAdmin").prop("checked", false);
+        $("#rdEstu").prop("checked", false);
+        $("#rdAdmin").prop("disabled", false);
+        $("#rdEstu").prop("disabled", false);
+        $('.text-danger-asterisco').each(function() {
+            $(this).show();
+        });
+        $("#nombreUsuario").val("");
+        $("#claveUsuario").val("");
+        $("#avatarUsuario").val("");
+    }
 </script>

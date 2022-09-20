@@ -10,7 +10,7 @@ class UsuarioModelo {
         return $consulta->fetchAll();
     }
 
-    //Lista para la ventana modal::COMBOBOX
+    //Lista para el REGISTRO (ventana modal) del ESTUDIANTE::COMBOBOX(NO TOCAR!)
     static function mdlListaUsuario() {
         $consulta = Conexion::conectar()->prepare("SELECT id_usu, nombre_usu, clave_usu, img_usu, rol_usu, vigencia_usu
         FROM usuario
