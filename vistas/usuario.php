@@ -60,7 +60,7 @@
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
                                 <label class="" for="nombreUsuario">
-                                    <span class="small">Nombre de usuario</span><span class="text-danger">*</span>
+                                    <span class="small">Nombre</span><span class="text-danger">*</span>
                                 </label>
                                 <input type="text" class="form-control form-control-sm" id="nombreUsuario" name="nombreUsuario" placeholder="Ingrese el nombre del usuario" required>
                                 <div class="invalid-feedback">
@@ -71,7 +71,7 @@
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
                                 <label class="" for="claveUsuario">
-                                    <span class="small">Contraseña de usuario</span><span class="text-danger">*</span>
+                                    <span class="small">Contraseña</span><span class="text-danger">*</span>
                                 </label>
                                 <input type="text" class="form-control form-control-sm" id="claveUsuario" name="claveUsuario" placeholder="Ingrese la contraseña del usuario" required>
                                 <div class="invalid-feedback">

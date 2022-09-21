@@ -12,7 +12,7 @@ class UsuarioModelo {
 
     //Lista para el REGISTRO (ventana modal) del ESTUDIANTE::COMBOBOX(NO TOCAR!)
     static function mdlListaUsuario() {
-        $consulta = Conexion::conectar()->prepare("SELECT id_usu, nombre_usu, clave_usu, img_usu, rol_usu, vigencia_usu
+        $consulta = Conexion::conectar()->prepare("SELECT id_usu, nombre_usu, vigencia_usu
         FROM usuario
         WHERE rol_usu='E' AND id_usu NOT IN (SELECT u.id_usu
         FROM usuario as u

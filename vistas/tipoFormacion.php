@@ -59,7 +59,7 @@
                         <div class="col-lg-12">
                             <div class="form-group mb-2">
                                 <label class="" for="nombreTipo">
-                                    <span class="small">Nombre del Tipo</span><span class="text-danger">*</span>
+                                    <span class="small">Nombre</span><span class="text-danger">*</span>
                                 </label>
                                 <input type="text" class="form-control form-control-sm" id="nombreTipo" name="nombreTipo" placeholder="Ingrese el nombre del tipo" required>
                                 <div class="invalid-feedback">
