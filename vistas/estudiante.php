@@ -97,7 +97,7 @@
                         <!-- Usuario -->
                         <div class="col-lg-6 div-usuario">
                             <div class="form-group mb-2">
-                                <input id="idUsuarioEstudiante" value="" hidden>
+                                <input id="idUsuarioEstudiante" value="" hidden disabled>
                                 <label class="" for="usuarioEstudiante">
                                     <span class="small">Usuario</span><span class="text-danger">*</span>
                                 </label>
@@ -324,12 +324,6 @@
 
                             table.ajax.reload(); //recarga el table
 
-                            // $("#mdlGestionarEstudiante").modal('hide');
-                            // $("#nombreUsuario").val("");
-                            // $("#claveUsuario").val("");
-                            // $("#avatarUsuario").val("");
-                            // $("#rolUsuario").val("");
-
                         } else {
                             Toast.fire({
                                 icon: 'error',
@@ -347,7 +341,6 @@
 
 
     document.getElementById("btnGuardarEstudiante").addEventListener("click", function() {
-
         var forms = document.getElementsByClassName('needs-validation');
         var validacion = Array.prototype.filter.call(forms, function(form) {
             if (form.checkValidity() === true) { //validar ingreso de campos
@@ -403,6 +396,7 @@
 
                                     $("#mdlGestionarEstudiante").modal('hide');
                                     limpiar();
+                                    //SE NECESITA RECARGAR EL COMBOBOX¿¿??
 
                                 } else {
                                     Toast.fire({
@@ -464,5 +458,6 @@
         $("#apellidosEstudiante").val("");
         $("#correoEstudiante").val("");
         $("#usuarioEstudiante").val(0);
+        $("#idUsuarioEstudiante").val("");
     }
 </script>

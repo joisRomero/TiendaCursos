@@ -8,12 +8,9 @@ class FormacionAcademicaModelo
     static function mdlListarFormacionAcademica()
     {
         $consulta = Conexion::conectar()->prepare(
-            "SELECT fa.id_forma, fa.nombre_forma,
-            fa.descripcion_forma, fa.aprendizaje_forma,
-		    concat(fa.duracion_forma, ' Horas'),
-            fa.fechaCreacion_forma, fa.precio_forma,
-            concat(p.nombre_pro,' ',p.apPater_pro,' ' ,p.apMater_pro) as nombreProfesor,
-		    t.nombre_tipo, fa.img, fa.vigente_forma,'' as opciones
+            "SELECT fa.id_forma, fa.nombre_forma, fa.descripcion_forma,
+            fa.aprendizaje_forma, fa.duracion_forma, fa.fechaCreacion_forma,
+            fa.precio_forma, p.id_pro, concat(p.nombre_pro,' ',p.apPater_pro,' ' ,p.apMater_pro) as nombreProfesor, t.id_tipo, t.nombre_tipo, fa.img, fa.vigente_forma,'' as opciones
             from formacion_academica as fa
             INNER JOIN profesor as p
             on fa.id_pro = p.id_pro
@@ -67,7 +64,7 @@ class FormacionAcademicaModelo
         return $consulta->fetchAll();
     }
 
-    static function mdlRegistrarFormacionAcademica($nombre, $descripcion, $aprendizaje, $duracion, $precio, $img, $profesor, $tipo ) {
+    static function mdlRegistrarFormacionAcademica($nombre, $descripcion, $aprendizaje, $duracion, $precio, $img, $profesor, $tipo) {
         try {
             $fecha = date('Y-m-d');
             $vigencia = 1;
@@ -101,6 +98,75 @@ class FormacionAcademicaModelo
                 $resultado = "error";
             }
         } catch (Exception $e) {
+            $resultado = 'Excepción capturada: ' . $e->getMessage() . "\n";
+        }
+        return $resultado;
+
+        $consulta =  null;
+    }
+
+    static function mdlActualizarFormacionAcademica($id, $nombre, $descripcion, $aprendizaje, $duracion, $precio, $profesor, $tipo) {
+
+        try {
+            $consulta = Conexion::conectar()->prepare("UPDATE formacion_academica
+                SET nombre_forma = :nombre,
+                    descripcion_forma = :descripcion,
+                    aprendizaje_forma = :aprendizaje,
+                    duracion_forma = :duracion,
+                    precio_forma = :precio,
+                    id_pro = :profesor,
+                    id_tipo = :tipo
+                WHERE id_forma = :id");
+            $consulta->bindParam(":id", $id, PDO::PARAM_STR);
+            $consulta->bindParam(":nombre", $nombre, PDO::PARAM_STR);
+            $consulta->bindParam(":descripcion", $descripcion, PDO::PARAM_STR);
+            $consulta->bindParam(":aprendizaje", $aprendizaje, PDO::PARAM_STR);
+            $consulta->bindParam(":duracion", $duracion, PDO::PARAM_STR);
+            $consulta->bindParam(":precio", $precio, PDO::PARAM_STR);
+            $consulta->bindParam(":profesor", $profesor, PDO::PARAM_STR);
+            $consulta->bindParam(":tipo", $tipo, PDO::PARAM_STR);
+
+            $consulta->execute();
+
+            if ($consulta) {
+                $resultado = "ok";
+            } else {
+                $resultado = "error";
+            }
+        }catch(Exception $e) {
+            $resultado = 'Excepción capturada: ' . $e->getMessage() . "\n";
+        }
+        return $resultado;
+
+        $consulta =  null;
+    }
+
+    static function mdlCambiarVigenciaFormacionAcademica($id, $vigencia) {
+        try {
+            if($vigencia == 1) {
+                $vigencia = 0;
+                $consulta = Conexion::conectar()->prepare("UPDATE formacion_academica
+                    SET vigente_forma = :vigencia
+                    WHERE id_forma = :id");
+                $consulta->bindParam(":id", $id, PDO::PARAM_STR);
+                $consulta->bindParam(":vigencia", $vigencia, PDO::PARAM_STR);
+            } else {
+                $vigencia = 1;
+                $consulta = Conexion::conectar()->prepare("UPDATE formacion_academica
+                    SET vigente_forma = :vigencia
+                    WHERE id_forma = :id");
+                $consulta->bindParam(":id", $id, PDO::PARAM_STR);
+                $consulta->bindParam(":vigencia", $vigencia, PDO::PARAM_STR);
+            }
+
+            $consulta->execute();
+
+            if ($consulta) {
+                $resultado = "ok";
+            } else {
+                $resultado = "error";
+            }
+        }catch(Exception $e) {
             $resultado = 'Excepción capturada: ' . $e->getMessage() . "\n";
         }
         return $resultado;
