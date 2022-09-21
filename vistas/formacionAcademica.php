@@ -159,7 +159,7 @@
                                 </label>
                                 <textarea class="form-control form-control-sm" id="descripcionFormacion" name="descripcionFormacion" required cols="30" rows="10"></textarea>
                                 <div class="invalid-feedback">
-                                    Seleccione una descripción para esta formación
+                                    Ingrese una descripción para esta formación
                                 </div>
                             </div>
                         </div>
@@ -233,7 +233,7 @@
             url: "../ajax/profesor.ajax.php",
             type: "POST",
             data: {
-                'accion': 1
+                'accion': 3
             },
             dataType: 'json',
             success: function(respuesta) {
