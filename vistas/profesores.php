@@ -129,7 +129,7 @@
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
                                 <label class="" for="imagenProfesor">
-                                    <span class="small">Imagen </span><span class="text-danger">*</span>
+                                    <span class="small">Imagen </span><span class="text-danger text-danger-asterisco">*</span>
                                 </label>
                                 <input type="file" class="form-control-file form-control-sm" id="imagenProfesor" name="imagenProfesor">
                                 <div class="invalid-feedback">
@@ -227,15 +227,15 @@
                     targets: 8, //opciones
                     orderable: false,
                     render: function(datqa, type, full, meta) {
-                        var check = "<span class='btnVigenciaFormacion text-success h5 px-1' style='cursor:pointer;'>" +
+                        var check = "<span class='btnVigenciaProfesor text-success h5 px-1' style='cursor:pointer;'>" +
                             "<i class='fa fa-check fs-5'></i>" +
                             "</span>";
 
-                        var aspa = "<span class='btnVigenciaFormacion text-danger h5 px-1' style='cursor:pointer;'>" +
+                        var aspa = "<span class='btnVigenciaProfesor text-danger h5 px-1' style='cursor:pointer;'>" +
                             "<i class='fa fa-times'></i>" +
                             "</span>";
 
-                        var editar = "<span class='btnEditarFormacion text-primary px-1' style='cursor:pointer;'>" +
+                        var editar = "<span class='btnEditarProfesor text-primary px-1' style='cursor:pointer;'>" +
                             "<i class='fas fa-pencil-alt fs-5'></i>" +
                             "</span>";
                         if (full[8] == 1) { //posición de la vigencia
@@ -256,31 +256,19 @@
     /*===================================================================*/
     // click en el botón (lapiz) editar LLENA LA VENTANA MODAL
     /*===================================================================*/
-    $('#tbl_formacionAcademica').on('click', '.btnEditarFormacion', function() {
-        accion = 3;
+    $('#tbl_profesor').on('click', '.btnEditarProfesor', function() {
+        accion = 4;
 
-        $("#mdlGestionarFormacionAcademica").modal('show');
+        $("#mdlGestionarProfesor").modal('show');
         var data = table.row($(this).parents('tr')).data();
         $id = data[0];
 
-        //llenes los id
-        $(document).on('change', '#profesorFormacion', function(event) {
-            $('#idProfesorFormacion').val($(this).val());
-        }); // lleno el value profesor
-        $(document).on('change', '#tipoFormacion', function(event) {
-            $('#idTipoFormacion').val($(this).val());
-        }); // lleno el value tipo
-
-        $('#nombreFormacion').val(data[1]);
-        $('#descripcionFormacion').val(data[2]);
-        $('#aprendizajeFormacion').val(data[3]);
-        $('#duracionFormacion').val(data[4]);
-        $('#precioFormacion').val(data[6]);
-        $('#profesorFormacion').val(data[7]); //id Profe me llena el nombre
-        $('#idProfesorFormacion').val(data[7]); //id Profe me llena el value
-        $('#tipoFormacion').val(data[9]); //id Tipo me llena el nombre
-        $('#idTipoFormacion').val(data[9]); //id Tipo me llena el value
-        $('#imagenFormacion').prop('disabled', true);
+        $('#dniProfesor').val(data[1]);
+        $('#nombreProfesor').val(data[2]);
+        $('#apPaterProfesor').val(data[3]);
+        $('#apMaterProfesor').val(data[4]);
+        $('#descripcionProfesor').val(data[5]);
+        $('#imagenProfesor').prop('disabled', true);
         $('.text-danger-asterisco').each(function() {
             $(this).hide();
         });
@@ -290,23 +278,23 @@
     /*===================================================================*/
     // Evento al dar click en el botón dar de baja
     /*===================================================================*/
-    $('#tbl_formacionAcademica').on('click', '.btnVigenciaFormacion', function() {
-        accion = 4;
+    $('#tbl_profesor').on('click', '.btnVigenciaProfesor', function() {
+        accion = 5;
         var data = table.row($(this).parents('tr')).data();
         $id = data[0];
-        $vigencia = data[12];
-        console.log("data del lapicito: " + data[12]);
+        $vigencia = data[7];
+        console.log("data de la vigencia: " + data[7]);
 
         if ($vigencia == 1) {
-            var titulo_preg = "¿Está seguro que desea dar de baja a esta formación?";
+            var titulo_preg = "¿Está seguro que desea dar de baja a este profesor?";
             var confirm_boton = 'Sí, dar de baja';
-            var titulo_toast = 'La formación se dio de baja';
-            var titulo_toast_error = 'La formación no se pudo dar de baja';
+            var titulo_toast = 'El profesor se dio de baja';
+            var titulo_toast_error = 'El profesor no se pudo dar de baja';
         } else {
-            var titulo_preg = "¿Está seguro que desea recuperar a esta formación?";
+            var titulo_preg = "¿Está seguro que desea recuperar a este profesor?";
             var confirm_boton = 'Sí, recuperar';
-            var titulo_toast = 'La formación se recuperó';
-            var titulo_toast_error = 'La formación no se pudo recuperar';
+            var titulo_toast = 'El profesor se recuperó';
+            var titulo_toast_error = 'El profesor no se pudo recuperar';
         }
 
         Swal.fire({
@@ -324,7 +312,7 @@
                 datos.append("id", $id);
                 datos.append("vigencia", $vigencia);
                 $.ajax({
-                    url: "../ajax/formacionAcademica.ajax.php",
+                    url: "../ajax/profesor.ajax.php",
                     method: "POST",
                     data: datos,
                     cache: false,
@@ -357,20 +345,20 @@
         });
     })
 
-    document.getElementById("btnGuardarFormacion").addEventListener("click", function() {
+    document.getElementById("btnGuardarProfesor").addEventListener("click", function() {
         var forms = document.getElementsByClassName('needs-validation');
         var validacion = Array.prototype.filter.call(forms, function(form) {
             if (form.checkValidity() === true) { //validar ingreso de campos
                 if (accion == 2) {
-                    var titulo_preg = "¿Está seguro de registrar esta Formación?";
+                    var titulo_preg = "¿Está seguro de registrar a este profesor?";
                     var confirm_boton = 'Sí, deseo registrar';
-                    var titulo_toast = 'La Formación se registró correctamente';
-                    var titulo_toast_error = 'La Formación no se pudo registrar';
-                } else if (accion == 3) {
-                    var titulo_preg = "¿Está seguro de actualizar esta Formación?";
+                    var titulo_toast = 'El profesor se registró correctamente';
+                    var titulo_toast_error = 'El profesor no se pudo registrar';
+                } else if (accion == 4) {
+                    var titulo_preg = "¿Está seguro de actualizar a este profesor?";
                     var confirm_boton = 'Sí, deseo actualizar';
-                    var titulo_toast = 'La Formación se actualizó correctamente';
-                    var titulo_toast_error = 'La Formación no se pudo actualizar';
+                    var titulo_toast = 'El profesor se actualizó correctamente';
+                    var titulo_toast_error = 'El profesor no se pudo actualizar';
                 }
                 //levanto una ventana modal para preguntar si deseo continuar con el registro
                 Swal.fire({
@@ -385,20 +373,18 @@
                     if (result.isConfirmed) { //si la respuesta ha sido confirmada...
                         var datos = new FormData();
                         datos.append('accion', accion);
-                        datos.append("nombre", $("#nombreFormacion").val());
-                        datos.append("duracion", $("#duracionFormacion").val());
-                        datos.append("precio", $("#precioFormacion").val());
-                        datos.append("profesor", $("#idProfesorFormacion").val());
-                        datos.append("tipo", $("#idTipoFormacion").val());
-                        datos.append("descripcion", $("#descripcionFormacion").val());
-                        datos.append("aprendizaje", $("#aprendizajeFormacion").val());
+                        datos.append("dni", $("#dniProfesor").val());
+                        datos.append("nombre", $("#nombreProfesor").val());
+                        datos.append("apPater", $("#apPaterProfesor").val());
+                        datos.append("apMater", $("#apMaterProfesor").val());
+                        datos.append("descripcion", $("#descripcionProfesor").val());
                         if (accion == 2) {
-                            datos.append("imagen", $('#imagenFormacion')[0].files[0]);
-                        } else if (accion == 3) {
+                            datos.append("imagen", $('#imagenProfesor')[0].files[0]);
+                        } else if (accion == 4) {
                             datos.append("id", $id);
                         }
                         $.ajax({
-                            url: "../ajax/formacionAcademica.ajax.php",
+                            url: "../ajax/profesor.ajax.php",
                             method: "POST",
                             data: datos,
                             cache: false,
@@ -415,10 +401,25 @@
 
                                     table.ajax.reload(); //recarga el table
 
-                                    $("#mdlGestionarFormacionAcademica").modal('hide');
+                                    $("#mdlGestionarProfesor").modal('hide');
                                     limpiar();
                                     //SE NECESITA RECARGAR EL COMBOBOX¿¿??
 
+                                } else if (respuesta == "no-unico") {
+                                    Toast.fire({
+                                        icon: 'info',
+                                        title: 'Este dni le corresponde a otro profesor',
+                                        position: 'top'
+                                    });
+                                    table.ajax.reload(); //recarga el table
+
+                                } else if (respuesta == "no-ocho") {
+                                    Toast.fire({
+                                        icon: 'info',
+                                        title: 'El DNI debe tener 8 caracteres',
+                                        position: 'top'
+                                    });
+                                    table.ajax.reload(); //recarga el table
                                 } else {
                                     Toast.fire({
                                         icon: 'error',
@@ -426,7 +427,7 @@
                                         position: 'top'
                                     });
                                     table.ajax.reload();
-                                    $("#mdlGestionarFormacionAcademica").modal('hide');
+                                    $("#mdlGestionarProfesor").modal('hide');
                                     limpiar();
 
                                 }
@@ -435,21 +436,19 @@
                     } else if (result.isDenied) {
                         //si cancelaste la confirmación (2da ventana modal)
                         Swal.fire('Los cambios no se guardaron', '', 'info');
-                        $("#mdlGestionarFormacionAcademica").modal('hide');
+                        $("#mdlGestionarProfesor").modal('hide');
                         limpiar();
                     }
                 })
             } else {
                 //si no llenaste todo el formulario
                 $(".needs-validation").removeClass("was-validate");
-                $("#nombreFormacion").removeClass("is-invalid");
-                $("#duracionFormacion").removeClass("is-invalid");
-                $("#precioFormacion").removeClass("is-invalid");
-                $("#profesorFormacion").removeClass("is-invalid");
-                $("#tipoFormacion").removeClass("is-invalid");
-                $("#imagenFormacion").removeClass("is-invalid");
-                $("#descripcionFormacion").removeClass("is-invalid");
-                $("#aprendizajeFormacion").removeClass("is-invalid");
+                $("#dniProfesor").removeClass("is-invalid");
+                $("#nombreProfesor").removeClass("is-invalid");
+                $("#apPaterProfesor").removeClass("is-invalid");
+                $("#apMaterProfesor").removeClass("is-invalid");
+                $("#descripcionProfesor").removeClass("is-invalid");
+                $("#imagenProfesor").removeClass("is-invalid");
             }
 
             form.classList.add('was-validate');
@@ -457,7 +456,7 @@
     });
 
     //botón cancelar
-    document.getElementById("btnCancelarFormacion").addEventListener("click", function() {
+    document.getElementById("btnCancelarProfesor").addEventListener("click", function() {
         limpiar();
     })
 
@@ -468,30 +467,24 @@
 
     function limpiar() {
         $(".needs-validation").removeClass("was-validate");
-        $("#nombreFormacion").removeClass("is-invalid");
-        $("#duracionFormacion").removeClass("is-invalid");
-        $("#precioFormacion").removeClass("is-invalid");
-        $("#profesorFormacion").removeClass("is-invalid");
-        $("#tipoFormacion").removeClass("is-invalid");
-        $("#imagenFormacion").removeClass("is-invalid");
-        $("#descripcionFormacion").removeClass("is-invalid");
-        $("#aprendizajeFormacion").removeClass("is-invalid");
+        $("#dniProfesor").removeClass("is-invalid");
+        $("#nombreProfesor").removeClass("is-invalid");
+        $("#apPaterProfesor").removeClass("is-invalid");
+        $("#apMaterProfesor").removeClass("is-invalid");
+        $("#descripcionProfesor").removeClass("is-invalid");
+        $("#imagenProfesor").removeClass("is-invalid");
 
-        $('#imagenFormacion').prop('disabled', false);
+        $('#imagenProfesor').prop('disabled', false);
         $('.text-danger-asterisco').each(function() {
             $(this).show();
         });
 
-        $("#nombreFormacion").val("");
-        $("#duracionFormacion").val("");
-        $("#precioFormacion").val("");
-        $("#profesorFormacion").val(0);
-        $("#idProfesorFormacion").val("");
-        $("#tipoFormacion").val(0);
-        $("#idTipoFormacion").val("");
-        $("#imagenFormacion").val("");
-        $("#descripcionFormacion").val("");
-        $("#aprendizajeFormacion").val("");
+        $("#dniProfesor").val("");
+        $("#nombreProfesor").val("");
+        $("#apPaterProfesor").val("");
+        $("#apMaterProfesor").val("");
+        $("#descripcionProfesor").val("");
+        $("#imagenProfesor").val("");
 
     }
 </script>

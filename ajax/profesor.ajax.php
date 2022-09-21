@@ -30,7 +30,7 @@ class ajaxProfesor {
     }
 
     public function ajaxActualizarProfesor() {
-        $profesor = ProfesorControlador::ctrActualizarProfesor($this->id, $this->dni, $this->nombre, $this->apPater, $this->apMater, $this->descripcion, $this->img);
+        $profesor = ProfesorControlador::ctrActualizarProfesor($this->id, $this->dni, $this->nombre, $this->apPater, $this->apMater, $this->descripcion);
         echo json_encode($profesor);
     }
 
@@ -46,13 +46,20 @@ if (isset($_POST['accion']) && $_POST['accion'] == 1){  //LISTAR
     $profesor->ajaxListaProfesor();
 
 } else if (isset($_POST['accion']) && $_POST['accion'] == 2) { // REGISTRAR
+    $imagen = $_FILES['imagen'];
+    $nombreImagen = $imagen['name'];
+    $temporal = $imagen['tmp_name'];
+    $carpeta = "../vistas/assets/dist/img/profesor";
+    $ruta = $carpeta.'/'.$nombreImagen;
+	move_uploaded_file($temporal, $carpeta."/".$nombreImagen);
+
     $profesor = new ajaxProfesor();
     $profesor->dni = $_POST['dni'];
     $profesor->nombre = $_POST['nombre'];
     $profesor->apPater = $_POST['apPater'];
     $profesor->apMater = $_POST['apMater'];
     $profesor->descripcion = $_POST['descripcion'];
-    $profesor->img = $_POST['img'];
+    $profesor->img = $ruta;
     $profesor->ajaxRegistrarProfesor();
 
 } else if(isset($_POST['accion']) && $_POST['accion'] == 3){ //LISTAR PARA COMBOBOX
@@ -67,7 +74,6 @@ if (isset($_POST['accion']) && $_POST['accion'] == 1){  //LISTAR
     $profesor->apPater = $_POST['apPater'];
     $profesor->apMater = $_POST['apMater'];
     $profesor->descripcion = $_POST['descripcion'];
-    $profesor->img = $_POST['img'];
     $profesor->ajaxActualizarProfesor();
 
 } else if (isset($_POST['accion']) && $_POST['accion'] == 5) { // VIGENCIA

@@ -19,8 +19,8 @@ class ProfesorControlador{
         return $respuesta;
     }
 
-    static function ctrActualizarProfesor($id, $dni, $nombre, $apPater, $apMater, $descripcion, $img) {
-        $respuesta = ProfesorModelo::mdlActualizarProfesor($id, $dni, $nombre, $apPater, $apMater, $descripcion, $img);
+    static function ctrActualizarProfesor($id, $dni, $nombre, $apPater, $apMater, $descripcion) {
+        $respuesta = ProfesorModelo::mdlActualizarProfesor($id, $dni, $nombre, $apPater, $apMater, $descripcion);
         return $respuesta;
     }
 
