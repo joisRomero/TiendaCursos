@@ -7,18 +7,20 @@ class FormacionAcademicaModelo
 
     static function mdlListarFormacionAcademica()
     {
-        $consulta = Conexion::conectar()->prepare("SELECT fa.id_forma, fa.nombre_forma, 
-                                                fa.descripcion_forma, fa.aprendizaje_forma, 
-		                                        concat(fa.duracion_forma, ' Horas'), 
-                                                fa.fechaCreacion_forma, fa.precio_forma,
-                                                concat(p.nombre_pro,' ',p.apPater_pro,' ' ,p.apMater_pro) as nombreProfesor, 
-		                                        t.nombre_tipo, fa.img, fa.vigente_forma,'' as opciones
-                                                from formacion_academica as fa
-                                                INNER JOIN profesor as p
-                                                on fa.id_pro = p.id_pro
-                                                INNER JOIN tipo as t
-                                                on t.id_tipo = fa.id_tipo
-                                                ORDER BY fa.nombre_forma");
+        $consulta = Conexion::conectar()->prepare(
+            "SELECT fa.id_forma, fa.nombre_forma,
+            fa.descripcion_forma, fa.aprendizaje_forma,
+		    concat(fa.duracion_forma, ' Horas'),
+            fa.fechaCreacion_forma, fa.precio_forma,
+            concat(p.nombre_pro,' ',p.apPater_pro,' ' ,p.apMater_pro) as nombreProfesor,
+		    t.nombre_tipo, fa.img, fa.vigente_forma,'' as opciones
+            from formacion_academica as fa
+            INNER JOIN profesor as p
+            on fa.id_pro = p.id_pro
+            INNER JOIN tipo as t
+            on t.id_tipo = fa.id_tipo
+            ORDER BY fa.nombre_forma"
+            );
         $consulta->execute();
 
         return $consulta->fetchAll();
@@ -27,18 +29,20 @@ class FormacionAcademicaModelo
     static function mdlListarNoComprados($idEstudiante)
     {
         $vigencia = 1;
-        $consulta = Conexion::conectar()->prepare("SELECT fa.id_forma, fa.nombre_forma, 
-                                                    fa.descripcion_forma,
-                                                    t.id_tipo, fa.img, fa.vigente_forma
-                                                    from formacion_academica as fa
-                                                    INNER JOIN tipo as t
-                                                    on t.id_tipo = fa.id_tipo
-                                                    WHERE id_forma NOT IN (SELECT f.id_forma
-                                                                    FROM compra as c
-                                                                    INNER JOIN formacion_academica as f
-                                                                    on c.id_forma = f.id_forma
-                                                                    WHERE c.id_estu = :idEstudiante and c.vigente_compra = :vigencia)
-                                                    ORDER BY fa.nombre_forma");
+        $consulta = Conexion::conectar()->prepare(
+            "SELECT fa.id_forma, fa.nombre_forma,
+            fa.descripcion_forma,
+            t.id_tipo, fa.img, fa.vigente_forma
+            from formacion_academica as fa
+            INNER JOIN tipo as t
+            on t.id_tipo = fa.id_tipo
+            WHERE id_forma NOT IN (SELECT f.id_forma
+            FROM compra as c
+            INNER JOIN formacion_academica as f
+            on c.id_forma = f.id_forma
+            WHERE c.id_estu = :idEstudiante and c.vigente_compra = :vigencia)
+            ORDER BY fa.nombre_forma"
+            );
         $consulta->bindParam(":idEstudiante", $idEstudiante, PDO::PARAM_STR);
         $consulta->bindParam(":vigencia", $vigencia, PDO::PARAM_STR);
 
@@ -49,38 +53,34 @@ class FormacionAcademicaModelo
 
     static function mdlListarFormacionAcademicaResumido()
     {
-        $consulta = Conexion::conectar()->prepare("SELECT fa.id_forma, fa.nombre_forma, 
-                                                fa.descripcion_forma,
-		                                        t.id_tipo, fa.img, fa.vigente_forma
-                                                from formacion_academica as fa
-                                                INNER JOIN tipo as t
-                                                on t.id_tipo = fa.id_tipo
-                                                WHERE fa.vigente_forma = 1
-                                                ORDER BY fa.nombre_forma");
+        $consulta = Conexion::conectar()->prepare("SELECT fa.id_forma, fa.nombre_forma,
+        fa.descripcion_forma,
+		t.id_tipo, fa.img, fa.vigente_forma
+        from formacion_academica as fa
+        INNER JOIN tipo as t
+        on t.id_tipo = fa.id_tipo
+        WHERE fa.vigente_forma = 1
+        ORDER BY fa.nombre_forma"
+        );
         $consulta->execute();
 
         return $consulta->fetchAll();
     }
 
-    static function mdlRegistrarFormacionAcademica(
-        $nombre,
-        $descripcion,
-        $aprendizaje,
-        $duracion,
-        $precio,
-        $img,
-        $profesor,
-        $tipo
-    ) {
+    static function mdlRegistrarFormacionAcademica($nombre, $descripcion, $aprendizaje, $duracion, $precio, $img, $profesor, $tipo ) {
         try {
             $fecha = date('Y-m-d');
             $vigencia = 1;
-            $consulta = Conexion::conectar()->prepare("INSERT INTO formacion_academica ( 
-                                                nombre_forma, descripcion_forma, aprendizaje_forma, 
-                                                duracion_forma, fechaCreacion_forma, precio_forma, 
-                                                vigente_forma, img, id_pro, id_tipo) 
-                                                VALUES (:nombre, :descripcion, :aprendizaje,
-                                                :duracion, :fechaCreacion, :precio, :vigencia, :img, :profesor, :tipo)");
+            $consulta = Conexion::conectar()->prepare(
+                "INSERT INTO formacion_academica (
+                    nombre_forma, descripcion_forma, aprendizaje_forma,
+                    duracion_forma, fechaCreacion_forma, precio_forma,
+                    vigente_forma, img, id_pro, id_tipo)
+                VALUES (
+                    :nombre, :descripcion, :aprendizaje,
+                    :duracion, :fechaCreacion, :precio,
+                    :vigencia, :img, :profesor, :tipo)"
+                );
 
             $consulta->bindParam(":nombre", $nombre, PDO::PARAM_STR);
             $consulta->bindParam(":descripcion", $descripcion, PDO::PARAM_STR);
