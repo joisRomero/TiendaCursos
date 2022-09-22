@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-09-2022 a las 02:20:51
+-- Tiempo de generación: 21-09-2022 a las 12:48:22
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -35,6 +35,17 @@ CREATE TABLE `compra` (
   `id_forma` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `compra`
+--
+
+INSERT INTO `compra` (`id_compra`, `fecha_compra`, `vigente_compra`, `id_estu`, `id_forma`) VALUES
+(1, '2022-09-20', 1, 1, 1),
+(2, '2022-09-20', 1, 1, 16),
+(3, '2022-09-20', 1, 1, 12),
+(4, '2022-09-20', 1, 2, 2),
+(5, '2022-09-20', 1, 2, 14);
+
 -- --------------------------------------------------------
 
 --
@@ -55,7 +66,9 @@ CREATE TABLE `estudiante` (
 --
 
 INSERT INTO `estudiante` (`id_estu`, `nombre_estu`, `apellidos_estu`, `correo_estu`, `vigente_estu`, `id_usu`) VALUES
-(1, 'David', 'Gonzales Bocanegra', 'jgonzalesbo@unprg.edu.pe', 1, 3);
+(1, 'David', 'Gonzales Bocanegra', 'jgonzalesbo@unprg.edu.pe', 1, 3),
+(2, 'José Luis', 'Romero Oliva', 'jromeroo@unprg.edu.pe', 1, 4),
+(7, 'ejemplo', 'ejemplos ejemplos', 'ejemplo@ejemplo.com', 1, 8);
 
 -- --------------------------------------------------------
 
@@ -90,8 +103,7 @@ INSERT INTO `formacion_academica` (`id_forma`, `nombre_forma`, `descripcion_form
 (13, 'NOMBRE NOMBRE NOMBRE', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 40, '2022-09-18', 233, 1, './assets/dist/img/formacion/cursoGeneral.jpg', 2, 2),
 (14, 'NOMBRE NOMBRE NOMBRE', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 40, '2022-09-18', 233, 1, './assets/dist/img/formacion/cursoGeneral.jpg', 4, 4),
 (15, 'NOMBRE NOMBRE NOMBRE', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 40, '2022-09-18', 233, 1, './assets/dist/img/formacion/cursoGeneral.jpg', 2, 4),
-(16, 'NOMBRE NOMBRE NOMBRE', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 40, '2022-09-18', 233, 1, './assets/dist/img/formacion/cursoGeneral.jpg', 4, 5),
-(17, 'NOMBRE NOMBRE NOMBRE', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 40, '2022-09-18', 233, 1, './assets/dist/img/formacion/cursoGeneral.jpg', 1, 4);
+(16, 'NOMBRE NOMBRE NOMBRE', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur', 40, '2022-09-18', 233, 1, './assets/dist/img/formacion/cursoGeneral.jpg', 4, 5);
 
 -- --------------------------------------------------------
 
@@ -141,7 +153,8 @@ INSERT INTO `tipo` (`id_tipo`, `nombre_tipo`, `vigente_tipo`) VALUES
 (2, 'Taller', 0),
 (3, 'Diplomado', 1),
 (4, 'Seminario', 1),
-(5, 'Conferencia', 1);
+(5, 'Conferencia', 1),
+(15, 'Maestría', 1);
 
 -- --------------------------------------------------------
 
@@ -154,17 +167,22 @@ CREATE TABLE `usuario` (
   `nombre_usu` varchar(45) NOT NULL,
   `clave_usu` varchar(100) NOT NULL,
   `img_usu` varchar(100) NOT NULL,
-  `vigencia_usu` tinyint(4) NOT NULL,
-  `rol_usu` char(1) NOT NULL
+  `rol_usu` char(1) NOT NULL,
+  `vigencia_usu` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usu`, `nombre_usu`, `clave_usu`, `img_usu`, `vigencia_usu`, `rol_usu`) VALUES
-(1, 'admin', 'admin', 'assets/dist/img/profile/profile.svg', 1, 'A'),
-(3, 'rodo', '1234', 'assets/dist/img/profile/profile.svg', 1, 'E');
+INSERT INTO `usuario` (`id_usu`, `nombre_usu`, `clave_usu`, `img_usu`, `rol_usu`, `vigencia_usu`) VALUES
+(1, 'admin', 'admin', 'assets/dist/img/profile/profile.svg', 'A', 1),
+(3, 'rodo', '1234', 'assets/dist/img/profile/profile.svg', 'E', 1),
+(4, 'pepe', 'pepe', 'assets/dist/img/profile/profile_2.svg', 'E', 1),
+(7, 'terminator', '1234', 'asd', 'E', 1),
+(8, 'ejemplo', '123456789', 'assets/dist/img/profile/profile.svg', 'E', 1),
+(15, 'ejemplo2', '1234', 'assets/dist/img/profile/profile.svg', 'E', 1),
+(16, 'ejemplo3', 'qwerty', 'asd', 'E', 1);
 
 --
 -- Índices para tablas volcadas
@@ -201,7 +219,8 @@ ALTER TABLE `formacion_academica`
 --
 ALTER TABLE `profesor`
   ADD PRIMARY KEY (`id_pro`),
-  ADD UNIQUE KEY `id_pro_UNIQUE` (`id_pro`);
+  ADD UNIQUE KEY `id_pro_UNIQUE` (`id_pro`),
+  ADD UNIQUE KEY `dni_pro` (`dni_pro`);
 
 --
 -- Indices de la tabla `tipo`
@@ -226,19 +245,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `id_compra` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_compra` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `estudiante`
 --
 ALTER TABLE `estudiante`
-  MODIFY `id_estu` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_estu` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `formacion_academica`
 --
 ALTER TABLE `formacion_academica`
-  MODIFY `id_forma` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_forma` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `profesor`
@@ -250,13 +269,13 @@ ALTER TABLE `profesor`
 -- AUTO_INCREMENT de la tabla `tipo`
 --
 ALTER TABLE `tipo`
-  MODIFY `id_tipo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_tipo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usu` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_usu` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas

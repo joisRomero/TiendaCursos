@@ -22,7 +22,6 @@
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Contraseña</th>
-                            <th>Avatar</th>
                             <th>Rol</th>
                             <th>Estado</th>
                             <th class="text-cetner">Opciones</th>
@@ -46,7 +45,7 @@
 
             <!-- Cabecera de la ventana -->
             <div class="modal-header bg-gray py-1 align-items-center">
-                <h5 class="modal-title">Agregar Usuario</h5>
+                <h5 class="modal-title">Usuario</h5>
                 <button type="button" class="btn btn-outline-primary text-white border-0 fs-5" data-dismiss="modal" id="btnCerrarModal">
                     <i class="far fa-times-circle"></i>
                 </button>
@@ -61,7 +60,7 @@
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
                                 <label class="" for="nombreUsuario">
-                                    <span class="small">Nombre de usuario</span><span class="text-danger">*</span>
+                                    <span class="small">Nombre</span><span class="text-danger">*</span>
                                 </label>
                                 <input type="text" class="form-control form-control-sm" id="nombreUsuario" name="nombreUsuario" placeholder="Ingrese el nombre del usuario" required>
                                 <div class="invalid-feedback">
@@ -72,23 +71,11 @@
                         <div class="col-lg-6">
                             <div class="form-group mb-2">
                                 <label class="" for="claveUsuario">
-                                    <span class="small">Contraseña de usuario</span><span class="text-danger">*</span>
+                                    <span class="small">Contraseña</span><span class="text-danger">*</span>
                                 </label>
                                 <input type="text" class="form-control form-control-sm" id="claveUsuario" name="claveUsuario" placeholder="Ingrese la contraseña del usuario" required>
                                 <div class="invalid-feedback">
                                     Ingrese una contraseña de usuario
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="form-group mb-2">
-                                <label class="" for="avatarUsuario">
-                                    <span class="small">Avatar de usuario</span><span class="text-danger">*</span>
-                                </label>
-                                <input type="text" class="form-control form-control-sm" id="avatarUsuario" name="avatarUsuario" placeholder="Ingrese avatar de usuario" required>
-                                <div class="invalid-feedback">
-                                    Ingrese un avatar de usuario
                                 </div>
                             </div>
                         </div>
@@ -174,11 +161,11 @@
                 }
             },
             columnDefs: [{
-                    targets: 0,
-                    visible: false //id
+                    targets: 0, //id
+                    visible: false
                 },
                 {
-                    targets: 5, //vigencia
+                    targets: 4, //vigencia
                     orderable: false,
                     render: function(data, type, full, meta) {
                         if (data == '1') {
@@ -189,7 +176,7 @@
                     }
                 },
                 {
-                    targets: 6, //opciones
+                    targets: 5, //opciones
                     orderable: false,
                     render: function(data, type, full, meta) {
                         var check = "<span class='btnVigenciaUsuario text-success h5 px-1' style='cursor:pointer;'>" +
@@ -203,7 +190,7 @@
                         var editar = "<span class='btnEditarUsuario text-primary px-1' style='cursor:pointer;'>" +
                             "<i class='fas fa-pencil-alt fs-5'></i>" +
                             "</span>";
-                        if (full[5] == 1) { //posición de la vigencia
+                        if (full[4] == 1) { //posición de la vigencia
                             return "<center>" + editar + aspa + "</center>";
                         } else {
                             return "<center>" + editar + check + "</center>";
@@ -231,7 +218,6 @@
         $clave_usu = data[2];
         $img_usu = data[3];
         $rol_usu = data[4];
-        console.log(id_usu);
         $('#nombreUsuario').val(data[1]);
         $('#claveUsuario').val(data[2]);
         $('#avatarUsuario').val(data[3]);
@@ -254,7 +240,7 @@
         accion = 5;
         var data = table.row($(this).parents('tr')).data();
         $id_usu = data[0];
-        $vigencia_usu = data[5];
+        $vigencia_usu = data[4];
 
         if ($vigencia_usu == 1) {
             var titulo_preg = "¿Está seguro que desea dar de baja a este usuario?";
@@ -295,7 +281,7 @@
                             Toast.fire({
                                 icon: 'success',
                                 title: titulo_toast,
-                                position: 'top',
+                                position: 'top'
                             });
 
                             table.ajax.reload();
@@ -356,7 +342,6 @@
                         datos.append("accion", accion);
                         datos.append("nombre_usu", $("#nombreUsuario").val());
                         datos.append("clave_usu", $("#claveUsuario").val());
-                        datos.append("avatar_usu", $("#avatarUsuario").val());
                         if (accion == 2) {
                             datos.append("rol_usu", rolUsuario);
                         } else if (accion == 4) {

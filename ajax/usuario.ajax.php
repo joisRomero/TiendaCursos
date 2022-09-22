@@ -8,7 +8,6 @@ class ajaxUsuario {
     public $id_usu;
     public $nombre_usu;
     public $clave_usu;
-    public $img_usu;
     public $rol_usu;
     public $vigencia_usu;
 
@@ -26,13 +25,13 @@ class ajaxUsuario {
 
     public function ajaxRegistrarUsuario()
     {
-        $usuario = UsuarioControlador::ctrRegistrarUsuario($this->nombre_usu, $this->clave_usu, $this->img_usu, $this->rol_usu);
+        $usuario = UsuarioControlador::ctrRegistrarUsuario($this->nombre_usu, $this->clave_usu, $this->rol_usu);
         echo json_encode($usuario);
     }
 
     public function ajaxActualizarUsuario()
     {
-        $usuario = UsuarioControlador::ctrActualizarUsuario($this->id_usu, $this->nombre_usu, $this->clave_usu, $this->img_usu);
+        $usuario = UsuarioControlador::ctrActualizarUsuario($this->id_usu, $this->nombre_usu, $this->clave_usu);
         echo json_encode($usuario);
     }
 
@@ -51,7 +50,6 @@ if (isset($_POST['accion']) && $_POST['accion'] == 1) { // Listar
     $usuario = new ajaxUsuario();
     $usuario->nombre_usu = $_POST["nombre_usu"];
     $usuario->clave_usu = $_POST["clave_usu"];
-    $usuario->img_usu = $_POST["avatar_usu"];
     $usuario->rol_usu = $_POST["rol_usu"];
     $usuario->ajaxRegistrarUsuario();
 
@@ -61,12 +59,9 @@ if (isset($_POST['accion']) && $_POST['accion'] == 1) { // Listar
 
 } else if (isset($_POST['accion']) && $_POST['accion'] == 4) { // Actualizar
     $usuario = new ajaxUsuario();
-    
     $usuario->id_usu = $_POST["id_usu"];
     $usuario->nombre_usu = $_POST["nombre_usu"];
     $usuario->clave_usu = $_POST["clave_usu"];
-    $usuario->img_usu = $_POST["avatar_usu"];
-    
     $usuario->ajaxActualizarUsuario();
 
 } else if (isset($_POST['accion']) && $_POST['accion'] == 5) { // Vigencia

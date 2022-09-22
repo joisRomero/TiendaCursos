@@ -22,7 +22,7 @@
                             <th></th>
                             <th>ID</th>
                             <th>Nombre</th>
-                            <th>Vigencia</th>
+                            <th>Estado</th>
                             <th class="text-cetner">Opciones</th>
                         </tr>
                     </thead>
@@ -44,7 +44,7 @@
 
             <!-- Cabecera de la ventana -->
             <div class="modal-header bg-gray py-1 align-items-center">
-                <h5 class="modal-title">Agregar Tipo</h5>
+                <h5 class="modal-title">Tipo</h5>
                 <button type="button" class="btn btn-outline-primary text-white border-0 fs-5" data-dismiss="modal" id="btnCerrarModal">
                     <i class="far fa-times-circle"></i>
                 </button>
@@ -59,7 +59,7 @@
                         <div class="col-lg-12">
                             <div class="form-group mb-2">
                                 <label class="" for="nombreTipo">
-                                    <span class="small">Nombre del Tipo</span><span class="text-danger">*</span>
+                                    <span class="small">Nombre</span><span class="text-danger">*</span>
                                 </label>
                                 <input type="text" class="form-control form-control-sm" id="nombreTipo" name="nombreTipo" placeholder="Ingrese el nombre del tipo" required>
                                 <div class="invalid-feedback">
@@ -94,21 +94,6 @@
     });
 
     $(document).ready(function() {
-
-
-        $.ajax({
-            url: "../ajax/tipoFormacion.ajax.php",
-            type: "POST",
-            data: {
-                'accion': 1
-            },
-            dataType: 'json',
-            success: function(respuesta) {
-                console.log("respuesta", respuesta);
-            }
-        });
-
-
         /*===================================================================*/
         // CARGA DEL LISTADO CON EL PLUGIN DATATABLE JS
         /*===================================================================*/
@@ -118,6 +103,7 @@
                     text: 'Agregar Tipo',
                     className: 'addNewRecord',
                     action: function(e, dt, node, config) {
+                        limpiar();
                         $("#mdlGestionarTipoFormacion").modal('show');
                         accion = 2; //registrar
                     }
@@ -140,41 +126,40 @@
                 }
             },
             columnDefs: [{
-                    targets: 1,
-                    visible: false //id
+                    targets: 1, //id
+                    visible: false
                 },
                 {
-                     targets: 3,
-                     orderable: false,
-                     render: function(data, type, full, meta) {
-                         if (data == '1') {
-                             return '<span class="badge badge-success">Activado</span>';
-                         } else {
-                             return '<span class="badge badge-danger">Desactivado</span>';
-                         }
-                     }
-                 },
+                    targets: 3, //vigencia
+                    orderable: false,
+                    render: function(data, type, full, meta) {
+                        if (data == '1') {
+                            return '<span class="badge badge-success">Activado</span>';
+                        } else {
+                            return '<span class="badge badge-danger">Desactivado</span>';
+                        }
+                    }
+                },
                 {
-                    targets: 4,
+                    targets: 4, //opciones
                     orderable: false,
                     render: function(data, type, full, meta) {
                         var check = "<span class='btnVigenciaTipo text-success h5 px-1' style='cursor:pointer;'>" +
-                                        "<i class='fa fa-check fs-5'></i>" +
-                                    "</span>";
+                            "<i class='fa fa-check fs-5'></i>" +
+                            "</span>";
 
                         var aspa = "<span class='btnVigenciaTipo text-danger h5 px-1' style='cursor:pointer;'>" +
-                                        "<i class='fa fa-times'></i>" +
-                                    "</span>";
+                            "<i class='fa fa-times'></i>" +
+                            "</span>";
 
-                        var editar ="<span class='btnEditarTipo text-primary px-1' style='cursor:pointer;'>" +
-                                        "<i class='fas fa-pencil-alt fs-5'></i>" +
-                                    "</span>" ;
-                        if (full[3] == 1){
+                        var editar = "<span class='btnEditarTipo text-primary px-1' style='cursor:pointer;'>" +
+                            "<i class='fas fa-pencil-alt fs-5'></i>" +
+                            "</span>";
+                        if (full[3] == 1) {
                             return "<center>" + editar + aspa + "</center>";
                         } else {
                             return "<center>" + editar + check + "</center>";
                         }
-                        
                     }
                 }
 
@@ -183,104 +168,88 @@
                 url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
             }
         });
+    })
 
-        /*===================================================================*/
-        // Limpiar inputs al cerrar la ventana modal
-        /*===================================================================*/
+    /*===================================================================*/
+    // Evento al dar click en el botón (lapiz) editar
+    /*===================================================================*/
+    $('#tbl_tipoFormacion').on('click', '.btnEditarTipo', function() {
+        accion = 4;
 
-        $("#btnCerrarModal, #btnCancelarRegistro").on('click', function() {
+        $("#mdlGestionarTipoFormacion").modal('show');
 
-            $("#validate_nombreTipo").css("display", "none");
+        var data = table.row($(this).parents('tr')).data();
+        $id_tipo = data[1];
+        $('#nombreTipo').val(data[2]);
+    })
 
-            $("#nombreTipo").val("");
-        })
+    /*===================================================================*/
+    // Evento al dar click en el botón dar de baja
+    /*===================================================================*/
 
-        /*===================================================================*/
-        // Evento al dar click en el botón (lapiz) editar
-        /*===================================================================*/
-        $('#tbl_tipoFormacion').on('click', '.btnEditarTipo', function() {
-            accion = 4;
+    $('#tbl_tipoFormacion').on('click', '.btnVigenciaTipo', function() {
+        accion = 5;
+        var data = table.row($(this).parents('tr')).data();
+        $id_tipo = data[1];
+        $vigente_tipo = data[3];
 
-            $("#mdlGestionarTipoFormacion").modal('show');
+        if ($vigente_tipo == 1) {
+            var titulo_preg = "¿Está seguro que desea dar de baja el tipo de Formación académica?";
+            var confirm_boton = 'Sí, dar de baja';
+            var titulo_toast = 'El tipo se dio de baja';
+            var titulo_toast_error = 'El tipo no se pudo dar de baja';
+        } else {
+            var titulo_preg = "¿Está seguro que desea recuperar el tipo de Formación académica?";
+            var confirm_boton = 'Sí, recuperar';
+            var titulo_toast = 'El tipo se recuperó';
+            var titulo_toast_error = 'El tipo no se pudo recuperar';
+        }
 
-            var data = table.row($(this).parents('tr')).data();
-            console.log(data);
-            $id_tipo = data[1];
-            $('#nombreTipo').val(data[2]);
-        })
+        Swal.fire({
+            title: titulo_preg,
+            icon: 'warning',
+            showDenyButton: true,
+            confirmButtonColor: '#3085d6',
+            denyButtonColor: '#d33',
+            confirmButtonText: confirm_boton,
+            denyButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) { //si la respuesta ha sido confirmada...
+                var datos = new FormData();
+                datos.append("accion", accion);
+                datos.append("id_tipo", $id_tipo);
+                datos.append("vigente_tipo", $vigente_tipo);
+                $.ajax({
+                    url: "../ajax/tipoFormacion.ajax.php",
+                    method: "POST",
+                    data: datos,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    dataType: 'json',
+                    success: function(respuesta) {
+                        if (respuesta == "ok") {
+                            Toast.fire({
+                                icon: 'success',
+                                title: titulo_toast,
+                                position: 'top'
+                            });
 
-        /*===================================================================*/
-        // Evento al dar click en el botón dar de baja
-        /*===================================================================*/
+                            table.ajax.reload();
 
-        $('#tbl_tipoFormacion').on('click', '.btnVigenciaTipo', function() {
-            accion = 5;
-            var data = table.row($(this).parents('tr')).data();
-            console.log(data);
-            $id_tipo = data[1];
-            $vigente_tipo = data[3];
-
-            if ($vigente_tipo == 1) {
-                var titulo_preg = "¿Está seguro que desea dar de baja el tipo de Formación académica?";
-                var confirm_boton = 'Sí, dar de baja';
-                var titulo_toast = 'El tipo se dio de baja';
-                var titulo_toast_error = 'El tipo no se pudo dar de baja';
-            } else {
-                var titulo_preg = "¿Está seguro que desea recuperar el tipo de Formación académica?";
-                var confirm_boton = 'Sí, recuperar';
-                var titulo_toast = 'El tipo se recuperó';
-                var titulo_toast_error = 'El tipo no se pudo recuperar';
+                        } else {
+                            Toast.fire({
+                                icon: 'error',
+                                title: titulo_toast_error
+                            });
+                        }
+                    }
+                })
+            } else if (result.isDenied) {
+                Swal.fire('Los cambios no se guardaron', '', 'info')
             }
 
-            Swal.fire({
-                title: titulo_preg,
-                icon: 'warning',
-                showDenyButton: true,
-                confirmButtonColor: '#3085d6',
-                denyButtonColor: '#d33',
-                confirmButtonText: confirm_boton,
-                denyButtonText: 'Cancelar',
-            }).then((result) => {
-                if (result.isConfirmed) { //si la respuesta ha sido confirmada...
-                    var datos = new FormData();
-                    datos.append("accion", accion);
-                    datos.append("id_tipo", $id_tipo);
-                    datos.append("vigente_tipo", $vigente_tipo);
-                    $.ajax({
-                        url: "../ajax/tipoFormacion.ajax.php",
-                        method: "POST",
-                        data: datos,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        dataType: 'json',
-                        success: function(respuesta) {
-                            if (respuesta == "ok") {
-                                Toast.fire({
-                                    icon: 'success',
-                                    title: titulo_toast,
-                                    position: 'top',
-                                });
-
-                                table.ajax.reload(); //recarga el table
-
-                                $("#mdlGestionarTipoFormacion").modal('hide');
-                                $("#nombreTipo").val("");
-
-                            } else {
-                                Toast.fire({
-                                    icon: 'error',
-                                    title: titulo_toast_error
-                                });
-                            }
-                        }
-                    })
-                } else if (result.isDenied) {
-                    Swal.fire('Los cambios no se guardaron', '', 'info')
-                }
-
-            });
-        })
+        });
     })
 
     document.getElementById("btnGuardarTipo").addEventListener("click", function() {
@@ -290,11 +259,15 @@
             if (form.checkValidity() === true) {
                 //validar ingreso de campos
                 if (accion == 2) {
-                    var titulo_preg = "¿Está seguro de registrar el tipo de Formación académica?";
+                    var titulo_preg = "¿Está seguro de registrar este tipo de Formación académica?";
                     var confirm_boton = 'Sí, deseo registrar';
+                    var titulo_toast = 'El tipo se registró correctamente';
+                    var titulo_toast_error = 'El tipo no se pudo registrar';
                 } else if (accion == 4) {
-                    var titulo_preg = "¿Está seguro de actualizar el tipo de Formación académica?";
+                    var titulo_preg = "¿Está seguro de actualizar este tipo de Formación académica?";
                     var confirm_boton = 'Sí, deseo actualizar';
+                    var titulo_toast = 'El tipo se actualizó correctamente';
+                    var titulo_toast_error = 'El tipo no se pudo actualizar';
                 }
                 //levanto una ventana modal para preguntar si deseo continuar con el registro
                 Swal.fire({
@@ -311,11 +284,8 @@
                         datos.append("accion", accion);
                         datos.append("nombre_tipo", $("#nombreTipo").val());
 
-                        if (accion == 2) {
-                            var titulo_msg = 'El tipo se registró correctamente';
-                        } else if (accion == 4) {
+                        if (accion == 4) {
                             datos.append("id_tipo", $id_tipo);
-                            var titulo_msg = 'El tipo se actualizó correctamente';
                         }
                         $.ajax({
                             url: "../ajax/tipoFormacion.ajax.php",
@@ -326,34 +296,38 @@
                             processData: false,
                             dataType: 'json',
                             success: function(respuesta) {
-                                if (respuesta == "ok") {
+                                if (respuesta == "ok") { //si se enviaron los datos
                                     Toast.fire({
                                         icon: 'success',
-                                        title: titulo_msg,
-                                        position: 'top',
+                                        title: titulo_toast,
+                                        position: 'top'
                                     });
 
                                     table.ajax.reload(); //recarga el table
-
                                     $("#mdlGestionarTipoFormacion").modal('hide');
-                                    $("#nombreTipo").val("");
+                                    limpiar();
 
                                 } else {
                                     Toast.fire({
                                         icon: 'error',
-                                        title: 'El tipo no se pudo agregar'
+                                        title: titulo_toast_error,
+                                        position: 'top'
                                     });
-
+                                    table.ajax.reload();
+                                    $("#mdlGestionarTipoFormacion").modal('hide');
+                                    limpiar();
                                 }
                             }
                         })
                     } else if (result.isDenied) {
+                        //si cancelaste la confirmación(2da ventana modal)
                         Swal.fire('Los cambios no se guardaron', '', 'info');
                         $("#mdlGestionarTipoFormacion").modal('hide');
-                        $("#nombreTipo").val("");
+                        limpiar();
                     }
                 })
             } else {
+                //si no llenaste todo el formulario
                 $("#nombreTipo").addClass("is-invalid");
             }
 
@@ -361,8 +335,19 @@
         });
     });
 
+    //botón cancelar
     document.getElementById("btnCancelarRegistro").addEventListener("click", function() {
+        limpiar();
+    })
+
+    //cerrar modal
+    $("#btnCerrarModal").on('click', function() {
+        limpiar();
+    })
+
+    function limpiar() {
         $(".needs-validation").removeClass("was-validate");
         $("#nombreTipo").removeClass("is-invalid");
-    })
+        $("#nombreTipo").val("");
+    }
 </script>
