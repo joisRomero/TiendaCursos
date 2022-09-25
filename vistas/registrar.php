@@ -50,9 +50,7 @@ if (isset($_POST['registrarme'])) {
                 }
             } else {
                 $mensaje = "Las contraseñas tienen que ser iguales";
-            }
-
-            
+            }            
         } else {
             $mensaje = "La contraseña tiene que tener mas de ocho carateres";
         }
@@ -109,7 +107,7 @@ if (isset($_POST['registrarme'])) {
                         <div class="contenedor-campos">
                             <div class="form-group">
                                 <label for="correo" class="col-form-label">¿Cuál es tu correo electrónico?</label>
-                                <input type="email" class="form-control" id="correo" name="correo" placeholder="Escribe tu correo electrónico" required />
+                                <input type="email" class="form-control" id="correo" name="correo" placeholder="Escribe tu correo electrónico" value="<?php if(isset($mensaje)) echo $correo; ?>" required />
                             </div>
                             <div class="form-group">
                                 <label for="password" class="col-form-label">Crea una contraseña</label>
@@ -121,27 +119,30 @@ if (isset($_POST['registrarme'])) {
                             </div>
                             <div class="form-group">
                                 <label for="user" class="col-form-label">Crea un nombre de usuario</label>
-                                <input type="text" class="form-control" id="user" name="nombreUsuario" placeholder="Crea un nombre de usuario" required />
+                                <input type="text" class="form-control" id="user" name="nombreUsuario" placeholder="Crea un nombre de usuario" required  />
                                 <p>Esto aparece en tu perfil</p>
                             </div>
                             <div class="form-group">
                                 <label for="nombre" class="col-form-label">¿Cuál es tu nombre?</label>
-                                <input type="text" class="form-control" id="nombre" name="nombreEstudiante" placeholder="Escribe tu nombre"></input>
+                                <input type="text" class="form-control" id="nombre" name="nombreEstudiante" placeholder="Escribe tu nombre" value="<?php if(isset($mensaje)) echo $nombreEstudiante; ?>" required />
                             </div>
                             <div class="form-group">
                                 <label for="apellidosEstudiante" class="col-form-label">¿Cuáles son tus apellidos?</label>
-                                <input type="text" class="form-control" id="apellidosEstudiante" name="apellidosEstudiante" placeholder="Escribe tus apellidos"></input>
+                                <input type="text" class="form-control" id="apellidosEstudiante" name="apellidosEstudiante" placeholder="Escribe tus apellidos" value="<?php if(isset($mensaje)) echo $aprellidosEstudiante; ?>" require />
                             </div>
-                        </div>
-                        <div class="enviar">
-                            <input type="submit" class="btn btn-outline-info btn-lg btn-block" value="Registrarme" name="registrarme">
                         </div>
 
                         <?php
                         if (isset($mensaje)) {
-                            echo "<p class='badge badge-danger'>" . $mensaje . "</p>";
+                            echo "<p class='badge badge-danger'>" . $mensaje . "</p><br>";
                         }
                         ?>
+
+                        <div class="enviar">
+                            <input type="submit" class="btn btn-outline-info btn-lg btn-block" value="Registrarme" name="registrarme">
+                        </div>
+
+                       
 
                         <div class="text-center mt-3">
                             <p class="d-inline">¿Ya tienes cuenta?</p>

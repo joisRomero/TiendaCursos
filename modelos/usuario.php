@@ -15,7 +15,7 @@ class Usuario
     {
         // $md5clave = md5($clave);
 
-        $consulta = "SELECT * FROM usuario WHERE nombre_usu = '$nombre' AND clave_usu = '$clave'";
+        $consulta = "SELECT * FROM usuario WHERE nombre_usu = '$nombre' AND clave_usu = '$clave' AND vigencia_usu = 1";
         $respuesta = mysqli_query(Conexion::conexion(), $consulta);
         $fila = mysqli_fetch_array($respuesta);
 
