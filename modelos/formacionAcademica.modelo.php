@@ -9,8 +9,8 @@ class FormacionAcademicaModelo
     {
         $consulta = Conexion::conectar()->prepare(
             "SELECT fa.id_forma, fa.nombre_forma, fa.descripcion_forma,
-            fa.aprendizaje_forma, fa.duracion_forma, fa.fechaCreacion_forma,
-            fa.precio_forma, p.id_pro, concat(p.nombre_pro,' ',p.apPater_pro,' ' ,p.apMater_pro) as nombreProfesor, t.id_tipo, t.nombre_tipo, fa.img, fa.vigente_forma,'' as opciones
+            fa.aprendizaje_forma, concat(fa.duracion_forma, ' h'), fa.fechaCreacion_forma,
+            concat('S/' ,fa.precio_forma), p.id_pro, concat(p.nombre_pro,' ',p.apPater_pro,' ' ,p.apMater_pro) as nombreProfesor, t.id_tipo, t.nombre_tipo, fa.img, fa.vigente_forma,'' as opciones
             from formacion_academica as fa
             INNER JOIN profesor as p
             on fa.id_pro = p.id_pro
@@ -18,6 +18,23 @@ class FormacionAcademicaModelo
             on t.id_tipo = fa.id_tipo
             ORDER BY fa.nombre_forma"
             );
+        $consulta->execute();
+
+        return $consulta->fetchAll();
+    }
+
+    static function mdlCantidadFormacionAcademica()
+    {
+        $consulta = Conexion::conectar()->prepare("SELECT COUNT(*) from formacion_academica");
+        $consulta->execute();
+
+        return $consulta->fetchAll();
+    }
+
+    static function mdlListarFormacionAcademicaInicio()
+    {
+        $consulta = Conexion::conectar()->prepare("SELECT f.nombre_forma, f.duracion_forma, f.precio_forma, t.nombre_tipo 
+            FROM formacion_academica as f INNER JOIN tipo as t on t.id_tipo = f.id_tipo ORDER by f.fechaCreacion_forma DESC LIMIT 5");
         $consulta->execute();
 
         return $consulta->fetchAll();

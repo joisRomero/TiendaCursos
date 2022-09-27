@@ -19,6 +19,25 @@ class CompraModelo {
         return $consulta->fetchAll();
     }
 
+    static function mdlGanacia() {
+        $consulta = Conexion::conectar()->prepare("SELECT SUM(f.precio_forma) FROM compra as c INNER JOIN formacion_academica as f on c.id_forma = f.id_forma");
+        $consulta->execute();
+        return $consulta->fetchAll();
+    }
+
+    static function mdlCursosMasVendidos() {
+        $consulta = Conexion::conectar()->prepare("SELECT fa.nombre_forma, fa.duracion_forma, fa.precio_forma, t.nombre_tipo, COUNT(*) as cantidad 
+            FROM compra as c 
+            INNER JOIN formacion_academica as fa 
+            on c.id_forma = fa.id_forma 
+            INNER JOIN tipo as t on fa.id_tipo = t.id_tipo 
+            GROUP BY fa.nombre_forma, fa.duracion_forma, fa.precio_forma, t.id_tipo 
+            ORDER BY COUNT(*) DESC
+            LIMIT 5");
+        $consulta->execute();
+        return $consulta->fetchAll();
+    }
+
     static function mdlCambiarVigenciaCompra($id, $vigencia){
         try{
             if ($vigencia == 1) {

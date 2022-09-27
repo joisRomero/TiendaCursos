@@ -8,6 +8,16 @@ class EstudianteControlador {
         return $respuesta;
     }
 
+    static function ctrCantidadEstudiante() {
+        $respuesta = EstudianteModelo::mdlCantidadEstudiante();
+        return $respuesta;
+    }
+
+    static function ctrUltimosCincoRegistrados() {
+        $respuesta = EstudianteModelo::mdlUltimosCincoRegistrados();
+        return $respuesta;
+    }
+
     //Lista para la ventana modal
     // static function ctrListaEstudiante() {
     //     $respuesta = EstudianteModelo::mdlListaEstudiante();

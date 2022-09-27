@@ -25,7 +25,7 @@
 
                 <li class="nav-item">
                     <a class="item nav-link cursor-pointer">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-th"></i>
                         <p>
                             Académica
                             <i class="right fas fa-angle-left"></i>
@@ -70,11 +70,11 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item" onclick="CargarContenido('reportes.php', 'content-wrapper')">
+                <li class="nav-item" onclick="CargarContenido('ventas.php', 'content-wrapper')">
                     <a class="item nav-link cursor-pointer">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Reportes
+                            Ventas
                         </p>
                     </a>
                 </li>

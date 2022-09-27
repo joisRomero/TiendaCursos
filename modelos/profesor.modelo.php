@@ -15,6 +15,24 @@ class ProfesorModelo
 
         return $consulta->fetchAll();
     }
+
+    static function mdlCantidadProfesores()
+    {
+        $consulta = Conexion::conectar()->prepare("SELECT COUNT(*) from profesor");
+
+        $consulta->execute();
+
+        return $consulta->fetchAll();
+    }
+
+    static function mdlUltimosCincoRegistrados()
+    {
+        $consulta = Conexion::conectar()->prepare("SELECT nombre_pro, concat(apPater_pro, ' ', apMater_pro) as apellidos, img FROM profesor ORDER by id_pro DESC LIMIT 5");
+
+        $consulta->execute();
+
+        return $consulta->fetchAll();
+    }
     //NO TOCAR LISTA LOS PROFES DEL COMBOBOX DE FORMACIÓN ACADÉMICA
     static function mdlListaProsores()
     {
