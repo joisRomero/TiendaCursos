@@ -19,8 +19,18 @@ class ajaxProfesor {
         echo json_encode($profesor, JSON_UNESCAPED_UNICODE);
     }
 
+    public function ajaxUltimosCincoRegistrados() {
+        $profesor = ProfesorControlador::ctrUltimosCincoRegistrados();
+        echo json_encode($profesor, JSON_UNESCAPED_UNICODE);
+    }
+
     public function ajaxListaProfesores() {
         $profesor = ProfesorControlador::ctrListaProfesores();
+        echo json_encode($profesor, JSON_UNESCAPED_UNICODE);
+    }
+
+    public function ajaxCantidadProfesores() {
+        $profesor = ProfesorControlador::ctrCantidadProfesores();
         echo json_encode($profesor, JSON_UNESCAPED_UNICODE);
     }
 
@@ -81,5 +91,19 @@ if (isset($_POST['accion']) && $_POST['accion'] == 1){  //LISTAR
     $profesor->id = $_POST['id'];
     $profesor->vigencia = $_POST['vigencia'];
     $profesor->ajaxCambiarVigenciaProfesor();
+
+} else if (isset($_POST['accion']) && $_POST['accion'] == 6) { 
+    $profesor = new ajaxProfesor();
+    $profesor->id = $_POST['id'];
+    $profesor->vigencia = $_POST['vigencia'];
+    $profesor->ajaxCambiarVigenciaProfesor();
+
+} else if (isset($_POST['accion']) && $_POST['accion'] == 7) { 
+    $profesor = new ajaxProfesor();
+    $profesor->ajaxCantidadProfesores();
+
+} else if (isset($_POST['accion']) && $_POST['accion'] == 8) { 
+    $profesor = new ajaxProfesor();
+    $profesor->ajaxUltimosCincoRegistrados();
 
 }

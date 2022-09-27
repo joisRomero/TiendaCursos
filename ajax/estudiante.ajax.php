@@ -17,6 +17,16 @@ class ajaxEstudiante {
         echo json_encode($estudiante);
     }
 
+    public function ajaxCantidadEstudiante() {
+        $estudiante = EstudianteControlador::ctrCantidadEstudiante();
+        echo json_encode($estudiante);
+    }
+
+    public function ajaxUltimosCincoRegistrados() {
+        $estudiante = EstudianteControlador::ctrUltimosCincoRegistrados();
+        echo json_encode($estudiante);
+    }
+
     //Lista para la ventana modal
     // public function ajaxListaEstudiante() {
     //     $estudiante = EstudianteControlador::ctrListaEstudiante();
@@ -70,4 +80,10 @@ if (isset($_POST['accion']) && $_POST['accion'] == 1) { // Listar
     $estudiante->vigencia_estu = $_POST["vigencia_estu"];
     $estudiante->ajaxCambiarVigenciaEstudiante();
 
+} else if (isset($_POST['accion']) && $_POST['accion'] == 6) { 
+    $estudiante->ajaxCantidadEstudiante();
+
+} else if (isset($_POST['accion']) && $_POST['accion'] == 7) {
+    $estudiante = new ajaxEstudiante();
+    $estudiante->ajaxUltimosCincoRegistrados();
 }

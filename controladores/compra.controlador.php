@@ -7,6 +7,16 @@ class CompraControlador {
         return $respuesta;
     }
 
+    static function ctrGanacia(){
+        $respuesta = CompraModelo::mdlGanacia();
+        return $respuesta;
+    }
+
+    static function ctrCursosMasVendidos(){
+        $respuesta = CompraModelo::mdlCursosMasVendidos();
+        return $respuesta;
+    }
+
     static function ctrCambiarVigenciaCompra($id, $vigencia){
         $respuesta = CompraModelo::mdlCambiarVigenciaCompra($id, $vigencia);
         return $respuesta;

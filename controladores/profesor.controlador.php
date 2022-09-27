@@ -14,6 +14,16 @@ class ProfesorControlador{
         return $respuesta;
     }
 
+    static function ctrCantidadProfesores() {
+        $respuesta = ProfesorModelo::mdlCantidadProfesores();
+        return $respuesta;
+    }
+
+    static function ctrUltimosCincoRegistrados() {
+        $respuesta = ProfesorModelo::mdlUltimosCincoRegistrados();
+        return $respuesta;
+    }
+
     static function ctrRegistrarProfesor($dni, $nombre, $apPater, $apMater, $descripcion, $img) {
         $respuesta = ProfesorModelo::mdlRegistrarProfesor($dni, $nombre, $apPater, $apMater, $descripcion, $img);
         return $respuesta;

@@ -14,6 +14,19 @@ class EstudianteModelo {
         $consulta->execute();
         return $consulta->fetchAll();
     }
+
+    static function mdlCantidadEstudiante() {
+        $consulta = Conexion::conectar()->prepare("SELECT COUNT(*) from estudiante");
+        $consulta->execute();
+        return $consulta->fetchAll();
+    }
+
+    static function mdlUltimosCincoRegistrados() {
+        $consulta = Conexion::conectar()->prepare("SELECT nombre_estu, apellidos_estu, correo_estu FROM estudiante ORDER by id_estu DESC LIMIT 5");
+        $consulta->execute();
+        return $consulta->fetchAll();
+    }
+    
     // //Lista para la ventana modal
     // static function mdlListaEstudiante() {
     //     $consulta = Conexion::conectar()->prepare("SELECT e.id_estu, e.nombre_estu, e.apellidos_estu, e.correo_estu, e.vigente_estu, u.nombre_usu

@@ -16,6 +16,15 @@ class ajaxCompra{
         echo json_encode($compra);
     }
 
+    public function ajaxGanacia() {
+        $compra = CompraControlador::ctrGanacia();
+        echo json_encode($compra);
+    }
+    public function ajaxCursosMasVendidos() {
+        $compra = CompraControlador::ctrCursosMasVendidos();
+        echo json_encode($compra);
+    }
+
     public function ajaxCambiarVigenciaCompra() {
         $compra = CompraControlador::ctrCambiarVigenciaCompra($this->id, $this->vigencia);
         echo json_encode($compra);
@@ -45,4 +54,10 @@ if(isset($_POST['accion']) && $_POST['accion'] == 1){ //REGISTRAR?
     $compra->id = $_POST["id"];
     $compra->vigencia = $_POST["vigencia"];
     $compra->ajaxCambiarVigenciaCompra();
+} else if(isset($_POST['accion']) && $_POST['accion'] == 4) { //VIGENCIA
+    $compra = new ajaxCompra();
+    $compra->ajaxGanacia();
+} else if(isset($_POST['accion']) && $_POST['accion'] == 5) { //VIGENCIA
+    $compra = new ajaxCompra();
+    $compra->ajaxCursosMasVendidos();
 }
