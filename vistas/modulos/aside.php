@@ -18,7 +18,7 @@
                     <a class="item nav-link active cursor-pointer" onclick="CargarContenido('inicio.php', 'content-wrapper')">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Tablero principal
+                            Inicio
                         </p>
                     </a>
                 </li>
