@@ -81,6 +81,7 @@ if (isset($_POST['accion']) && $_POST['accion'] == 1) { // Listar
     $estudiante->ajaxCambiarVigenciaEstudiante();
 
 } else if (isset($_POST['accion']) && $_POST['accion'] == 6) { 
+    $estudiante = new ajaxEstudiante();
     $estudiante->ajaxCantidadEstudiante();
 
 } else if (isset($_POST['accion']) && $_POST['accion'] == 7) {

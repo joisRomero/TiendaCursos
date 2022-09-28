@@ -8,7 +8,7 @@ class ProfesorModelo
     static function mdlListaProfesor()
     {
         $consulta = Conexion::conectar()->prepare("SELECT
-            id_pro, dni_pro, nombre_pro, apPater_pro, apMater_pro, descripcion_pro, img, vigencia_pro, '' as opciones
+            id_pro, dni_pro, nombre_pro, concat(apPater_pro, ' ', apMater_pro) as apellidos, descripcion_pro, img, vigencia_pro, '' as opciones
         FROM profesor ORDER by nombre_pro");
 
         $consulta->execute();

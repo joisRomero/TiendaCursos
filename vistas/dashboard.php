@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once '../modelos/usuario.php';
 include_once '../controladores/sesionUsuario.php';
 $sesionUsuario = new SesionUsuario();
@@ -7,6 +7,11 @@ $usuario->setearUsuario($sesionUsuario->getUsuarioActual());
 
 if (!isset($_SESSION['usuario'])) {
     header("location:../vistas/index.php");
+} else {
+    $rol = $_SESSION['rol'];
+    if ($rol === 'Estudiante'){
+        header("location:../vistas/index.php");
+    } 
 }
 ?>
 
@@ -25,10 +30,10 @@ if (!isset($_SESSION['usuario'])) {
     <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    
+
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-    
+
     <!-- Theme style -->
     <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="assets/dist/css/estilos.css">
@@ -38,14 +43,13 @@ if (!isset($_SESSION['usuario'])) {
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
-  
+
 
 
     <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
     <script src="assets/plugins/jquery/jquery.min.js"></script>
-
     <!-- Bootstrap 4 -->
     <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- SweetAlert2 -->
@@ -57,10 +61,10 @@ if (!isset($_SESSION['usuario'])) {
 
     <script src="assets/dist/js/script.js"></script>
 
-     <!-- ============================================================
+    <!-- ============================================================
     =LIBRERIAS PARA USO DE DATATABLES JS
     ===============================================================-->
-    <script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>        
+    <script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
 
     <!-- ============================================================
@@ -95,10 +99,9 @@ if (!isset($_SESSION['usuario'])) {
     <!-- ./wrapper -->
 
     <script>
-        function CargarContenido(pagina_php,contenedor){
+        function CargarContenido(pagina_php, contenedor) {
             $("." + contenedor).load(pagina_php);
         }
-
     </script>
 
 </body>

@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <table id="tbl_tipoFormacion" class="table table-striped w-100 shadow">
-                    <thead class="bg-info">
+                    <thead>
                         <tr style="font-size: 15px;">
                             <th></th>
                             <th>ID</th>

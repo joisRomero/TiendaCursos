@@ -17,13 +17,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <table id="tbl_profesor" class="table table-striped w-100 shadow">
-                    <thead class="bg-info">
+                    <thead>
                         <tr style="font-size: 15px;">
                             <th>ID</th>
                             <th>Dni</th>
                             <th>Nombres</th>
-                            <th>Apellido Paterno</th>
-                            <th>Apellido Materno</th>
+                            <th>Apellidos</th>
                             <th>Descripción</th>
                             <th>Imagen</th>
                             <th>Estado</th>
@@ -199,21 +198,21 @@
             },
             columnDefs: [{
                     targets: 0, //id
+                    visible: false
+                },
+                {
+                    targets: 4, //descripcion
                     visible: true
                 },
                 {
-                    targets: 5, //descripcion
-                    visible: true
-                },
-                {
-                    targets: 6, //img
+                    targets: 5, //img
                     orderable: false,
                     render: function(data, type, full, meta) {
                         return '<img src="' + data + '"  height="50px" width="50px">';
                     }
                 },
                 {
-                    targets: 7, //vigencia
+                    targets: 6, //vigencia
                     orderable: false,
                     render: function(data, type, full, meta) {
                         if (data == '1') {
@@ -224,7 +223,7 @@
                     }
                 },
                 {
-                    targets: 8, //opciones
+                    targets: 7, //opciones
                     orderable: false,
                     render: function(datqa, type, full, meta) {
                         var check = "<span class='btnVigenciaProfesor text-success h5 px-1' style='cursor:pointer;'>" +
