@@ -78,6 +78,24 @@
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="item nav-link cursor-pointer">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Reportes
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item" onclick="CargarContenido('consultarVentas.php', 'content-wrapper')">
+                            <a class="item nav-link cursor-pointer">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Consultar ventas</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

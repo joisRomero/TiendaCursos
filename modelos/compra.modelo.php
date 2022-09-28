@@ -19,6 +19,24 @@ class CompraModelo {
         return $consulta->fetchAll();
     }
 
+    static function mdlListarCompraConFecha($fechaInicio, $fechaFin) {
+        $consulta = Conexion::conectar()->prepare("SELECT c.id_compra, c.vigente_compra, CONCAT(e.nombre_estu, ' ', e.apellidos_estu) as nombreEstudiante, CONCAT(p.nombre_pro, ' ', p.apPater_pro, ' ', p.apMater_pro) as nombreProfesor, f.nombre_forma as nombreFormacion, t.nombre_tipo as tipo
+        FROM compra as c
+        INNER JOIN estudiante as e
+        ON c.id_estu = e.id_estu
+        INNER JOIN formacion_academica as f
+        ON c.id_forma = f.id_forma
+        INNER JOIN profesor as p
+        ON f.id_pro = p.id_pro
+        INNER JOIN tipo as t
+        ON f.id_tipo = t.id_tipo
+        WHERE c.fecha_compra BETWEEN :fechaInicio AND :fechaFin");
+        $consulta->bindParam(":fechaInicio", $fechaInicio, PDO::PARAM_STR);
+        $consulta->bindParam(":fechaFin", $fechaFin, PDO::PARAM_STR);
+        $consulta->execute();
+        return $consulta->fetchAll();
+    }
+
     static function mdlGanacia() {
         $consulta = Conexion::conectar()->prepare("SELECT SUM(f.precio_forma) FROM compra as c INNER JOIN formacion_academica as f on c.id_forma = f.id_forma");
         $consulta->execute();

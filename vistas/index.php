@@ -16,7 +16,7 @@ if (isset($_SESSION['usuario'])) {
 }
 
 $con = new Conexion();
-$s_ultimasFormaAca = "SELECT * FROM formacion_academica WHERE vigente_forma = 1 limit 3"; //ORDER BY id_forma DESC
+$s_ultimasFormaAca = "SELECT * FROM formacion_academica WHERE vigente_forma = 1 ORDER BY fechaCreacion_forma DESC limit 3"; 
 $r_ultimasFormaAca = mysqli_query($con->conexion(), $s_ultimasFormaAca);
 $s_ultimosProfes = "SELECT * FROM profesor limit 4 "; //ORDER BY id_pro DESC
 $r_ultimosProfes = mysqli_query($con->conexion(), $s_ultimosProfes);
@@ -67,7 +67,7 @@ function limitarCadena($cadena, $limite){
             <a class="nav-link" href="#cursos">Cursos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#nostros">Nostros</a>
+            <a class="nav-link" href="#nostros">Nosotros</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#acercaDe">Acerca de</a>

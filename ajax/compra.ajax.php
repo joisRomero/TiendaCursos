@@ -11,8 +11,17 @@ class ajaxCompra{
     public $idEstudiante;
     public $idFormacion;
 
+    public $fechaInicio;
+    public $fechaFin;
+
+
     public function ajaxListarCompra() {
         $compra = CompraControlador::ctrListarCompra();
+        echo json_encode($compra);
+    }
+
+    public function ajaxListarCompraConFecha() {
+        $compra = CompraControlador::ctrListarCompraConFecha($this->fechaInicio, $this->fechaFin);
         echo json_encode($compra);
     }
 
@@ -60,4 +69,9 @@ if(isset($_POST['accion']) && $_POST['accion'] == 1){ //REGISTRAR?
 } else if(isset($_POST['accion']) && $_POST['accion'] == 5) { //VIGENCIA
     $compra = new ajaxCompra();
     $compra->ajaxCursosMasVendidos();
+} else if(isset($_POST['accion']) && $_POST['accion'] == 6) { //VIGENCIA
+    $compra = new ajaxCompra();
+    $compra->fechaInicio = $_POST["fechaInicio"];
+    $compra->fechaFin = $_POST["fechaFin"];
+    $compra->ajaxListarCompraConFecha();
 }

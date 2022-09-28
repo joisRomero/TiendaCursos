@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <table id="tbl_compra" class="table table-striped w-100 shadow">
-                    <thead class="bg-info">
+                    <thead>
                         <tr style="font-size: 15px;">
                             <th>ID</th>
                             <th>Fecha</th>

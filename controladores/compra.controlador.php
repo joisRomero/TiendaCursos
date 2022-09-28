@@ -7,6 +7,11 @@ class CompraControlador {
         return $respuesta;
     }
 
+    static function ctrListarCompraConFecha($fechaInicio, $fechaFin){
+        $respuesta = CompraModelo::mdlListarCompraConFecha($fechaInicio, $fechaFin);
+        return $respuesta;
+    }
+
     static function ctrGanacia(){
         $respuesta = CompraModelo::mdlGanacia();
         return $respuesta;
