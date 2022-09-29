@@ -218,7 +218,7 @@ if (isset($_SESSION['usuario'])) {
                             ${respuesta[i][1]}
                           </h5>
                           <p class="card-text">
-                            ${des +"[...]"}
+                            ${des /*+"[...]"*/}
                           </p>
                           <a href="verMasCurso.php?id=${respuesta[i][0]}" class="btn btn-primary">Ver más</a>
                         </div>
