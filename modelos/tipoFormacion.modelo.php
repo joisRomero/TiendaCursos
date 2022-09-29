@@ -16,7 +16,7 @@ class TipoFormacionModelo
 
     static function mdlListaTipoFormacion()
     {
-        $consulta = Conexion::conectar()->prepare("SELECT id_tipo, nombre_tipo, vigente_tipo FROM tipo ORDER BY nombre_tipo ASC");
+        $consulta = Conexion::conectar()->prepare("SELECT id_tipo, nombre_tipo, vigente_tipo FROM tipo WHERE vigente_tipo = 1 ORDER BY nombre_tipo ASC");
 
         $consulta->execute();
 

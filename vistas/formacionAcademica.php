@@ -215,7 +215,6 @@
             },
             dataType: 'json',
             success: function(respuesta) {
-                console.log("tipo", respuesta);
                 var opciones = '<option value="0">--Seleccione--</option>';
                 for (let index = 0; index < respuesta.length; index++) {
                     if (respuesta[index][2] == 1) { //si el tipo está vigente
@@ -237,7 +236,6 @@
             },
             dataType: 'json',
             success: function(respuesta) {
-                console.log("profes", respuesta);
                 var opciones = '<option value="0">--Seleccione--</option>';
 
                 for (let index = 0; index < respuesta.length; index++) {
@@ -372,16 +370,18 @@
             $('#idTipoFormacion').val($(this).val());
         }); // lleno el value tipo
 
+        var duracion = data[4].match(/(\d+)/)
+        var precio = data[6].match(/(\d+)/)
+
         $('#nombreFormacion').val(data[1]);
         $('#descripcionFormacion').val(data[2]);
         $('#aprendizajeFormacion').val(data[3]);
-        $('#duracionFormacion').val(data[4]);
-        $('#precioFormacion').val(data[6]);
+        $('#duracionFormacion').val(duracion[0]);
+        $('#precioFormacion').val(precio[0]);
         $('#profesorFormacion').val(data[7]); //id Profe me llena el nombre
         $('#idProfesorFormacion').val(data[7]); //id Profe me llena el value
         $('#tipoFormacion').val(data[9]); //id Tipo me llena el nombre
         $('#idTipoFormacion').val(data[9]); //id Tipo me llena el value
-        $('#imagenFormacion').prop('disabled', true);
         $('.text-danger-asterisco').each(function() {
             $(this).hide();
         });
@@ -396,7 +396,6 @@
         var data = table.row($(this).parents('tr')).data();
         $id = data[0];
         $vigencia = data[12];
-        console.log("data del lapicito: " + data[12]);
 
         if ($vigencia == 1) {
             var titulo_preg = "¿Está seguro que desea dar de baja a esta formación?";

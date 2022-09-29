@@ -84,6 +84,7 @@ if (isset($_GET['id'])) {
   <link rel="stylesheet" href="assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <link rel="stylesheet" href="assets/dist/css/styles.css" />
   <title>Ver mas</title>
+  <link rel="shortcut icon" href="assets/dist/img/Logo.png" type="image/x-icon">
 </head>
 <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

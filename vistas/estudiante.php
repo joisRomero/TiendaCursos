@@ -149,7 +149,6 @@
             },
             dataType: 'json',
             success: function(respuesta) {
-                console.log(respuesta);
                 var opciones = '<option value="0">--Seleccione--</option>';
                 for (let index = 0; index < respuesta.length; index++) {
                     if (respuesta[index][2] == 1) { //si el usuario está vigente
@@ -255,7 +254,6 @@
         $(".div-correo").css("max-width", "100%");
 
         var data = table.row($(this).parents('tr')).data();
-        console.log(data);
         $id_estu = data[0];
         $idUsuario_estu = data[5];
 
@@ -276,7 +274,6 @@
     $('#tbl_estudiante').on('click', '.btnVigenciaEstudiante', function() {
         accion = 5;
         var data = table.row($(this).parents('tr')).data();
-        console.log(data[4]);
         $id_estu = data[0];
         $vigencia_estu = data[4];
 

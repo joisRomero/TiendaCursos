@@ -50,7 +50,6 @@
                  </div>
              </div>
 
-
              <div class="col-lg-3">
                  <!-- Small box -->
                  <div class="small-box bg-danger">

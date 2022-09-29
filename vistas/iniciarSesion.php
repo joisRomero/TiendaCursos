@@ -18,6 +18,7 @@
 
     <link rel="stylesheet" href="assets/dist/css/styles.css" />
     <title>Iniciar sesión</title>
+    <link rel="shortcut icon" href="assets/dist/img/Logo.png" type="image/x-icon">
   </head>
   <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
   <script
