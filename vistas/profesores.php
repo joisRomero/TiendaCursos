@@ -267,7 +267,6 @@
         $('#apPaterProfesor').val(data[3]);
         $('#apMaterProfesor').val(data[4]);
         $('#descripcionProfesor').val(data[5]);
-        $('#imagenProfesor').prop('disabled', true);
         $('.text-danger-asterisco').each(function() {
             $(this).hide();
         });
@@ -282,7 +281,6 @@
         var data = table.row($(this).parents('tr')).data();
         $id = data[0];
         $vigencia = data[7];
-        console.log("data de la vigencia: " + data[7]);
 
         if ($vigencia == 1) {
             var titulo_preg = "¿Está seguro que desea dar de baja a este profesor?";
