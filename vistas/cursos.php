@@ -209,8 +209,9 @@ if (isset($_SESSION['usuario'])) {
         formacionesAcademicas = respuesta;
         var formaAca = [];
         for (let i = 0; i < respuesta.length; i++) {
-          var des = respuesta[i][2].substring(0, 150);
-          var forma = `<div class="col mb-4">
+          if (respuesta[i][2].length < 150) {
+            var des = respuesta[i][2].substring(0, 150);
+            var forma = `<div class="col mb-4">
                         <div class="card bg-dark h-100 ultimo-curso">
                         <img src="${respuesta[i][4]}" class="card-img-top"/>
                         <div class="card-body">
@@ -218,13 +219,31 @@ if (isset($_SESSION['usuario'])) {
                             ${respuesta[i][1]}
                           </h5>
                           <p class="card-text">
-                            ${des /*+"[...]"*/}
+                            ${des}
                           </p>
                           <a href="verMasCurso.php?id=${respuesta[i][0]}" class="btn btn-primary">Ver más</a>
                         </div>
                         </div>
                       </div>`;
-          formaAca.push(forma);
+            formaAca.push(forma);
+          } else {
+            var des = respuesta[i][2].substring(0, 150);
+            var forma = `<div class="col mb-4">
+                        <div class="card bg-dark h-100 ultimo-curso">
+                        <img src="${respuesta[i][4]}" class="card-img-top"/>
+                        <div class="card-body">
+                          <h5 class="card-title">
+                            ${respuesta[i][1]}
+                          </h5>
+                          <p class="card-text">
+                            ${des +"[...]"}
+                          </p>
+                          <a href="verMasCurso.php?id=${respuesta[i][0]}" class="btn btn-primary">Ver más</a>
+                        </div>
+                        </div>
+                      </div>`;
+            formaAca.push(forma);
+          }
         }
         $('#contenedor').html(formaAca);
       }
